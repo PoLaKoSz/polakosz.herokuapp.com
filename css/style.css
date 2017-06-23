@@ -1,0 +1,90 @@
+body{
+	margin:0;
+	padding:0;
+}
+
+a{
+	color:#fff;
+	text-decoration:none;
+}
+
+ul{
+	margin:0;
+	padding:0;
+}
+
+.container{
+	margin:auto;
+}
+
+/* COMMON CLASSES */
+.primary-text{
+	color:#e67e22;
+}
+
+.primary-background{
+	background:#e67e22;
+}
+
+/* HEADER */
+#contact-header{
+	background: #eeeeee;
+}
+	#contact-header .row{
+		height:40px;
+	}
+
+/* NAVBAR */
+#navbar li{
+	list-style:none;
+	padding:20px;
+	text-transform:uppercase;
+}
+	#navbar li.selected, #navbar a:hover>li{
+		background:#e67e22;
+		color:#fff;
+	}
+		#navbar a{
+			display: inline-block;
+			color:#777777;
+		}
+
+#main-header .row{
+	padding:25px 0px 25px 0px;
+}
+
+/* SLIDESHOW */
+#slideshow{
+	background-image:url("../images/slideshow.jpg");
+	background-position:center;
+	color:#fff;
+}
+	#slideshow .row{
+		height:500px;
+	}
+
+#welcome-text{
+	border-bottom: 1px solid #cccccc;
+	font-size: 34px;
+	padding:50px 0 50px 0;
+}
+	#welcome-text p{
+		font-size:16px;
+		font-style: italic;
+	}
+
+#history .row>div{
+	padding:40px;
+}
+
+#projects{
+	background:url("../images/background.png");
+}
+	.block-name{
+		display:table;
+		width:100%;
+	}
+		.block-name div:nth-child(odd){
+			width:50%;
+			display:table-cell;
+		}
