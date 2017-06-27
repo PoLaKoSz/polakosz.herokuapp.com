@@ -6,6 +6,7 @@ body{
 a{
 	color:#fff;
 	text-decoration:none;
+	display:block;
 }
 
 ul{
@@ -25,6 +26,64 @@ ul{
 .primary-background{
 	background:#e67e22;
 }
+
+.white-text{
+	color:#fff;
+}
+
+.section-header{
+	display:table;
+	width:100%;
+	line-height:200px;
+}
+	.section-header div:nth-child(odd){
+		width:50%;
+		display:table-cell;
+		vertical-align: middle;
+	}
+		.light-section-header div:nth-child(odd) hr{
+			border:1px solid white;
+		}
+	.section-header-name {
+		padding: 0 20px;
+	}
+
+
+.hoverable-box {
+  width: 200px;
+  height: 300px;
+  position: relative;
+	left:50%;
+}
+	.hoverable-box img{
+		width:100%;
+		height:auto;
+	}
+		.hoverable-box-parent:hover>.hoverable-box-layer{
+					opacity:0.9;
+		}
+
+		.hoverable-box-parent{
+			left:-50%;
+		}
+
+		.hoverable-box-parent,
+		.hoverable-box-layer{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			color: white;
+			margin: 0;
+		}
+			.hoverable-box-layer{
+		    display: flex;
+		    align-items: center;
+		    justify-content: center;
+				background-color: rgba(0, 0, 0, 0.8);
+				opacity:0;
+				transition: opacity 0.5s linear;
+			}
 
 /* HEADER */
 #contact-header{
@@ -80,11 +139,3 @@ ul{
 #projects{
 	background:url("../images/background.png");
 }
-	.block-name{
-		display:table;
-		width:100%;
-	}
-		.block-name div:nth-child(odd){
-			width:50%;
-			display:table-cell;
-		}
