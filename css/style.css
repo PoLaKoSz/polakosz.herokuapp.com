@@ -17,7 +17,7 @@ input,
 textarea{
 	width: 100%;
 	padding: 10px;
-	margin: 10px 0;
+	margin: 10px 20px;
 }
 
 /* COMMON CLASSES */
@@ -124,6 +124,27 @@ textarea{
 	background-color:#eaeaea;
 	color:#929292;
 }
+	a.footer-link{
+		text-decoration:none;
+		font-weight: bold;
+	}
+		a.footer-link:hover{
+			text-decoration:underline;
+		}
+
+	a.facebook-color {
+		color: #465994;
+    font-weight: bold;
+	}
+
+	a.youtube-color {
+		color: #cb1e22;
+	}
+
+	a.freemail-color {
+		color:#f89a1e;
+	}
+
 	.orange-button{
 		background-color:#ff7600;
 		border:none;
@@ -135,4 +156,11 @@ textarea{
 	}
 		.orange-button:hover{
 			background-color:#d35400;
+		}
+
+	.copyright {
+		padding:40px;
+	}
+		.copyright a{
+			color:#e67e22;
 		}
