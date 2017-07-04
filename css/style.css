@@ -124,8 +124,12 @@ textarea{
 	padding:40px;
 }
 
-#history .row>p{
-	padding:10px;
+#history .history-title p{
+	padding: 10px;
+	text-transform: uppercase;
+	color: #333333;
+	font-weight: bold;
+	letter-spacing: 3px;
 }
 
 #projects{
