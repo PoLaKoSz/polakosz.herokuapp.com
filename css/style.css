@@ -4,6 +4,11 @@ body{
 	overflow-x:hidden;
 }
 
+@font-face {
+    font-family: LogoFont;
+    src: url("../fonts/Jayadhira LILA EE01.ttf");
+}
+
 ul{
 	margin:0;
 	padding:0;
@@ -90,6 +95,10 @@ textarea{
 #main-header .row{
 	padding:25px 0px 25px 0px;
 }
+	#main-header .signature{
+		font-family:LogoFont;
+		font-size:3em;
+	}
 
 /* SLIDESHOW */
 #slideshow{
