@@ -1,0 +1,23 @@
+$primary-color: #e67e22;
+$seconday-color: #eeeeee;
+
+@font-face {
+    font-family: LogoFont;
+    src: url("../fonts/Jayadhira LILA EE01.ttf");
+}
+
+#navbar {
+    color: $primary-color;
+    background: $seconday-color;
+}
+    #navbar .row > div {
+        line-height:50px;
+    }
+
+    #navbar .fb_iframe_widget span{vertical-align:middle !important;}
+
+    #navbar .signature {
+        font-family: LogoFont;
+        color: black;
+        font-size: 30px;
+    }

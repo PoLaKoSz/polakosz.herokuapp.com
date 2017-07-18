@@ -11,5 +11,5 @@
 
     <div>Movies</div>
 
-    <div>Contact</div>
+    <div style="height:1000px;">Contact</div>
 @endsection
