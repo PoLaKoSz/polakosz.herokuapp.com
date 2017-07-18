@@ -1,6 +1,6 @@
 # PoLaKoSz.atw.hu
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2 (yeah, I know this is not he latest version :smile:).
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2 (yeah, I know this is not the latest version :smile:).
 
 ## Development server
 
