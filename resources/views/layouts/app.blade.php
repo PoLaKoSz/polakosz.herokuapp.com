@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -16,8 +16,8 @@
 <body>
     <div id="app">
         @include('inc.navbar')
-        <div class="container">
-        </div>
+        
+        @yield('content')
     </div>
 </body>
 </html>
