@@ -27,6 +27,8 @@
         @include('inc.about-me')
 
         @include('inc.projects')
+
+        @include('inc.movies')
         
         @yield('content')
     </div>
