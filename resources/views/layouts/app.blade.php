@@ -12,6 +12,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Material Design for Bootstrap -->
+    <link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -22,6 +25,8 @@
         @include('inc.welcome_text')
 
         @include('inc.about-me')
+
+        @include('inc.projects')
         
         @yield('content')
     </div>
