@@ -10,6 +10,7 @@
 
 body{
     font-family: 'Open Sans', Arial, Helvetice Neue, sans-serif;
+    font-size: 12px;
 }
 
 p {
@@ -41,6 +42,7 @@ h1 {
 .navbar-default {
     background-color: $tertiary-color;
     border: none;
+    text-transform: uppercase;
 }
     .navbar-default .navbar-nav > .active > a,
     .navbar-default .navbar-nav > .active > a:hover,
@@ -94,8 +96,12 @@ h1 {
         font-size: 10px;
     }
 
+    .navbar {
+        margin:0;
+    }
+
     #navbar {
-        height:100px !important;
+        height:110px !important;
         display: flex !important;
         justify-content: flex-end !important;
         align-items: center !important;
