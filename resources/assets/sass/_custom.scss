@@ -1,23 +1,62 @@
-$primary-color: #e67e22;
-$seconday-color: #eeeeee;
+/* #1 */ $primary-color:    #e67e22;
+/* #2 */ $secondary-color:  #777777;
+/* #3 */ $tertiary-color:   #fff;
+/* #4 */ $quaternary-color: #eeeeee;
 
 @font-face {
     font-family: LogoFont;
     src: url("../fonts/Jayadhira LILA EE01.ttf");
 }
 
+
 #contact-header {
     color: $primary-color;
-    background: $seconday-color;
+    background: $quaternary-color;
 }
     #contact-header .row > div {
         line-height:30px;
     }
 
-    #contact-header .fb_iframe_widget span{vertical-align:middle !important;}
+    #contact-header .fb_iframe_widget span {
+        vertical-align:middle !important;
+    }
 
     #contact-header .signature {
-        font-family: LogoFont;
+        font-family: LogoFont;  /* This is not working */
         color: black;
         font-size: 30px;
     }
+
+.navbar-default {
+    background-color: $tertiary-color;
+    border: none;
+}
+    .navbar-default .navbar-nav > .active > a,
+    .navbar-default .navbar-nav > .active > a:hover,
+    .navbar-default .navbar-nav > li > a:hover {
+        background: $primary-color !important;
+        color: $tertiary-color;
+    }
+
+    .navbar-default .navbar-toggle {
+        border-color: $primary-color;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: $primary-color;
+    }
+
+    .navbar-default .navbar-toggle:hover,
+    .navbar-default .navbar-toggle:focus {
+        background-color: $tertiary-color;
+    }
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    #navbar {
+        height:100px !important;
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+    }
+}
