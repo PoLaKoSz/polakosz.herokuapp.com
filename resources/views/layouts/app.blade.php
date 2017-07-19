@@ -16,6 +16,8 @@
 <body>
     <div id="app">
         @include('inc.navbar')
+
+        @include('inc.bootstrap_carousel')
         
         @yield('content')
     </div>

@@ -8,6 +8,17 @@
     src: url("../fonts/Jayadhira LILA EE01.ttf");
 }
 
+body{
+    font-family: 'Open Sans', Arial, Helvetice Neue, sans-serif;
+}
+
+p {
+    font-size: 10px;
+}
+h1 {
+    font-size: 10px;
+}
+
 
 #contact-header {
     color: $primary-color;
@@ -51,12 +62,63 @@
         background-color: $tertiary-color;
     }
 
-/* Small Devices, Tablets */
+.carousel {
+    background: url('img/slideshow.jpg') no-repeat center center fixed;
+    color:$tertiary-color;
+}
+    .carousel-content {
+        display:flex;
+        align-items:center;
+        height:500px;
+        margin: auto;
+        text-align:center;
+        letter-spacing: 4px;
+    }
+        .carousel-content > div {
+            width:100%;
+        }
+            .carousel-content h1 {
+                text-transform: uppercase;
+            }
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
 @media only screen and (min-width : 768px) {
+    p {
+        font-size: 10px;
+    }
+
+    h1 {
+        font-size: 10px;
+    }
+
     #navbar {
         height:100px !important;
         display: flex !important;
         justify-content: flex-end !important;
         align-items: center !important;
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media only screen and (min-width : 992px) {
+    p {
+        font-size: 10px;
+    }
+
+    h1 {
+        font-size: 10px;
+    }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media only screen and (min-width : 1200px) {
+    p {
+        font-size: 15px;
+    }
+    h1 {
+        font-size: 36px;
     }
 }
