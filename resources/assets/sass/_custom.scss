@@ -68,6 +68,9 @@ h1 {
     background: url('img/slideshow.jpg') no-repeat center center fixed;
     color:$tertiary-color;
 }
+    .carousel .row {
+        margin:0;
+    }
     .carousel-content {
         display:flex;
         align-items:center;

@@ -1,11 +1,9 @@
-<body>
 <div id="text-carousel" class="carousel slide" data-ride="carousel">
-
     <!-- Indicators -->
     <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#text-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#text-carousel" data-slide-to="1"></li>
+        <li data-target="#text-carousel" data-slide-to="2"></li>
     </ol>
     <!-- Wrapper for slides -->
     <div class="row">
@@ -46,12 +44,11 @@
             </div>
         </div>
     </div>
-    <!-- Controls --> <a class="left carousel-control" href="#text-carousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
- <a class="right carousel-control" href="#text-carousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-
+    <!-- Controls -->
+    <a class="left carousel-control" href="#text-carousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#text-carousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
 </div>
-</body>
