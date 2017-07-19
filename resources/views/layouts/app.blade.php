@@ -18,6 +18,8 @@
         @include('inc.navbar')
 
         @include('inc.bootstrap_carousel')
+
+        @include('inc.welcome_text')
         
         @yield('content')
     </div>
