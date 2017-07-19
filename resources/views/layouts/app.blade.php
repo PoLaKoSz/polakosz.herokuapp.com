@@ -29,6 +29,8 @@
         @include('inc.projects')
 
         @include('inc.movies')
+
+        @include('inc.contact')
         
         @yield('content')
     </div>
