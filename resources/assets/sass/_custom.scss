@@ -6,17 +6,17 @@ $seconday-color: #eeeeee;
     src: url("../fonts/Jayadhira LILA EE01.ttf");
 }
 
-#navbar {
+#contact-header {
     color: $primary-color;
     background: $seconday-color;
 }
-    #navbar .row > div {
+    #contact-header .row > div {
         line-height:50px;
     }
 
-    #navbar .fb_iframe_widget span{vertical-align:middle !important;}
+    #contact-header .fb_iframe_widget span{vertical-align:middle !important;}
 
-    #navbar .signature {
+    #contact-header .signature {
         font-family: LogoFont;
         color: black;
         font-size: 30px;
