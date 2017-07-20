@@ -28,6 +28,22 @@
                 <li><a href="/about-me">Rólam</a></li>
                 <li><a href="/projects">Projektek</a></li>
                 <li><a href="/movies">Filmek</a></li>
+                @if (Auth::guest())
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Register</a></li>
+                @else
+                    <li>
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                @endif
                 <li><a href="/contact">Kapcsolat</a></li>
             </ul>
         </div>
