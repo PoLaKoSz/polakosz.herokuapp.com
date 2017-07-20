@@ -11,8 +11,11 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
+Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+{
+    Route::get('/', 'PagesController@index');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+    Route::get('/home', 'HomeController@index');
+    
+    Auth::routes();
+});

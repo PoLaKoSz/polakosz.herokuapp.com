@@ -4,7 +4,7 @@
             <div class="section-header dark-section-header">
                 <div class="section-header-line"></div>
                 <div class="section-header-name bigger-text">
-                    Movies
+                    {{ trans('movies.title') }}
                 </div>
                 <div class="section-header-line"></div>
             </div>

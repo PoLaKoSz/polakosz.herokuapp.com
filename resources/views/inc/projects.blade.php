@@ -4,7 +4,7 @@
             <div class="section-header light-section-header">
                 <div class="section-header-line"></div>
                 <div class="section-header-name bigger-text white-text">
-                    Projects
+                    {{ trans('projects.title') }}
                 </div>
                 <div class="section-header-line"></div>
             </div>
@@ -17,7 +17,7 @@
                         <img src="{{asset('images//all.gif')}}" alt="All projects">
                         <div class="mask flex-center">
                             <div>
-                                <p class="white-text"><a href="#">Tovább</a></p>
+                                <p class="white-text"><a href="#">{{ trans('projects.more') }}</a></p>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                         <img src="{{asset('images//cSharp.gif')}}" alt="My C# projects">
                         <div class="mask flex-center">
                             <div>
-                                <p class="white-text"><a href="#">Tovább</a></p>
+                                <p class="white-text"><a href="#">{{ trans('projects.more') }}</a></p>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                         <img src="{{asset('images//android.gif')}}" alt="My Android projects">
                         <div class="mask flex-center">
                             <div>
-                                <p class="white-text"><a href="#">Tovább</a></p>
+                                <p class="white-text"><a href="#">{{ trans('projects.more') }}</a></p>
                             </div>
                         </div>
                     </div>

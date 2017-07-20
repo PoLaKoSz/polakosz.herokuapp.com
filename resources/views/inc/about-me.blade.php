@@ -7,16 +7,16 @@
                 </div>
 
                 <div class="col-xs-9">
-                    <h1 class="bigger-text">Awesome icons</h1>
+                    <h1 class="bigger-text">{{ trans('about-me.past_title') }}</h1>
                 </div>
             </div>
 
             <div class="row">
-                <p class="big-text">Nam porta adipiscing tortor, eget rutrum turpis bibendum ut. Donec eu lacus in diam euismod imperdiet eu ut turpis. Morbi felis orci, tincidunt pretium laoreet id, euismod et lacus. Praesent aliquet magna vitae mi elementum pharetra.</p>
+                <p class="big-text">{{ trans('about-me.past_text') }}</p>
             </div>
 
             <div class="row text-center">
-                <button class="btn btn-orange">Read more</button>
+                <button class="btn btn-orange">{{ trans('about-me.btn_read_more') }}</button>
             </div>
         </div>
 
@@ -27,16 +27,16 @@
                 </div>
 
                 <div class="col-xs-9">
-                    <h1 class="bigger-text">Fully responsive</h1>
+                    <h1 class="bigger-text">{{ trans('about-me.present_title') }}</h1>
                 </div>
             </div>
 
             <div class="row">
-                <p class="big-text">Nam porta adipiscing tortor, eget rutrum turpis bibendum ut. Donec eu lacus in diam euismod imperdiet eu ut turpis. Morbi felis orci, tincidunt pretium laoreet id, euismod et lacus. Praesent aliquet magna vitae mi elementum pharetra.</p>
+                <p class="big-text">{{ trans('about-me.present_text') }}</p>
             </div>
 
             <div class="row text-center">
-                <button class="btn btn-orange">Read more</button>
+                <button class="btn btn-orange">{{ trans('about-me.btn_read_more') }}</button>
             </div>
         </div>
         
@@ -47,16 +47,16 @@
                 </div>
 
                 <div class="col-xs-9">
-                    <h1 class="bigger-text">High efficiency</h1>
+                    <h1 class="bigger-text">{{ trans('about-me.future_title') }}</h1>
                 </div>
             </div>
 
             <div class="row">
-                <p class="big-text">Nam porta adipiscing tortor, eget rutrum turpis bibendum ut. Donec eu lacus in diam euismod imperdiet eu ut turpis. Morbi felis orci, tincidunt pretium laoreet id, euismod et lacus. Praesent aliquet magna vitae mi elementum pharetra.</p>
+                <p class="big-text">{{ trans('about-me.future_text') }}</p>
             </div>
 
             <div class="row text-center">
-                <button class="btn btn-orange">Read more</button>
+                <button class="btn btn-orange">{{ trans('about-me.btn_read_more') }}</button>
             </div>
         </div>
     </div>
