@@ -122,7 +122,7 @@ input, textarea {
     }
 
 .carousel {
-    background: #1f9be3 url('/images/slideshow.jpg') no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5) ), url('/images/slideshow.jpg') no-repeat center center fixed;
     color:$tertiary-color;
 }
     .carousel-content {
