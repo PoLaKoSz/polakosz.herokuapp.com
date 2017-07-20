@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: LogoFont;
-    src: url("../fonts/Jayadhira LILA EE01.ttf");
+    src: url("/fonts/Jayadhira LILA EE01.ttf");
 }
 
 body{
@@ -86,9 +86,9 @@ input, textarea {
         vertical-align:middle !important;
     }
 
-    #contact-header .signature {
+    .signature {
         font-family: LogoFont;  /* This is not working */
-        color: black;
+        color: black !important;
         font-size: 30px;
     }
 
