@@ -13,7 +13,7 @@
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
             <div class="row">
                 <div class="view overlay hm-stylish-strong">
-                    <img src="{{asset('img/imagenotfound.svg')}}" alt="All projects">
+                    <img src="{{asset('images/imagenotfound.svg')}}" alt="All projects">
                     <div class="mask flex-center">
                         <div>
                             <p class="white-text">I recommend</p>
@@ -30,7 +30,7 @@
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
             <div class="row">
                 <div class="view overlay hm-stylish-strong">
-                    <img src="{{asset('img/imagenotfound.svg')}}" alt="All projects">
+                    <img src="{{asset('images/imagenotfound.svg')}}" alt="All projects">
                     <div class="mask flex-center">
                         <div>
                             <p class="white-text">Only once</p>
@@ -47,7 +47,7 @@
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
             <div class="row">
                 <div class="view overlay hm-stylish-strong">
-                    <img src="{{asset('img/imagenotfound.svg')}}" alt="All projects">
+                    <img src="{{asset('images/imagenotfound.svg')}}" alt="All projects">
                     <div class="mask flex-center">
                         <div>
                             <p class="white-text">Not so good</p>
@@ -64,7 +64,7 @@
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
             <div class="row">
                 <div class="view overlay hm-stylish-strong">
-                    <img src="{{asset('img/imagenotfound.svg')}}" alt="All projects">
+                    <img src="{{asset('images/imagenotfound.svg')}}" alt="All projects">
                     <div class="mask flex-center">
                         <div>
                             <p class="white-text">OMG, this is shit</p>
@@ -81,7 +81,7 @@
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
             <div class="row">
                 <div class="view overlay hm-stylish-strong">
-                    <img src="{{asset('img/imagenotfound.svg')}}" alt="All projects">
+                    <img src="{{asset('images/imagenotfound.svg')}}" alt="All projects">
                     <div class="mask flex-center">
                         <div>
                             <p class="white-text">I will kill myself so shit</p>
@@ -98,7 +98,7 @@
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
             <div class="row">
                 <div class="view overlay hm-stylish-strong">
-                    <img src="{{asset('img/imagenotfound.svg')}}" alt="All projects">
+                    <img src="{{asset('images/imagenotfound.svg')}}" alt="All projects">
                     <div class="mask flex-center">
                         <div>
                             <p class="white-text">Doomsday</p>

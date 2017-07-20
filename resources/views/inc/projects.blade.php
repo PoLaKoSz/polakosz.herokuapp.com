@@ -14,7 +14,7 @@
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                 <div class="row">
                     <div class="view overlay hm-stylish-strong">
-                        <img src="{{asset('img/all.gif')}}" alt="All projects">
+                        <img src="{{asset('images//all.gif')}}" alt="All projects">
                         <div class="mask flex-center">
                             <div>
                                 <p class="white-text"><a href="#">Tovább</a></p>
@@ -31,7 +31,7 @@
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                 <div class="row">
                     <div class="view overlay hm-stylish-strong">
-                        <img src="{{asset('img/cSharp.gif')}}" alt="My C# projects">
+                        <img src="{{asset('images//cSharp.gif')}}" alt="My C# projects">
                         <div class="mask flex-center">
                             <div>
                                 <p class="white-text"><a href="#">Tovább</a></p>
@@ -48,7 +48,7 @@
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                 <div class="row">
                     <div class="view overlay hm-stylish-strong">
-                        <img src="{{asset('img/android.gif')}}" alt="My Android projects">
+                        <img src="{{asset('images//android.gif')}}" alt="My Android projects">
                         <div class="mask flex-center">
                             <div>
                                 <p class="white-text"><a href="#">Tovább</a></p>

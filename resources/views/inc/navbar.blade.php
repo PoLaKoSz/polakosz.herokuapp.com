@@ -5,8 +5,7 @@
                 FaceBook<!--<div class="fb-like" data-href="https://facebook.com/polakosz" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>-->
             </div>
             <div class="col-xs-9 text-right">
-                <?php /*Maybe this is not the best aproach*/ ?>
-                <img src="{{asset('img/email.png')}}" alt="Send an email">polakosz@freemail.hu
+                <img src="{{asset('images/email.png')}}" alt="Send an email here">polakosz@freemail.hu
             </div>
         </div>
     </div>

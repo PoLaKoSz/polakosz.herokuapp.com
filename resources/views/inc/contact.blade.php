@@ -16,7 +16,7 @@
             <div class="col-xs-12 col-sm-8">
                 <div class="row vh-middle">
                     <div class="col-xs-6 text-right">
-                        <img src="{{asset('img/facebook-logo.png')}}" alt="My FaceBook Account">
+                        <img src="{{asset('images/facebook-logo.png')}}" alt="My FaceBook Account">
                     </div>
                     <div class="col-xs-6 text-left">
                         <a href="" class="big-text facebook-color">Facebook</a>
@@ -25,7 +25,7 @@
 
                 <div class="row vh-middle">
                     <div class="col-xs-6 text-right">
-                        <img src="{{asset('img/youtube-logo.png')}}" alt="My YouTube Account">
+                        <img src="{{asset('images/youtube-logo.png')}}" alt="My YouTube Account">
                     </div>
                     <div class="col-xs-6 text-left">
                          <a href="" class="big-text youtube-color">YouTube</a>
@@ -34,7 +34,7 @@
 
                 <div class="row vh-middle">
                     <div class="col-xs-6 text-right">
-                        <img src="{{asset('img/email-logo.png')}}" alt="My Email Account">
+                        <img src="{{asset('images/email-logo.png')}}" alt="My Email Account">
                     </div>
                     <div class="col-xs-6 text-left">
                         <a href="" class="big-text freemail-color">polakosz@freemail.hu</a>

@@ -3,7 +3,7 @@
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-padding">
             <div class="row">
                 <div class="col-xs-3 remove-padding">
-                    <img src="{{asset('img/leaf.png')}}" alt="A">
+                    <img src="{{asset('images/leaf.png')}}" alt="A picture about a leaf.">
                 </div>
 
                 <div class="col-xs-9">
@@ -23,7 +23,7 @@
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-padding">
             <div class="row">
                 <div class="col-xs-3 remove-padding">
-                    <img src="{{asset('img/mobile.png')}}" alt="A">
+                    <img src="{{asset('images/mobile.png')}}" alt="A picture about a mobile.">
                 </div>
 
                 <div class="col-xs-9">
@@ -43,7 +43,7 @@
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-padding">
             <div class="row">
                 <div class="col-xs-3 remove-padding">
-                    <img src="{{asset('img/battery.png')}}" alt="A">
+                    <img src="{{asset('images/battery.png')}}" alt="A picture about a battery.">
                 </div>
 
                 <div class="col-xs-9">
