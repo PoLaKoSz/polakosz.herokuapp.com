@@ -19,20 +19,10 @@
 <body>
     <div id="app">
         @include('inc.navbar')
-
-        @include('inc.bootstrap_carousel')
-
-        @include('inc.welcome_text')
-
-        @include('inc.about-me')
-
-        @include('inc.projects')
-
-        @include('inc.movies')
-
-        @include('inc.contact')
         
         @yield('content')
+
+        @include('inc.contact')
     </div>
 
     <script type="text/javascript" src="{!! asset('js/app.js') !!}"></script>
