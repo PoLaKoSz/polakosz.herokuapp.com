@@ -58,10 +58,10 @@
 
         <div class="row text-center">
             <div class="col-xs-6">
-                <p><img src="{{ asset('/images/HU_flag.png') }}" alt="Magyar zászló"><a href="/hu/#">Magyar</a></p>
+                <p><img src="{{ asset('/images/HU_flag.png') }}" alt="Magyar zászló"><a href="{{ LaravelLocalization::localizeURL(null, 'hu') }}">Magyar</a></p>
             </div>
             <div class="col-xs-6">
-                <p><img src="{{ asset('/images/UK_flag.png') }}" alt="English flag"><a href="/en/#">English</a></p>
+                <p><img src="{{ asset('/images/UK_flag.png') }}" alt="English flag"><a href="{{ LaravelLocalization::localizeURL(null, 'en') }}">English</a></p>
             </div>
         </div>
     </div>
