@@ -3,7 +3,7 @@
         <div class="row">
             <div class="section-header light-section-header">
                 <div class="section-header-line"></div>
-                <div class="section-header-name bigger-text white-text">
+                <div class="section-header-name white-text">
                     <h2>{{ trans('projects.title') }}</h2>
                 </div>
                 <div class="section-header-line"></div>
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="row text-center">
-                    <h2 class="bigger-text white-text"><a href="#">All</a></h2>
+                    <h2 class="white-text"><a href="#">All</a></h2>
                     <p class="big-text white-text">( 3 )</p>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="row text-center">
-                    <h2 class="bigger-text white-text"><a href="#">C#</a></h2>
+                    <h2 class="white-text"><a href="#">C#</a></h2>
                     <p class="big-text white-text">( 10 )</p>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="row text-center">
-                    <h2 class="bigger-text white-text"><a href="#">Android</a></h2>
+                    <h2 class="white-text"><a href="#">Android</a></h2>
                     <p class="big-text white-text">( 2 )</p>
                 </div>
             </div>

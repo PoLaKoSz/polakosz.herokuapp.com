@@ -80,11 +80,11 @@ input, textarea {
 }
 
 .btn-orange {
+    @extend .uppercase-text;
     background-color: $primary-color;
     border-bottom: 2px solid $dark-primary-color;
     border-radius: 0;
     color: $tertiary-color;
-    text-transform: uppercase;
 }
 
 .btn-orange:hover {
@@ -272,12 +272,6 @@ input, textarea {
 
     .col-padding {
         padding: 0px 10px;
-    }
-
-    .bigger-text {
-        text-transform: uppercase;
-        font-weight:bold;
-        color: black;
     }
 
     #welcome-text {

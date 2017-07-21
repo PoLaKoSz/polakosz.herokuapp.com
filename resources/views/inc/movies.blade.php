@@ -3,7 +3,7 @@
         <div class="row">
             <div class="section-header dark-section-header">
                 <div class="section-header-line"></div>
-                <div class="section-header-name bigger-text">
+                <div class="section-header-name">
                     <h2>{{ trans('movies.title') }}</h2>
                 </div>
                 <div class="section-header-line"></div>
