@@ -6,8 +6,8 @@
     @include('inc.welcome_text')
 
     @include('inc.about-me')
-
-    @include('inc.projects')
-
-    @include('inc.movies')
+    
+    {!! $projectsView !!}
+    
+    {!! $moviesView !!}
 @endsection

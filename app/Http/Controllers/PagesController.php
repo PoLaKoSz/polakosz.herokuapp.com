@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function index() {
-        return view('pages.index');
+
+        $movies   = new MoviesController;
+        $projects = new ProjectsController;
+        
+        return view('pages.index')
+            ->with('moviesView',     $movies->module())
+            ->with('projectsView', $projects->module());
     }
 }

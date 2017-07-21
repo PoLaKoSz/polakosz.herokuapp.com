@@ -18,6 +18,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     Route::get('/home', 'HomeController@index');
 
     Route::get('/movies', 'MoviesController@index');
+
+    Route::get('/about-me', 'AboutMeController@index');
+
+    Route::get('/projects', 'ProjectsController@index');
     
     Auth::routes();
 });
