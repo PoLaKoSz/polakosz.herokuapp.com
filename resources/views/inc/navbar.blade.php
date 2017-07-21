@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-3">
-                FaceBook<!--<div class="fb-like" data-href="https://facebook.com/polakosz" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>-->
+                <div class="fb-like" data-href="https://facebook.com/polakosz" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
             </div>
             <div class="col-xs-9 text-right">
                 <img src="{{asset('images/email.png')}}" alt="{{ trans('navbar.email_image_alt') }}">polakosz@freemail.hu
