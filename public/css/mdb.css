@@ -44,8 +44,8 @@
   transition: all 0.4s ease-in-out;
 }
 
-.hm-stylish-strong .mask {
-  background-color: rgba(62, 69, 81, 0.7);
+.hm-black-strong .mask {
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .white-text {

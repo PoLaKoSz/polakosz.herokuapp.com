@@ -13,11 +13,11 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                 <div class="row">
-                    <div class="view overlay hm-stylish-strong">
+                    <div class="view overlay hm-black-strong">
                         <img src="{{asset('images//all.gif')}}" alt="All projects">
                         <div class="mask flex-center">
                             <div>
-                                <p class="white-text"><a href="#">{{ trans('projects.more') }}</a></p>
+                                <p><a href="#" class="white-text">{{ trans('projects.more') }}</a></p>
                             </div>
                         </div>
                     </div>
@@ -30,11 +30,11 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                 <div class="row">
-                    <div class="view overlay hm-stylish-strong">
+                    <div class="view overlay hm-black-strong">
                         <img src="{{asset('images//cSharp.gif')}}" alt="My C# projects">
                         <div class="mask flex-center">
                             <div>
-                                <p class="white-text"><a href="#">{{ trans('projects.more') }}</a></p>
+                                <p><a href="#" class="white-text">{{ trans('projects.more') }}</a></p>
                             </div>
                         </div>
                     </div>
@@ -47,11 +47,11 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                 <div class="row">
-                    <div class="view overlay hm-stylish-strong">
+                    <div class="view overlay hm-black-strong">
                         <img src="{{asset('images//android.gif')}}" alt="My Android projects">
                         <div class="mask flex-center">
                             <div>
-                                <p class="white-text"><a href="#">{{ trans('projects.more') }}</a></p>
+                                <p><a href="#" class="white-text">{{ trans('projects.more') }}</a></p>
                             </div>
                         </div>
                     </div>
