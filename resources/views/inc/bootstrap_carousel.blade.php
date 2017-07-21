@@ -13,7 +13,7 @@
                     <div class="carousel-content">
                         <div>
                             <h1>Responsive layout</h1>
-                            <p>This website theme is free to download and use for everyone. This layout is based on Bootstrap framework.</p>
+                            <h3>This website theme is free to download and use for everyone. This layout is based on Bootstrap framework.</h3>
                         </div>
                     </div>
                 </div>
@@ -31,11 +31,11 @@
                             <div class="row">
                                 <div class="col-xs-6">
                                     <h1>Fluid</h1>
-                                    <p>Suspendisse pellentesque, odio vel ultricies interdum, mauris nulla ullamcorper magna, non aliquet odio velit aliquam augue.</p>
+                                    <h3>Suspendisse pellentesque, odio vel ultricies interdum, mauris nulla ullamcorper magna, non aliquet odio velit aliquam augue.</h3>
                                 </div>
                                 <div class="col-xs-6">
-                                    <h1>Energy</h1
-                                    <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam mattis fringilla urna.</p>
+                                    <h1>Energy</h1>
+                                    <h3>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam mattis fringilla urna.</h3>
                                 </div>
                             </div>
                         </div>

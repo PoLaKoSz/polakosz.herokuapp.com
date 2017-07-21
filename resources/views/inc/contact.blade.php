@@ -5,7 +5,7 @@
                 <div class="section-header dark-section-header">
                     <div class="section-header-line"></div>
                     <div class="section-header-name bigger-text">
-                        {{ trans('contact.title') }}
+                        <h2>{{ trans('contact.title') }}</h2>
                     </div>
                     <div class="section-header-line"></div>
                 </div>
@@ -19,7 +19,7 @@
                         <img src="{{asset('images/facebook-logo.png')}}" alt="{{ trans('contact.fb_image_alt') }}">
                     </div>
                     <div class="col-xs-6 text-left">
-                        <a href="" class="big-text facebook-color">Facebook</a>
+                        <p><a href="" class="big-text facebook-color">Facebook</a></p>
                     </div>
                 </div>
 
@@ -28,7 +28,7 @@
                         <img src="{{asset('images/youtube-logo.png')}}" alt="{{ trans('contact.yt_image_alt') }}">
                     </div>
                     <div class="col-xs-6 text-left">
-                         <a href="" class="big-text youtube-color">YouTube</a>
+                         <p><a href="" class="big-text youtube-color">YouTube</a></p>
                     </div>
                 </div>
 
@@ -37,7 +37,7 @@
                         <img src="{{asset('images/email-logo.png')}}" alt="{{ trans('contact.email_image_alt') }}">
                     </div>
                     <div class="col-xs-6 text-left">
-                        <a href="" class="big-text freemail-color">polakosz@freemail.hu</a>
+                        <p><a href="" class="big-text freemail-color">polakosz@freemail.hu</a></p>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="row text-center section-margin">
-            {{ trans('contact.copyright_text', ['year' => '2017']) }}
+            <h4>{{ trans('contact.copyright_text', ['year' => '2017']) }}</h4>
         </div>
     </div>
 </footer>

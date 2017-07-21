@@ -1,8 +1,8 @@
-/* #1 */ $primary-color:    #e67e22;
-        $dark-primary-color:#d35400;
-/* #2 */ $secondary-color:  #777777;
-/* #3 */ $tertiary-color:   #fff;
-/* #4 */ $quaternary-color: #eeeeee;
+/* #1 */ $primary-color:     #e67e22;
+         $dark-primary-color:#d35400;
+/* #2 */ $secondary-color:   #777777;
+/* #3 */ $tertiary-color:    #fff;
+/* #4 */ $quaternary-color:  #eeeeee;
 
 @font-face {
     font-family: LogoFont;
@@ -10,20 +10,38 @@
 }
 
 body{
+    font-size:100%; 
+    line-height:1.5;
     font-family: 'Open Sans', Arial, Helvetice Neue, sans-serif;
-    font-size: 12px;
+}
+
+h1, h2, h3, .h4 {
+    margin: 10px 0;
+}
+
+h1 {
+    font-size: 500%;
+}
+
+h2 {
+    font-size: 200%;
+}
+
+h3, p {
+    font-size: 170%;
+}
+
+h4, #navbar, input, textarea {
+    font-size:120%;
+}
+
+p {
+    margin: 10px 0;
 }
 
 img {
     width:100%;
     height:auto;
-}
-
-p {
-    font-size: 10px;
-}
-h1 {
-    font-size: 10px;
 }
 
 input, textarea {
@@ -43,6 +61,14 @@ input, textarea {
 
 .italic-text {
     font-style: italic;
+}
+
+.uppercase-text {
+    text-transform: uppercase;
+}
+
+.bold-text {
+    font-weight: bold;
 }
 
 .row {
@@ -73,7 +99,6 @@ input, textarea {
     text-align:center;
 }
 
-
 #contact-header {
     color: $primary-color;
     background: $quaternary-color;
@@ -87,9 +112,8 @@ input, textarea {
     }
 
     .signature {
-        font-family: LogoFont;  /* This is not working */
+        font-family: LogoFont;
         color: black !important;
-        font-size: 30px;
     }
 
     #contact-header img {
@@ -139,11 +163,10 @@ input, textarea {
 
 #welcome-text {
     border-bottom: 1px solid #cccccc;
-
     display:flex;
     align-items:center;
     margin: auto;
-        text-align:center;
+    text-align:center;
 }
     #welcome-text > div {
         margin:auto;
@@ -157,7 +180,6 @@ input, textarea {
     background: url('/images//background.png');
 }
 
-/* SECTION HEADER */
 .section-header{
 	display:flex;
 	width:100%;
@@ -173,20 +195,19 @@ input, textarea {
 		padding:0 20px;
     }
 
-/* SECTION HEADER THEME */
-.dark-section-header{
-	color:#000;
-}
-	.dark-section-header .section-header-line{
-		border:1px solid #000;
-	}
-
-.light-section-header{
-	color:#FFF !important;
-}
-	.light-section-header .section-header-line{
-		border:1px solid #FFF;
+    .dark-section-header{
+        color:#000;
     }
+        .dark-section-header .section-header-line{
+            border:1px solid #000;
+        }
+
+    .light-section-header{
+        color:#FFF !important;
+    }
+        .light-section-header .section-header-line{
+            border:1px solid #FFF;
+        }
 
 .mask.flex-center {
     @extend .vh-middle;
@@ -217,19 +238,12 @@ input, textarea {
         color: #f89a1e;
         font-weight: bold;
     }
+
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 
 /* Small devices (tablets, 768px and up) */
 @media only screen and (min-width : 768px) {
-    p {
-        font-size: 2px;
-    }
-
-    h1 {
-        font-size: 2px;
-    }
-
     .navbar {
         margin:0;
     }
@@ -244,27 +258,10 @@ input, textarea {
 
 /* Medium devices (desktops, 992px and up) */
 @media only screen and (min-width : 992px) {
-    p {
-        font-size: 2px;
-    }
-
-    h1 {
-        font-size: 2px;
-    }
 }
 
 /* Large devices (large desktops, 1200px and up) */
 @media only screen and (min-width : 1200px) {
-    .giant-text {
-        font-size: 42px;
-    }
-    p {
-        font-size: 15px;
-    }
-    h1 {
-        font-size: 36px;
-    }
-
     .section-margin {
         padding: 100px 0;
     }
@@ -274,14 +271,9 @@ input, textarea {
     }
 
     .bigger-text {
-        font-size: 20px;
         text-transform: uppercase;
         font-weight:bold;
         color: black;
-    }
-
-    .big-text {
-        font-size:14px;
     }
 
     #welcome-text {

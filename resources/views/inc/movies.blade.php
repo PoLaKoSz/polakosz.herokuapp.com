@@ -4,7 +4,7 @@
             <div class="section-header dark-section-header">
                 <div class="section-header-line"></div>
                 <div class="section-header-name bigger-text">
-                    {{ trans('movies.title') }}
+                    <h2>{{ trans('movies.title') }}</h2>
                 </div>
                 <div class="section-header-line"></div>
             </div>
@@ -23,7 +23,7 @@
             </div>
 
             <div class="row text-center">
-                <h1 class="bigger-text"><a href="#">Original Title</a></h1>
+                <h4><a href="#">Ghost in the Shell</a></h4>
             </div>
         </div>
 
@@ -40,7 +40,7 @@
             </div>
 
             <div class="row text-center">
-                <h1 class="bigger-text"><a href="#">Original Title</a></h1>
+                <h4><a href="#">Original Title</a></h4>
             </div>
         </div>
 
@@ -57,7 +57,7 @@
             </div>
 
             <div class="row text-center">
-                <h1 class="bigger-text"><a href="#">Original Title</a></h1>
+                <h4><a href="#">Original Title</a></h4>
             </div>
         </div>
 
@@ -74,7 +74,7 @@
             </div>
 
             <div class="row text-center">
-                <h1 class="bigger-text"><a href="#">Original Title</a></h1>
+                <h4><a href="#">Original Title</a></h4>
             </div>
         </div>
 
@@ -91,7 +91,7 @@
             </div>
 
             <div class="row text-center">
-                <h1 class="bigger-text"><a href="#">Original Title</a></h1>
+                <h4><a href="#">Original Title</a></h4>
             </div>
         </div>
 
@@ -108,7 +108,7 @@
             </div>
 
             <div class="row text-center">
-                <h1 class="bigger-text"><a href="#">Original Title</a></h1>
+                <h4><a href="#">Original Title</a></h4>
             </div>
         </div>
     </div>

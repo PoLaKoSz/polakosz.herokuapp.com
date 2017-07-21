@@ -7,7 +7,7 @@
                 </div>
 
                 <div class="col-xs-9">
-                    <h1 class="bigger-text">{{ trans('about-me.past_title') }}</h1>
+                    <h2 class="uppercase-text bold-text">{{ trans('about-me.past_title') }}</h2>
                 </div>
             </div>
 
@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="col-xs-9">
-                    <h1 class="bigger-text">{{ trans('about-me.present_title') }}</h1>
+                    <h2 class="uppercase-text bold-text">{{ trans('about-me.present_title') }}</h2>
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="col-xs-9">
-                    <h1 class="bigger-text">{{ trans('about-me.future_title') }}</h1>
+                    <h2 class="uppercase-text bold-text">{{ trans('about-me.future_title') }}</h2>
                 </div>
             </div>
 
