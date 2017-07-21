@@ -24,27 +24,27 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/">{{ trans('navbar.menu_home') }} <span class="sr-only">(current)</span></a></li>
-                <li><a href="/about-me">{{ trans('navbar.menu_about-me') }}</a></li>
-                <li><a href="/projects">{{ trans('navbar.menu_projects') }}</a></li>
-                <li><a href="/movies">{{ trans('navbar.menu_movies') }}</a></li>
+                <li class="active"><a href="{{ LaravelLocalization::localizeURL('/') }}">{{ trans('navbar.menu_home') }} <span class="sr-only">(current)</span></a></li>
+                <li><a href="{{ LaravelLocalization::localizeURL('about-me') }}">{{ trans('navbar.menu_about-me') }}</a></li>
+                <li><a href="{{ LaravelLocalization::localizeURL('projects') }}">{{ trans('navbar.menu_projects') }}</a></li>
+                <li><a href="{{ LaravelLocalization::localizeURL('movies') }}">{{ trans('navbar.menu_movies') }}</a></li>
                 @if (Auth::guest())
-                    <li><a href="{{ route('login') }}">{{ trans('navbar.menu_login') }}</a></li>
-                    <li><a href="{{ route('register') }}">{{ trans('navbar.menu_register') }}</a></li>
+                    <li><a href="{{ LaravelLocalization::localizeURL('login') }}">{{ trans('navbar.menu_login') }}</a></li>
+                    <li><a href="{{ LaravelLocalization::localizeURL('register') }}">{{ trans('navbar.menu_register') }}</a></li>
                 @else
                     <li>
-                        <a href="{{ route('logout') }}"
+                        <a href="{{ LaravelLocalization::localizeURL('logout') }}"
                             onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                             {{ trans('navbar.menu_logout') }}
                         </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        <form id="logout-form" action="{{ LaravelLocalization::localizeURL('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
                     </li>
                 @endif
-                <li><a href="/contact">{{ trans('navbar.menu_contact') }}</a></li>
+                <li><a href="{{ LaravelLocalization::localizeURL('contact') }}">{{ trans('navbar.menu_contact') }}</a></li>
             </ul>
         </div>
     </div>
