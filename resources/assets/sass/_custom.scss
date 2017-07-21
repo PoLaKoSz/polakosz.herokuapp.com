@@ -92,10 +92,14 @@ input, textarea {
     color: $tertiary-color;
 }
 
-.vh-middle {
+.v-middle {
     display:flex;
     align-items:center;
     margin: auto;
+}
+
+.vh-middle {
+    @extend .v-middle;
     text-align:center;
 }
 
