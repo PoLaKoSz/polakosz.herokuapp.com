@@ -43,10 +43,13 @@
             </div>
 
             <div class="col-xs-12 col-sm-4">
-                <form>
-                    <input type="text" name="contactName" placeholder="{{ trans('contact.name_field') }}"><br>
-                    <input type="text" name="email" placeholder="{{ trans('contact.email_field') }}"><br>
-                    <textarea name="message"></textarea><br>
+                @include('inc.messages')
+                
+                <form action="{{ LaravelLocalization::localizeURL('contact') }}" method="POST">
+                    <input type="text" name="contactName" placeholder="{{ trans('contact.name_field') }}" value="TmpString"><br>
+                    <input type="text" name="email" placeholder="{{ trans('contact.email_field') }}" value="TmpString"><br>
+                    <textarea name="message">TmpString</textarea><br>
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <button class="btn btn-orange">{{ trans('contact.send_button') }}</button>
                 </form>
             </div>
