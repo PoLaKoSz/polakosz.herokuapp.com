@@ -55,5 +55,14 @@
         <div class="row text-center section-margin">
             <h4>{{ trans('contact.copyright_text', ['year' => '2017']) }}</h4>
         </div>
+
+        <div class="row text-center">
+            <div class="col-xs-6">
+                <p><img src="{{ asset('/images/HU_flag.png') }}" alt="Magyar zászló"><a href="/hu/#">Magyar</a></p>
+            </div>
+            <div class="col-xs-6">
+                <p><img src="{{ asset('/images/UK_flag.png') }}" alt="English flag"><a href="/en/#">English</a></p>
+            </div>
+        </div>
     </div>
 </footer>
