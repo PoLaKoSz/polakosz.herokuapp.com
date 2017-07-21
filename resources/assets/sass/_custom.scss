@@ -200,17 +200,17 @@ input, textarea {
     }
 
     .dark-section-header{
-        color:#000;
+        color: $secondary-color;
     }
         .dark-section-header .section-header-line{
-            border:1px solid #000;
+            border:1px solid $secondary-color;
         }
 
     .light-section-header{
-        color:#FFF !important;
+        color:$tertiary-color !important;
     }
         .light-section-header .section-header-line{
-            border:1px solid #FFF;
+            border:1px solid $tertiary-color;
         }
 
 .mask.flex-center {
