@@ -15,6 +15,10 @@
                 <div class="row">
                     <p class="big-text">{{ trans('about-me.past_text') }}</p>
                 </div>
+
+                <div class="row text-right visible-xs visible-sm">
+                    <button class="btn btn-orange">{{ trans('about-me.btn_read_more') }}</button>
+                </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-padding">
@@ -30,6 +34,10 @@
 
                 <div class="row">
                     <p class="big-text">{{ trans('about-me.present_text') }}</p>
+                </div>
+
+                <div class="row text-right visible-xs visible-sm">
+                    <button class="btn btn-orange">{{ trans('about-me.btn_read_more') }}</button>
                 </div>
             </div>
             
@@ -47,20 +55,24 @@
                 <div class="row">
                     <p class="big-text">{{ trans('about-me.future_text') }}</p>
                 </div>
+
+                <div class="row text-right visible-xs visible-sm">
+                    <button class="btn btn-orange">{{ trans('about-me.btn_read_more') }}</button>
+                </div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row hidden-xs hidden-sm">
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-padding text-center">
-                    <button class="btn btn-orange">{{ trans('about-me.btn_read_more') }}</button>
+                <button class="btn btn-orange">{{ trans('about-me.btn_read_more') }}</button>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-padding text-center">
-                    <button class="btn btn-orange">{{ trans('about-me.btn_read_more') }}</button>
+                <button class="btn btn-orange">{{ trans('about-me.btn_read_more') }}</button>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-padding text-center">
-                    <button class="btn btn-orange">{{ trans('about-me.btn_read_more') }}</button>
+                <button class="btn btn-orange">{{ trans('about-me.btn_read_more') }}</button>
             </div>
         </div>
     </div>
