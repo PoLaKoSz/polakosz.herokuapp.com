@@ -19,7 +19,7 @@
                         <img src="{{asset('images/facebook-logo.png')}}" alt="{{ trans('contact.fb_image_alt') }}">
                     </div>
                     <div class="col-xs-6 text-left">
-                        <p><a href="" class="big-text facebook-color">Facebook</a></p>
+                        <p><a href="https://www.facebook.com/PoLaKoSz" class="big-text facebook-color">Facebook</a></p>
                     </div>
                 </div>
 
@@ -37,7 +37,7 @@
                         <img src="{{asset('images/email-logo.png')}}" alt="{{ trans('contact.email_image_alt') }}">
                     </div>
                     <div class="col-xs-6 text-left">
-                        <p><a href="" class="big-text freemail-color">polakosz@freemail.hu</a></p>
+                        <p><a href="mailto:polakosz@freemail.hu" class="big-text freemail-color">polakosz@freemail.hu</a></p>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                         <img src="{{asset('images/facebook-logo.png')}}" alt="{{ trans('contact.fb_image_alt') }}">
                 </div>
                 <div class="row text-center">
-                    <p><a href="" class="big-text facebook-color">Facebook</a></p>
+                    <p><a href="https://www.facebook.com/PoLaKoSz" class="big-text facebook-color">Facebook</a></p>
                 </div>
 
                 <div class="row text-center">
@@ -61,7 +61,7 @@
                     <img src="{{asset('images/email-logo.png')}}" alt="{{ trans('contact.email_image_alt') }}">
                 </div>
                 <div class="row text-center">
-                    <p><a href="" class="big-text freemail-color">polakosz@freemail.hu</a></p>
+                    <p><a href="mailto:polakosz@freemail.hu" class="big-text freemail-color">polakosz@freemail.hu</a></p>
                 </div>
             </div>
 
