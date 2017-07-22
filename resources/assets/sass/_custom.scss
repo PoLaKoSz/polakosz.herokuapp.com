@@ -129,6 +129,9 @@ input, textarea {
     border: none;
     text-transform: uppercase;
 }
+    .navbar-header {
+        margin:0;
+    }
     .navbar-default .navbar-nav > .active > a,
     .navbar-default .navbar-nav > .active > a:hover,
     .navbar-default .navbar-nav > li > a:hover {
