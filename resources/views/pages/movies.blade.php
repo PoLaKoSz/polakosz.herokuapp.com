@@ -2,8 +2,8 @@
 
 @section('content')
     <section id="movies" class="container">
-        <div class="row section-margin">
-            <div class="row  section-margin">
+        <div class="row section-padding">
+            <div class="row  section-padding">
                 <p class="italic-text text-center">Rövid szöveg jön majd ide: Ne vegyétek az értékeléseimet szentirásnak ... tudod melyik szöveg ;)</p>
             </div>
 

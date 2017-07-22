@@ -1,5 +1,5 @@
 <section id="projects">
-    <div class="container section-margin">
+    <div class="container section-padding">
         <div class="row">
             <div class="section-header light-section-header">
                 <div class="section-header-line"></div>

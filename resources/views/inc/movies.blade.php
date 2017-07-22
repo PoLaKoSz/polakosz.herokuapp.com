@@ -1,5 +1,5 @@
 <section id="movies" class="container">
-    <div class="row section-margin">
+    <div class="row section-padding">
         <div class="row">
             <div class="section-header dark-section-header">
                 <div class="section-header-line"></div>
