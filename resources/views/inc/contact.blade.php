@@ -13,7 +13,7 @@
         </div>
 
         <div class="row">
-            <div class="col-xs-12 col-sm-8">
+            <div class="col-xs-12 col-sm-8 hidden-xs">
                 <div class="row vh-middle">
                     <div class="col-xs-6 text-right">
                         <img src="{{asset('images/facebook-logo.png')}}" alt="{{ trans('contact.fb_image_alt') }}">
@@ -39,6 +39,29 @@
                     <div class="col-xs-6 text-left">
                         <p><a href="" class="big-text freemail-color">polakosz@freemail.hu</a></p>
                     </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-8 visible-xs text-center">
+                <div class="row text-center">
+                        <img src="{{asset('images/facebook-logo.png')}}" alt="{{ trans('contact.fb_image_alt') }}">
+                </div>
+                <div class="row text-center">
+                    <p><a href="" class="big-text facebook-color">Facebook</a></p>
+                </div>
+
+                <div class="row text-center">
+                    <img src="{{asset('images/youtube-logo.png')}}" alt="{{ trans('contact.yt_image_alt') }}">
+                </div>
+                <div class="row text-center">
+                    <p><a href="" class="big-text youtube-color">YouTube</a></p>
+                </div>
+
+                <div class="row text-center">
+                    <img src="{{asset('images/email-logo.png')}}" alt="{{ trans('contact.email_image_alt') }}">
+                </div>
+                <div class="row text-center">
+                    <p><a href="" class="big-text freemail-color">polakosz@freemail.hu</a></p>
                 </div>
             </div>
 
