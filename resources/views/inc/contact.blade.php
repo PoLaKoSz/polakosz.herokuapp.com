@@ -46,9 +46,9 @@
                 @include('inc.messages')
                 
                 <form action="{{ LaravelLocalization::localizeURL('contact') }}" method="POST">
-                    <input type="text" name="contactName" placeholder="{{ trans('contact.name_field') }}" value="TmpString"><br>
-                    <input type="text" name="email" placeholder="{{ trans('contact.email_field') }}" value="TmpString"><br>
-                    <textarea name="message">TmpString</textarea><br>
+                    <input type="text" name="name" placeholder="{{ trans('contact.name_field') }}" value="Tom PoLáKoSz"><br>
+                    <input type="text" name="email" placeholder="{{ trans('contact.email_field') }}" value="admin@polakosz.dev"><br>
+                    <textarea name="message">Hy there! :)</textarea><br>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <button class="btn btn-orange">{{ trans('contact.send_button') }}</button>
                 </form>
