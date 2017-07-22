@@ -52,6 +52,8 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
+
+            'options' => [PDO::ATTR_EMULATE_PREPARES => true,] // [FIX] 000webhost Error: Wrong COM_STMT_PREPARE response size. Received 7
         ],
 
         'pgsql' => [
