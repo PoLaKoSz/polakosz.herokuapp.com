@@ -171,6 +171,7 @@ input, textarea {
     align-items:center;
     margin: auto;
     text-align:center;
+    min-height: 15vw;
 }
     #welcome-text > div {
         margin:auto;
@@ -243,6 +244,11 @@ input, textarea {
         font-weight: bold;
     }
 
+
+.section-margin {
+    padding: 5vw 0;
+}
+
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 
@@ -266,15 +272,8 @@ input, textarea {
 
 /* Large devices (large desktops, 1200px and up) */
 @media only screen and (min-width : 1200px) {
-    .section-margin {
-        padding: 100px 0;
-    }
 
     .col-padding {
         padding: 0px 10px;
-    }
-
-    #welcome-text {
-        height: 230px;
     }
 }
