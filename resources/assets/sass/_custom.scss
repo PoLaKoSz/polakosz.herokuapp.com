@@ -103,6 +103,23 @@ input, textarea {
     text-align:center;
 }
 
+#popupLayer {
+    height: 1000px;
+    position: fixed;
+    top: 0;
+    z-index:15;
+    width: 100%;
+    visibility: hidden;
+    background: rgba(56, 54, 54, 0.57);
+}
+    #popupLayer > div {
+        margin: auto;
+        padding: 20px;
+        background: white;
+        box-shadow: 5px 5px 20px 1px rgba(0, 0, 0, 0.61);
+    }
+
+
 #contact-header {
     color: $primary-color;
     background: $quaternary-color;

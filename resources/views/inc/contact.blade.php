@@ -66,8 +66,6 @@
             </div>
 
             <div class="col-xs-12 col-sm-4">
-                @include('inc.messages')
-                
                 <form action="{{ LaravelLocalization::localizeURL('contact') }}" method="POST">
                     <input type="text" name="name" placeholder="{{ trans('contact.name_field') }}"><br>
                     <input type="text" name="email" placeholder="{{ trans('contact.email_field') }}"><br>
