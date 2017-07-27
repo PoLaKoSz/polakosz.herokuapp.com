@@ -12,9 +12,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <!-- Material Design for Bootstrap -->
-    <link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
