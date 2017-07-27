@@ -30,24 +30,5 @@
     <script type="text/javascript" src="{!! asset('js/app.js') !!}"></script>
 
     <div id="fb-root"></div>
-    <script>
-        if (!$('#popupContent').is(':empty')) {
-            $('#popupLayer').css('visibility', 'visible');
-        }
-
-        $("#popUpCloseBtn").click(function () {
-            $('#popupLayer').css('visibility', 'hidden');
-        });
-    
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-
-            if (d.getElementById(id)) return;
-
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
 </body>
 </html>
