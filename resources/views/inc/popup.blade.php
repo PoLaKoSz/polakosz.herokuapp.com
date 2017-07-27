@@ -5,7 +5,7 @@
                 @include('inc.messages')
             </div>
 
-            <button id="popUpCloseBtn" class="btn btn-success">{{ trans('popup.close') }}</button>
+            <button id="popUpCloseBtn" class="btn btn-primary">{{ trans('popup.close') }}</button>
         </div>
     </div>
 </div>
