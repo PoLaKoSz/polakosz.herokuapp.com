@@ -17,7 +17,7 @@
                         <img src="{{asset('images/imagenotfound.svg')}}" alt="All projects">
                         <div class="mask flex-center">
                             <div>
-                                <p class="white-text">{{ $movie->csillag }}</p>
+                                <p class="white-text">{{ trans('movies.star.'.$movie->csillag) }}</p>
                             </div>
                         </div>
                     </div>
