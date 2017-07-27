@@ -26,3 +26,5 @@ require('./popup');
 require('./facebook');
 
 require('./scroll');
+
+require('./bootstrap-datepicker');
