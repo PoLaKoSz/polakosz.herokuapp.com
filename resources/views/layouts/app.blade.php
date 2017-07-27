@@ -13,10 +13,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body data-spy="scroll" data-target="#navbar">
     <div id="app">
-        @include('inc.navbar')
-        
         @yield('content')
 
         @include('inc.contact')

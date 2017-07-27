@@ -119,7 +119,6 @@ input, textarea {
         box-shadow: 5px 5px 20px 1px rgba(0, 0, 0, 0.61);
     }
 
-
 #contact-header {
     color: $primary-color;
     background: $quaternary-color;
@@ -142,11 +141,17 @@ input, textarea {
     }
 
 .navbar-default {
-    background-color: $tertiary-color;
     border: none;
     text-transform: uppercase;
+    position: fixed;
+    top: 0;
+    background: $tertiary-color;
+    z-index: 15;
+    width: 100%;
+    border-radius: 0px;
+    box-shadow: rgb(152, 152, 152) 1px 1px 13px;
 }
-    .navbar-header {
+    .navbar-default, .navbar-header {
         margin:0;
     }
     .navbar-default .navbar-nav > .active > a,
@@ -193,15 +198,15 @@ input, textarea {
     text-align:center;
     min-height: 15vw;
 }
-    #welcome-text > div {
+    .welcome-text > div {
         margin:auto;
     }
 
-#about-me {
+.about-me {
     color: $secondary-color;
 }
 
-#projects {
+.projects {
     background: url('/images//background.png');
 }
 

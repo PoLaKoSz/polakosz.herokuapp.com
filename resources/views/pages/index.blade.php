@@ -1,11 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('inc.bootstrap_carousel')
+    <div id="{{ trans('navbar.menu_home') }}">
+        @include('inc.navbar')
+        
+        @include('inc.bootstrap_carousel')
 
-    @include('inc.welcome_text')
+        @include('inc.welcome_text')
 
-    @include('inc.about-me')
+        @include('inc.about-me')
+    </div>
     
     {!! $projectsView !!}
     

@@ -24,3 +24,5 @@ const app = new Vue({
 require('./popup');
 
 require('./facebook');
+
+require('./scroll');

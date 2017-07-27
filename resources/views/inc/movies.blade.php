@@ -1,4 +1,4 @@
-<section id="movies" class="container">
+<section id="{{ trans('navbar.menu_movies') }}" class="container">
     <div class="row section-padding">
         <div class="row">
             <div class="section-header dark-section-header">

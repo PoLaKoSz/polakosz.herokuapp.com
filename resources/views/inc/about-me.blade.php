@@ -1,4 +1,4 @@
-<section id="about-me" class="container">
+<section id="{{ trans('navbar.menu_about-me') }}" class="about-me container">
     <div class="row section-padding">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-padding">
