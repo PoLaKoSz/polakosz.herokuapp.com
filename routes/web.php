@@ -11,9 +11,6 @@
 |
 */
 
-if ( env('APP_REG_ENABLED') )
-    echo env('APP_KEY');
-
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
     Route::get('/', 'PagesController@index');
