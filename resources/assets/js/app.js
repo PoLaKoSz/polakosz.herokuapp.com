@@ -28,3 +28,5 @@ require('./facebook');
 require('./scroll');
 
 require('./bootstrap-datepicker');
+
+require('./movies');

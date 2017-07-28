@@ -472,4 +472,5 @@
 		'</div>';
 
 }(window.jQuery);
+
 $('.datepicker').datepicker();

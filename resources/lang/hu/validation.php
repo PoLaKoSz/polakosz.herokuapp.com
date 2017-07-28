@@ -13,11 +13,16 @@ return [
     |
     */
 
+    'between'              => [
+        'numeric' => 'A(z) :attribute :min és :max között kell legyen.',
+    ],
     'email'                => 'Nem adtál meg valós E-mail címet.',
+    'integer'              => 'A(z) :attribute nme számjegy.',
     'min'                  => [
         'string'  => 'A(z) :attribute minimum :min karakter kell hogy legyen.',
     ],
     'required'             => 'A(z) :attribute mező kitöltése kötelező.',
+    'url'                  => 'A(z) :attribute mező nem érvényes URL.',
 
     /*
     |--------------------------------------------------------------------------

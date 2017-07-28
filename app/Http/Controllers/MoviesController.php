@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use App\Movie;
+use LaravelLocalization;
 
 class MoviesController extends Controller
 {
@@ -58,21 +61,25 @@ class MoviesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'    => 'required|min:3',
-            'email'   => 'required|email',
-            'message' => 'required|min:10',
+            'title'     => 'required',
+            'portId'    => 'required|integer',
+            'coverImage'=> 'required|url',
+            'rating'    => 'required|integer|between:0,101',
         ]);
+
+        $date = (strlen($request->input('date') == 0) ? Carbon::now() : date('Y-m-d', strtotime($request->input('date'))));
         
-        // Create contact
-        $contact = new Contact;
-        $contact->name = $request->input('name');
-        $contact->email = $request->input('email');
-        $contact->message = $request->input('message');
-        $contact->IP = $request->ip();
-
-        $contact->save();
-
-        return redirect('/')->with('success', 'Contact Created');
+        $movie = new Movie;
+            $movie->filmcim = $request->input('name');
+            $movie->port = $request->input('portId');
+            $movie->csillag = $request->input('rating');
+            $movie->cover_image = $request->input('coverImage');
+            $movie->filmcim = $request->input('title');
+            $movie->megjegyzes = $request->input('comment');
+            $movie->datum = $date;
+        $movie->save();
+        
+        return redirect( LaravelLocalization::localizeURL('movies/new') )->with('success', trans('movies.success_save'));
     }
 
     /**
