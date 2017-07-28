@@ -34,6 +34,15 @@
 
                 <div class="row vh-middle">
                     <div class="col-xs-6 text-right">
+                        <img src="{{asset('images/github-logo.png')}}" alt="{{ trans('contact.github_image_alt') }}">
+                    </div>
+                    <div class="col-xs-6 text-left">
+                        <p><a href="https://github.com/PoLaKoSz" class="big-text github-color">GitHub</a></p>
+                    </div>
+                </div>
+
+                <div class="row vh-middle">
+                    <div class="col-xs-6 text-right">
                         <img src="{{asset('images/email-logo.png')}}" alt="{{ trans('contact.email_image_alt') }}">
                     </div>
                     <div class="col-xs-6 text-left">
@@ -55,6 +64,13 @@
                 </div>
                 <div class="row text-center">
                     <p><a href="" class="big-text youtube-color">YouTube</a></p>
+                </div>
+
+                <div class="row text-center">
+                    <img src="{{asset('images/github-logo.png')}}" alt="{{ trans('contact.github_image_alt') }}">
+                </div>
+                <div class="row text-center">
+                    <p><a href="https://github.com/PoLaKoSz" class="big-text github-color">GitHub</a></p>
                 </div>
 
                 <div class="row text-center">

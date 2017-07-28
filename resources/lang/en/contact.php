@@ -15,6 +15,7 @@ return [
 
     'fb_image_alt' => 'My FaceBook Account',
     'yt_image_alt' => 'My YouTube Account',
+    'github_image_alt' => 'My GitHub Account',
     'email_image_alt' => 'My Email Account',
 
     'name_field' => 'Your First Name',

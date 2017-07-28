@@ -15,6 +15,7 @@ return [
 
     'fb_image_alt' => 'FaceBook felhasználóm',
     'yt_image_alt' => 'YouTube Channel-em',
+    'github_image_alt' => 'GitHub felhasználóm',
     'email_image_alt' => 'E-mail címem',
 
     'name_field' => 'Név, amin szólíthatlak',
