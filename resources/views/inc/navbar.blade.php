@@ -23,7 +23,7 @@
             <a class="navbar-brand signature" href="#">PoLáKoSz</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right fixed-nav">
                 <li class="active"><a href="#{{ trans('navbar.menu_home') }}">{{ trans('navbar.menu_home') }} <span class="sr-only">(current)</span></a></li>
                 <li><a href="#{{ trans('navbar.menu_about-me') }}">{{ trans('navbar.menu_about-me') }}</a></li>
                 <li><a href="#{{ trans('navbar.menu_projects') }}">{{ trans('navbar.menu_projects') }}</a></li>
@@ -50,3 +50,33 @@
 </nav>
 
 <div id="navbar-helper"></div>
+
+<div id="popupLayer" class="vh-middle">
+    <div>
+        <div>
+            <div id="popupContent">
+                <div id="exTab3" class="container">
+                    <ul class="nav nav-pills">
+                        <li class="active">
+                            <a href="#login" data-toggle="tab">Belépés</a>
+                        </li>
+                        <li>
+                            <a href="#register" data-toggle="tab">Regisztráció</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content clearfix">
+                        <div class="tab-pane active" id="login">
+                            @include('inc.login');
+                        </div>
+                        <div class="tab-pane" id="register">
+                            @include('inc.register');
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="popUpCloseBtn" class="btn btn-primary">{{ trans('popup.close') }}</button>
+        </div>
+    </div>
+</div>

@@ -29,7 +29,7 @@ $('body').scrollspy({
     offset: offsetValue,
 });
 
-$('ul.nav').find('a').click(function () {
+$('ul.fixed-nav').find('a').click(function () {
     var $href = $(this).attr('href');
 
     var $anchor = $($href).offset();
