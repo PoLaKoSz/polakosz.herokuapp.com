@@ -14,7 +14,7 @@
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
                 <div class="row">
                     <div class="view overlay hm-black-strong">
-                        <img src="{{asset('images/imagenotfound.svg')}}" alt="{{ $movie->filmcim }}">
+                        <img src="{{ $movie->cover_image }}" onError="showNotFoundImage(this)" alt="{{ $movie->filmcim }}">
                         <div class="mask flex-center">
                             <div>
                                 <p class="white-text">{{ trans('movies.star.'.$movie->csillag) }}</p>
