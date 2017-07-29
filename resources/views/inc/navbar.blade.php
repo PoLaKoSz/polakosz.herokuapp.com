@@ -43,6 +43,7 @@
                         </form>
                     </li>
                 @endif
+                <li><a href="#{{ trans('navbar.menu_contact') }}">{{ trans('navbar.menu_contact') }}</a></li>
             </ul>
         </div>
     </div>

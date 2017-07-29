@@ -1,4 +1,4 @@
-<footer id="footer">
+<footer id="{{ trans('navbar.menu_contact') }}" class="footer">
     <div class="container">    
         <div class="row">
             <div class="row">
