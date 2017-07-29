@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -21,11 +20,11 @@ const app = new Vue({
     el: '#app'
 });
 
-require('./popup');
-
 require('./facebook');
 
 require('./scroll');
+
+require('./menu');
 
 require('./bootstrap-datepicker');
 

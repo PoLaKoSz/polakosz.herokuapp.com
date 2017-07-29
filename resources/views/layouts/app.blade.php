@@ -19,11 +19,19 @@
 
         @include('inc.contact')
 
-        @include('inc.popup')
+        @include('inc.notifications')
     </div>
 
     <script type="text/javascript" src="{!! asset('js/app.js') !!}"></script>
 
     <div id="fb-root"></div>
+
+    <script>
+        @if (count($errors) > 0 ||
+            session('success') ||
+            session('error'))
+            $('#modalNotification').modal('show');
+        @endif
+    </script>
 </body>
 </html>
