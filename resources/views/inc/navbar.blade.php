@@ -29,7 +29,7 @@
                 <li><a href="#{{ trans('navbar.menu_projects') }}">{{ trans('navbar.menu_projects') }}</a></li>
                 <li><a href="#{{ trans('navbar.menu_movies') }}">{{ trans('navbar.menu_movies') }}</a></li>
                 @if (Auth::guest())
-                    <li><a href="return;" data-toggle="modal" id="LoginRegMenu" data-target="#modalLoginReg">{{ trans('navbar.menu_login') }}</a></li>
+                    <li><a href="#modalLoginReg" data-toggle="modal" id="LoginRegMenu" data-target="#modalLoginReg">{{ trans('navbar.menu_login') }}</a></li>
                 @else
                     <li>
                         <a href="{{ LaravelLocalization::localizeURL('logout') }}"
