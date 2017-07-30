@@ -1,63 +1,29 @@
 # Movies API v1
+Egyszerű API a régi weboldalamhoz.
 
 ## Használata
+Alap URL:
 
-```` php
-<?php
+`http://users.atw.hu/polakosz/api/v1/`
 
-    require_once 'movies.php';
+### Végpontok
 
-    $connectionDetails = [
-        'host'      => '127.0.0.1',
-        'username'  => 'root',
-        'password'  => '',
-        'db_name'   => 'id2322644_polakosz',
-        'charset'   => 'utf8',
-        'tableName' => 'movies',
-    ];
+| Végpont neve 	| HTTP metódus 	|                    Végpont leírása                   	|
+|:------------:	|:------------:	|:-------------------------------------------------:	|
+| `movies.php` 	|      GET     	| Adatok lekérése az eddig megnézett filmeim közül. 	|
+| `movies.php` 	|      POST     | FEATURE: Új adatok bevitele a movies táblába.      	|
 
-    $details = [
-        'fields' => [
-            'csillag'     => 'Not important text',
-            'filmcim'     => 'Not important text',
-            'cover_image' => 'Not important text',
-        ],
-        'query' => [
-            'filmcim' => '',
-            'csillag' => '',
-            //'datum' => '2017-07-28' this will be a FEATURE
-        ],
-        'order' => [
-            'filmcim' => 'DESC',
-            'csillag' => 'ASC',
-        ],
-        'limit' => '999999',
-    ];
+### Paraméterek
 
-    $pdo = new PdoDB($connectionDetails, $details, true);
+#### Kötelező paraméterek
 
+| Paraméter neve 	| Paraméter leírása                                                                                                 	|                Példa                	|
+|:--------------:	|-------------------------------------------------------------------------------------------------------------------	|:-----------------------------------:	|
+|    `fields`    	| Segítségével szabályozható a megjelenítendő oszlop (minimum egy oszlop megadása kötelező).<br><br>Elfogadott értékek: <ul><li>id</li><li>filmcim</li><li>port</li><li>csillag</li><li>cover_image</li><li>megjegyzes</li><li>datum</li></ul> 	| `movies.php?fields=filmcim,csillag` 	|
 
-    var_dump($pdo->getResults());
-?>
-````
+#### Tetszőleges paraméterek
 
-## Végcél
-Az alábbi végpontok kialakítása lesz a cél:
-
-`movies.php?query=ghost`
-
-`movies.php?limit=10`
-
-`movies.php?limit=20,10`
-
-`movies.php?fields=filmcim,csillag,cover_image`
-
-### Kötelező
-
-`$_GET['fields']`
-
-### Alapértékkel rendelkőzők
-
-`$_GET['limit']=0,10`
-
-`$_GET['query']={ALL}`
+| Paraméter neve 	| Paraméter leírása                                                                                                                 	|                                              Példa                                             	|
+|:--------------:	|-----------------------------------------------------------------------------------------------------------------------------------	|:----------------------------------------------------------------------------------------------:	|
+|     `order`    	| Segítségével rendezhető a megjelenített adathalmaz.<br>**Csak a `fields` paraméter értékei adhatóak meg rendezési szempontként!**<br><br>Rendezés fajtája szerint lehet:<br><ui><li>`ASC` - növekvő</li><li>`DESC` - csökkenő</li></ul>	|  `movies.php?fields=filmcim,csillag&order=filmcim:ASC,csillag:DESC` 	|
+| `limit`        	| Segítségével szabályozható a megjelenítendő eredmények száma.<br><br>**Alapértelmezett:** 10db.<br>**Maximum:** 10db.                            	| `movies.php?fields=filmcim,csillag&limit=10`<br><br>`movies.php?fields=filmcim,csillag&limit=0,9`                                                    	
