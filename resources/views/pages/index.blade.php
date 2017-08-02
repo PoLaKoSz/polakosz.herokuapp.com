@@ -31,9 +31,9 @@
                 $title  = trans('movies.title');
                 $design = 'dark-section-header';
             ?>
-            @include('inc.section-header');
+            @include('inc.section-header')
 
-            @include('inc.movies');
+            @include('inc.movies')
         </div>
     </section>
 @endsection
