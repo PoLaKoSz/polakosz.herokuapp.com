@@ -14,7 +14,7 @@ return [
     'email_image_alt' => 'Send an email here',
 
     'menu_home' => 'Home',
-    'menu_about-me' => 'About Me',
+    'menu_about-me' => 'About',
     'menu_projects' => 'Projects',
     'menu_movies' => 'Movies',
     'menu_login' => 'Login',
