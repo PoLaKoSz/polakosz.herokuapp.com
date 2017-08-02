@@ -1,16 +1,10 @@
 <footer id="{{ trans('navbar.menu_contact') }}" class="footer">
     <div class="container">    
-        <div class="row">
-            <div class="row">
-                <div class="section-header dark-section-header">
-                    <div class="section-header-line"></div>
-                    <div class="section-header-name">
-                        <h2>{{ trans('contact.title') }}</h2>
-                    </div>
-                    <div class="section-header-line"></div>
-                </div>
-            </div>
-        </div>
+        <?php
+            $title  = trans('contact.title');
+            $design = 'dark-section-header';
+        ?>
+        @include('inc.section-header');
 
         <div class="row">
             <div class="col-xs-12 col-sm-8 hidden-xs">

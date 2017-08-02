@@ -1,14 +1,10 @@
 <section id="{{ trans('navbar.menu_movies') }}" class="container">
     <div class="row section-padding">
-        <div class="row">
-            <div class="section-header dark-section-header">
-                <div class="section-header-line"></div>
-                <div class="section-header-name">
-                    <h2>{{ trans('movies.title') }}</h2>
-                </div>
-                <div class="section-header-line"></div>
-            </div>
-        </div>
+        <?php
+            $title  = trans('movies.title');
+            $design = 'dark-section-header';
+        ?>
+        @include('inc.section-header');
 
         @foreach($movies as $movie)
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">

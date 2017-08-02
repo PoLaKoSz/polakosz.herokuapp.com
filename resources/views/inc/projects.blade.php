@@ -1,14 +1,10 @@
 <section id="{{ trans('navbar.menu_projects') }}" class="projects">
     <div class="container section-padding">
-        <div class="row">
-            <div class="section-header light-section-header">
-                <div class="section-header-line"></div>
-                <div class="section-header-name">
-                    <h2>{{ trans('projects.title') }}</h2>
-                </div>
-                <div class="section-header-line"></div>
-            </div>
-        </div>
+        <?php
+            $title  = trans('projects.title');
+            $design = 'light-section-header';
+        ?>
+        @include('inc.section-header');
 
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
