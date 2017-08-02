@@ -19,12 +19,7 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        $movies = DB::table('movies')
-            ->orderBy('datum', 'desc')
-            ->take(6)
-            ->get();
-
-        return view('pages.movies.index', ['movies' => $movies]);
+        //
     }
 
     public function module()
