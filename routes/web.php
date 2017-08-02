@@ -13,6 +13,10 @@
 
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
+    if ( !isset($this->groupStack[1]['prefix']) ) {
+        // TODO: Redirect request to the localized URL: polakosz.dev/ -> polakosz.dev/hu
+    }
+
     Route::get('/', 'PagesController@index');
 
     Route::get('/home', 'HomeController@index');
