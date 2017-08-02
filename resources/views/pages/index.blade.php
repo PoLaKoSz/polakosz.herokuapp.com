@@ -10,8 +10,20 @@
 
         @include('inc.about-me')
     </div>
-    
-    {!! $projectsView !!}
+
+    <section id="{{ trans('navbar.menu_projects') }}" class="projects">
+        <div class="section-padding">
+            <div class="container">
+                <?php
+                    $title  = trans('projects.title');
+                    $design = 'light-section-header';
+                ?>
+                @include('inc.section-header');
+
+                @include('inc.projects');
+            </div>
+        </div>
+    </section>
     
     {!! $moviesView !!}
 @endsection
