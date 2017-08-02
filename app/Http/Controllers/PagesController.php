@@ -12,7 +12,7 @@ class PagesController extends Controller
         $projects = new ProjectsController;
         
         return view('pages.index')
-            ->with('moviesView',     $movies->module())
+            ->with('movies',         $movies->module())
             ->with('projectsView', $projects->module());
     }
 }

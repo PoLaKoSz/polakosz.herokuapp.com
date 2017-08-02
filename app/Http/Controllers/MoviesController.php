@@ -24,18 +24,15 @@ class MoviesController extends Controller
             ->take(6)
             ->get();
 
-        return view('pages.movies', ['movies' => $movies]);
+        return view('pages.movies.index', ['movies' => $movies]);
     }
 
     public function module()
     {
         // TODO: Not so S.O.L.I.D.
-        $movies = DB::table('movies')
-            ->orderBy('datum', 'desc')
-            ->take(6)
-            ->get();
-
-        return view('inc.movies', ['movies' => $movies]);
+        return $movies = DB::table('movies')->orderBy('datum', 'desc')
+                                            ->take(6)
+                                            ->get();
     }
 
     /**

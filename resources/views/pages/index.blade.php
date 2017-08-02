@@ -25,5 +25,15 @@
         </div>
     </section>
     
-    {!! $moviesView !!}
+    <section id="{{ trans('navbar.menu_movies') }}" class="container">
+        <div class="row section-padding">
+            <?php
+                $title  = trans('movies.title');
+                $design = 'dark-section-header';
+            ?>
+            @include('inc.section-header');
+
+            @include('inc.movies');
+        </div>
+    </section>
 @endsection
