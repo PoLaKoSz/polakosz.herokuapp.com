@@ -24,26 +24,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right fixed-nav">
-                <li class="active"><a href="#{{ trans('navbar.menu_home') }}">{{ trans('navbar.menu_home') }} <span class="sr-only">(current)</span></a></li>
-                <li><a href="#{{ trans('navbar.menu_about-me') }}">{{ trans('navbar.menu_about-me') }}</a></li>
-                <li><a href="#{{ trans('navbar.menu_projects') }}">{{ trans('navbar.menu_projects') }}</a></li>
-                <li><a href="#{{ trans('navbar.menu_movies') }}">{{ trans('navbar.menu_movies') }}</a></li>
-                @if (Auth::guest())
-                    <li><a href="#modalLoginReg" data-toggle="modal" id="LoginRegMenu" data-target="#modalLoginReg">{{ trans('navbar.menu_login') }}</a></li>
+                @if ( !Auth::guest() )
+                    @include('inc.navbar-types.authenticated')
                 @else
-                    <li>
-                        <a href="{{ LaravelLocalization::localizeURL('logout') }}"
-                            onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                            {{ trans('navbar.menu_logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ LaravelLocalization::localizeURL('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>
+                    @include('inc.navbar-types.unauthenticated')
                 @endif
-                <li><a href="#{{ trans('navbar.menu_contact') }}">{{ trans('navbar.menu_contact') }}</a></li>
             </ul>
         </div>
     </div>

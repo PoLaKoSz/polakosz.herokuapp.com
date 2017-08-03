@@ -4,22 +4,23 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Contact Language Lines
+    | Navbar Language Lines
     |--------------------------------------------------------------------------
     |
-    | resource\views\inc\contact.blade.php
+    | resource\views\inc\navbar.blade.php
     |
     */
 
     'email_image_alt' => 'Küldj levelet ide',
 
-    'menu_home' => 'Kezdőlap',
-    'menu_about-me' => 'Rólam',
-    'menu_projects' => 'Projektjeim',
-    'menu_movies' => 'Filmek',
-    'menu_login' => 'Belépés',
-    'menu_register' => 'Regisztráció',
-    'menu_logout' => 'Kijelentkezés',
-    'menu_contact' => 'Kapcsolat',
+    'menu_home'       => 'Kezdőlap',
+    'menu_about-me'   => 'Rólam',
+    'menu_projects'   => 'Projektjeim',
+    'menu_movies'     => 'Filmek',
+    'menu_new_movie'  => 'Új film hozzáadása',
+    'menu_login'      => 'Belépés',
+    'menu_register'   => 'Regisztráció',
+    'menu_logout'     => 'Kijelentkezés',
+    'menu_contact'    => 'Kapcsolat',
 
 ];
