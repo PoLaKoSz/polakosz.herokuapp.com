@@ -45,8 +45,8 @@
                     
                     <div id="BootstrapTab" class="col-xs-">	
                         <ul  class="nav nav-pills">
-                            <li class="active"><a  href="#1b" data-toggle="tab">Login</a></li>
-                            <li><a href="#2b" data-toggle="tab">Registration</a></li>
+                            <li class="active"><a  href="#1b" data-toggle="tab">{{ trans('navbar.menu_login') }}</a></li>
+                            <li><a href="#2b" data-toggle="tab">{{ trans('navbar.menu_register') }}</a></li>
                         </ul>
 
                         <div class="tab-content clearfix">
