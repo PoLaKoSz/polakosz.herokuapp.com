@@ -51,10 +51,10 @@
 
                         <div class="tab-content clearfix">
                             <div class="tab-pane active" id="1b">
-                                @include('inc.login')
+                                @include('auth.login')
                             </div>
                             <div class="tab-pane" id="2b">
-                                @include('inc.register')
+                                @include('auth.register')
                             </div>
                         </div>
                     </div>
