@@ -13,7 +13,13 @@
             </div>
 
             <div class="row text-center">
-                <h4><a href="#">{{ $movie->filmcim }}</a></h4>
+                <h4>
+                    @if ( isset($movie->port) )
+                        <a href="http://port.hu/adatlap/film/tv/-/movie-{{ $movie->port }}" target="_blank">{{ $movie->filmcim }}</a>
+                    @else
+                        {{ $movie->filmcim }}
+                    @endif
+                </h4>
             </div>
         </div>
     @endforeach
