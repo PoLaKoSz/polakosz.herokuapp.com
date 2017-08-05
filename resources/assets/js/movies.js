@@ -1,5 +1,4 @@
-
-$('input[type="checkbox"]').on('change', function () {
+$('input[type="checkbox"]').on('change', function() {
     $(this).closest('fieldset').find('.hideshow').toggle(!this.checked);
 });
 
@@ -8,7 +7,7 @@ function BootstrapDropDown(containerName) {
     var listItem = $(containerName + ' ul.dropdown-menu li');
     var hiddenElement = $('input[name="rating"]'); // not so good
 
-    $(listItem).click(function (e) {
+    $(listItem).click(function(e) {
         var rating = $(this);
         var ratingNumber = rating.attr('data-value');
 

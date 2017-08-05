@@ -12,6 +12,8 @@ use LaravelLocalization;
 
 class MoviesController extends Controller
 {
+    protected $resultCount = 6;
+
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +28,32 @@ class MoviesController extends Controller
     {
         // TODO: Not so S.O.L.I.D.
         return $movies = DB::table('movies')->orderBy('datum', 'desc')
-                                            ->take(6)
+                                            ->take($this->resultCount)
                                             ->get();
+    }
+
+    public function jSonModule(Request $request)
+    {
+        $firstShownID = $request->id;
+
+        $movies = DB::table('movies')
+                                    ->orderBy('id', 'desc')
+                                    ->skip($firstShownID)
+                                    ->take($this->resultCount)
+                                    ->get();
+        
+        $view = view("inc.movies")
+                            ->with('movies', $movies)
+                            ->render();
+
+        $data = [
+            'data' => $view,
+            'meta' => [
+                'next-id' => $firstShownID + $this->resultCount,
+            ],
+        ];
+  
+        return response()->json($data);
     }
 
     /**
