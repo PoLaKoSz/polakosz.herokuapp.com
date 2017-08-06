@@ -27,16 +27,20 @@ class MoviesController extends Controller
     public function module()
     {
         // TODO: Not so S.O.L.I.D.
-        return $movies = DB::table('movies')->orderBy('datum', 'desc')
+        return $movies = DB::table('movies')
+                                            ->orderBy('datum', 'desc')
+                                            ->orderBy('id', 'desc')
                                             ->take($this->resultCount)
                                             ->get();
     }
 
     public function jSonModule(Request $request)
     {
+        // TODO: Not so S.O.L.I.D.
         $firstShownID = $request->id;
 
         $movies = DB::table('movies')
+                                    ->orderBy('datum', 'desc')
                                     ->orderBy('id', 'desc')
                                     ->skip($firstShownID)
                                     ->take($this->resultCount)
