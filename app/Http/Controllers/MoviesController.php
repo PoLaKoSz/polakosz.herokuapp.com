@@ -89,7 +89,7 @@ class MoviesController extends Controller
             'rating'    => 'required|integer|between:0,101',
         ]);
 
-        $date = (strlen($request->input('date') == 0) ? Carbon::now() : date('Y-m-d', strtotime($request->input('date'))));
+        $date = (strlen($request->input('date') == 0) ? Carbon::today() : date('Y-m-d', strtotime($request->input('date'))));
         
         $movie = new Movie;
             $movie->filmcim = $request->input('name');
