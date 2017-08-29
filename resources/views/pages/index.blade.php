@@ -42,27 +42,27 @@
             <button class="btn btn-orange" onClick="getMovies(this)" data-container="{{ trans('navbar.menu_movies') }}" data-nextID="6">Továbbiak</button>
         </div>
     </section>
+
+    <script>
+        function getMovies(button) {
+            var lastID = parseInt( $(button).attr('data-nextID') );
+            var container = $(button).attr('data-container');
+
+            $.ajax({
+                url:       'api/movies',
+                type:      'GET',
+                dataType:  'json',
+                data: {
+                    id:     lastID,
+                    _token: '{{ csrf_token() }}'
+                },
+                success:function(data){
+                    
+                    $('#dynamicMovies').append(data['data']);
+
+                    $(button).attr('data-nextID', lastID + 6);
+                }
+            });
+        }
+    </script>
 @endsection
-
-<script>
-    function getMovies(button) {
-        var lastID = parseInt( $(button).attr('data-nextID') );
-        var container = $(button).attr('data-container');
-
-        $.ajax({
-            url:       'api/movies',
-            type:      'GET',
-            dataType:  'json',
-            data: {
-                id:     lastID,
-                _token: '{{ csrf_token() }}'
-            },
-            success:function(data){
-                
-                $('#dynamicMovies').append(data['data']);
-
-                $(button).attr('data-nextID', lastID + 6);
-            }
-        });
-    }
-</script>
