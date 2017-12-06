@@ -1,46 +1,24 @@
 <div id="text-carousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-        <li data-target="#text-carousel" data-slide-to="0" class="active"></li>
-        <li data-target="#text-carousel" data-slide-to="1"></li>
-        <li data-target="#text-carousel" data-slide-to="2"></li>
+        @for ($i = 0; $i < count($movies); $i++)
+            <li data-target="#text-carousel" data-slide-to="{{ $i }}" @if ($i == 0) echo 'class="active"'; @endif></li>
+        @endfor
     </ol>
     <!-- Wrapper for slides -->
     <div class="row">
         <div class="col-xs-offset-3 col-xs-6">
-            <div class="carousel-inner">
-                <div class="item active">
-                    <div class="carousel-content">
-                        <div>
-                            <h1>Responsive layout</h1>
-                            <h3>This website theme is free to download and use for everyone. This layout is based on Bootstrap framework.</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="carousel-content">
-                        <div>
-                            <h1>Welcome To Urbanic</h1>
-                            <p>CHOOSE THE ONE SUITABLE FOR YOU</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="carousel-content">
-                        <div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <h1>Fluid</h1>
-                                    <h3>Suspendisse pellentesque, odio vel ultricies interdum, mauris nulla ullamcorper magna, non aliquet odio velit aliquam augue.</h3>
-                                </div>
-                                <div class="col-xs-6">
-                                    <h1>Energy</h1>
-                                    <h3>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam mattis fringilla urna.</h3>
-                                </div>
+            <div class="carousel-inner">                
+                @for ($i = 0; $i < count($movies); $i++)
+                    <div class="item @if ($i == 0) {{ 'active' }} @endif">
+                        <div class="carousel-content">
+                            <div>
+                                <h1>{{ $movies[$i]->filmcim }}</h1>
+                                <h3>{{ $movies[$i]->megjegyzes }}</h3>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endfor                        
             </div>
         </div>
     </div>
