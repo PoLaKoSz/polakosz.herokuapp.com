@@ -14,6 +14,6 @@ return [
     'big_text_simple' => 'Üdvözöllek a',
     'big_text_highlighted' => 'weblapomon',
 
-    'small_text' => 'Ha más nem is, abban biztos vagyok, hogy a filmek rész folyamatosan bővülni fog, szóval ha másért nem, szerintem azért érdemes lesz visszanézned gyakran.',
+    'small_text' => 'Jelenleg az Óbudai Egyetem mellett nincs szabadidőm, de a filmek részleg azért néha-néha bővül 1-1 filmmel. ;)',
 
 ];
