@@ -24,6 +24,7 @@
 	var Datepicker = function (element, options) {
 		this.element = $(element);
 		this.format = DPGlobal.parseFormat(options.format || this.element.data('date-format') || 'mm/dd/yyyy');
+		this.autoClose = options.autoClose || this.element.data('date-autoClose') || true;
 		this.picker = $(DPGlobal.template)
 			.appendTo('body')
 			.on({
@@ -313,6 +314,9 @@
 								date: this.date,
 								viewMode: DPGlobal.modes[this.viewMode].clsName
 							});
+							if (this.autoClose === true) {
+                                this.hide();
+                            }
 						}
 						break;
 				}

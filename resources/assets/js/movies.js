@@ -1,4 +1,4 @@
-$('input[type="checkbox"]').on('change', function() {
+$('#hideShowDateFieldCheckBox').on('change', function() {
     $(this).closest('fieldset').find('.hideshow').toggle(!this.checked);
 });
 

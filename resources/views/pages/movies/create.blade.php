@@ -11,8 +11,8 @@
                 <input type="text" name="title" class="form-control" placeholder="{{ trans('movies.movie_title_placeholder') }}">
 
                 <fieldset>
-                    <input id="testCheckbox" name="testCheckbox" type="checkbox" checked style="width:auto;">
-                    <label for="testCheckbox"><p>{{ trans('movies.watched_today_chkBox') }}</p></label>
+                    <input id="hideShowDateFieldCheckBox" type="checkbox" checked style="width:auto;">
+                    <label for="hideShowDateFieldCheckBox"><p>{{ trans('movies.watched_today_chkBox') }}</p></label>
                     <span class="hideshow" style="display: none;">
                         <input type="text" name="date" class="form-control datepicker" placeholder="{{ trans('movies.date') }}" data-date-format="{{ trans('movies.date_format') }}">
                     </span>
