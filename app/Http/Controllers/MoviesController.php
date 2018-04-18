@@ -84,7 +84,7 @@ class MoviesController extends Controller
     {
         $this->validate($request, [
             'title'     => 'required',
-            'portId'    => 'required|integer',
+            'portId'    => 'nullable|integer',
             'coverImage'=> 'required|url',
             'rating'    => 'required|integer|between:0,101',
         ]);
