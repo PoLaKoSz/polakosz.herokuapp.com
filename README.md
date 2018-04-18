@@ -1,28 +1,17 @@
-# PoLaKoSz.atw.hu
+# polakosz.000webhost.com
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2 (yeah, I know this is not he latest version :smile:).
+Ez a projekt [Angular CLI](https://github.com/angular/angular-cli) 1.0.2-es verziójával lett generálva (direkt ezzel a verzióval, és nem újabbal).
 
-## Development server
+Az alábbi projektem a [személyes weblapom](https://polakosz.000webhostapp.com/) forráskódját tartalmazza.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Az [alábbi](/../../issues/3) issue-ban található meg minden olyan dolog, ami megvalósításra szorul, vagy már orvosolva lett.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Projekt tesztelése
+1. Minden szükséges modul telepítése, ami a package.json-ban megtalálható: `npm install`
+2. Minden szükséges modul telepítése, ami a composer.json-ban megtalálható: `composer install`
+3. `.env` fájl létrehozása az `.env.example` mintájára
+4. `.env` fájl módosítása a megfelelő adatokra (pl.: valós adatbázis adatok megadása)
+4. Egyedi `APP_KEY` generálása az `.env` fájlhoz: `php artisan key:generate`
+## ... 000webhost.com-on
+- `public` mappa átnevezése `public_html` mappává
+- `.env` fájl módosítása, ha szükséges (pl.: adatbázis adatok, `APP_DEBUG=true | false`
