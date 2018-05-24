@@ -31,5 +31,6 @@ return [
     'comment_placeholder' => 'Your comment about the movie',
     'save_btn' => 'Save',
     'success_save' => 'Movie saved.',
+    'load_more' => 'Load more',
 
 ];

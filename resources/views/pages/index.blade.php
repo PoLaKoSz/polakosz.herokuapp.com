@@ -39,7 +39,7 @@
         <div id="dynamicMovies"></div>
 
         <div class="row text-center">
-            <button class="btn btn-orange" onClick="getMovies(this)" data-container="{{ trans('navbar.menu_movies') }}" data-nextID="6">Továbbiak</button>
+            <button class="btn btn-orange" onClick="getMovies(this)" data-container="{{ trans('navbar.menu_movies') }}" data-nextID="6">{{ trans('movies.load_more') }}</button>
         </div>
     </section>
 
@@ -49,7 +49,7 @@
             var container = $(button).attr('data-container');
 
             $.ajax({
-                url:       'api/movies',
+                url:       '<?php echo LaravelLocalization::getCurrentLocale() ?>/api/movies',
                 type:      'GET',
                 dataType:  'json',
                 data: {

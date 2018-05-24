@@ -31,5 +31,6 @@ return [
     'comment_placeholder' => 'Filmről komment',
     'save_btn' => 'Mentés',
     'success_save' => 'Film elmentve.',
+    'load_more' => 'Továbbiak',
 
 ];
