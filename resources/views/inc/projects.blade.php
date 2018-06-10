@@ -1,53 +1,22 @@
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-        <div class="row">
-            <div class="view overlay hm-black-strong">
-                <img src="{{asset('images//all.gif')}}" alt="All projects">
-                <div class="mask flex-center">
-                    <div>
-                        <p><a href="#" class="white-text">{{ trans('projects.more') }}</a></p>
+    @foreach($projects as $project)
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+            <div class="row">
+                <div class="view overlay hm-black-strong">
+                    <img src="images/languages/{{ urlencode($project['language']) }}.png" alt="{{ $project['language'] }}">
+                    <div class="mask flex-center">
+                        <div>
+                        <p class="white-text">{{ $project['description'] }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row text-center">
-            <h2 class="white-text"><a href="https://github.com/PoLaKoSz?tab=repositories" target="_blank">All</a></h2>
-            <p class="big-text white-text">( 5 )</p>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-        <div class="row">
-            <div class="view overlay hm-black-strong">
-                <img src="{{asset('images//cSharp.gif')}}" alt="My C# projects">
-                <div class="mask flex-center">
-                    <div>
-                        <p><a href="#" class="white-text">{{ trans('projects.more') }}</a></p>
-                    </div>
-                </div>
+            <div class="row text-center">
+                <h5>
+                    <a href="{{ $project['html_url'] }}" target="_blank">{{ $project['name'] }}</a>
+                </h5>
             </div>
         </div>
-
-        <div class="row text-center">
-            <h2 class="white-text"><a href="https://github.com/PoLaKoSz?utf8=%E2%9C%93&tab=repositories&q=&type=&language=c%23" target="_blank">C#</a></h2>
-            <p class="big-text white-text">( 3 )</p>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-        <div class="row">
-            <div class="view overlay hm-black-strong">
-                <img src="{{asset('images//android.gif')}}" alt="My Android projects">
-                <div class="mask flex-center">
-                    <div>
-                        <p><a href="#" class="white-text">{{ trans('projects.more') }}</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row text-center">
-            <h2 class="white-text"><a href="https://github.com/PoLaKoSz?utf8=%E2%9C%93&tab=repositories&q=&type=&language=html" target="_blank">Web</a></h2>
-            <p class="big-text white-text">( 2 )</p>
-        </div>
-    </div>
+    @endforeach
 </div>

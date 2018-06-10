@@ -182,6 +182,10 @@ return [
          */
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
 
+        /*
+         * GitHub client
+        */
+        GrahamCampbell\GitHub\GitHubServiceProvider::class,
     ],
 
     /*
@@ -235,6 +239,11 @@ return [
          * Laravel Localization
          */
         'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+
+        /*
+         * GitHub client
+        */
+        'GitHub' => GrahamCampbell\GitHub\Facades\GitHub::class,
 
     ],
 

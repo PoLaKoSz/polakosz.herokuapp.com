@@ -27,8 +27,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     Route::get('/about-me', 'AboutMeController@index');
 
-    Route::get('/projects', 'ProjectsController@index');
-
     Route::post('/contact', 'ContactController@store');
 
     // Authentication Routes...

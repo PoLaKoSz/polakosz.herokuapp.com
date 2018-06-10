@@ -12,16 +12,16 @@
     </div>
 
     <section id="{{ trans('navbar.menu_projects') }}" class="projects">
-        <div class="section-padding">
-            <div class="container">
+        <div class="container section-padding">
+            <div class="row">
                 <?php
                     $title  = trans('projects.title');
                     $design = 'light-section-header';
                 ?>
                 @include('inc.section-header');
-
-                @include('inc.projects');
-            </div>
+            </div> 
+            
+            @include('inc.projects');
         </div>
     </section>
     
