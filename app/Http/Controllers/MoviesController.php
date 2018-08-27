@@ -7,7 +7,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use App\HungarianMovie;
+use App\Mafab;
 use App\Movie;
+use App\Port;
 use LaravelLocalization;
 
 class MoviesController extends Controller
@@ -28,7 +31,7 @@ class MoviesController extends Controller
     {
         // TODO: Not so S.O.L.I.D.
         return $movies = DB::table('movies')
-                                            ->orderBy('datum', 'desc')
+                                            ->orderBy('date', 'desc')
                                             ->orderBy('id', 'desc')
                                             ->take($this->resultCount)
                                             ->get();
@@ -40,7 +43,7 @@ class MoviesController extends Controller
         $firstShownID = $request->id;
 
         $movies = DB::table('movies')
-                                    ->orderBy('datum', 'desc')
+                                    ->orderBy('date', 'desc')
                                     ->orderBy('id', 'desc')
                                     ->skip($firstShownID)
                                     ->take($this->resultCount)
@@ -83,23 +86,36 @@ class MoviesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title'     => 'required',
-            'portId'    => 'nullable|integer',
-            'coverImage'=> 'required|url',
-            'rating'    => 'required|integer|between:0,101',
+            'title_hu'   => 'required',
+            'port_id'    => 'nullable|integer',
+            'mafab_id'   => 'nullable|string',
+            'cover_image'=> 'required|url',
+            'rating'     => 'required|integer|between:0,101',
         ]);
 
         $date = (strlen($request->input('date') == 0) ? Carbon::today() : date('Y-m-d', strtotime($request->input('date'))));
         
-        $movie = new Movie;
-            $movie->filmcim = $request->input('name');
-            $movie->port = $request->input('portId');
-            $movie->csillag = $request->input('rating');
-            $movie->cover_image = $request->input('coverImage');
-            $movie->filmcim = $request->input('title');
-            $movie->megjegyzes = $request->input('comment');
-            $movie->datum = $date;
+        $movie = new Movie();
+            $movie->rating = $request->input('rating');
+            $movie->cover_image = $request->input('cover_image');
+            $movie->date = $date;
         $movie->save();
+
+            $hungarian = new HungarianMovie();
+                $hungarian->id       = $movie->id;
+                $hungarian->title    = $request->input('title_hu');
+                $hungarian->comment  = $request->input('comment_hu');
+
+                $port = new Port();
+                    $port->id        = $request->input('port_id');
+
+                $mafab = new Mafab();
+                    $mafab->id        = $request->input('mafab_id');
+        
+        $movie->hungarian()->save($hungarian);
+
+        $movie->hungarian->port()->save( $port );
+        $movie->hungarian->mafab()->save( $mafab );
         
         return redirect( LaravelLocalization::localizeURL('movies/new') )->with('success', trans('movies.success_save'));
     }

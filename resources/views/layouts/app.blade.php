@@ -13,13 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <script>
-        function showNotFoundImage(image) {
-            image.onError = "";
-            image.src = "{{asset('images/imagenotfound.svg')}}";
-            return true;
-        }
-    </script>
+    <script type="text/javascript" src="{!! asset('js/required.js') !!}"></script>
 </head>
 <body data-spy="scroll" data-target="#navbar">
     <div id="app">

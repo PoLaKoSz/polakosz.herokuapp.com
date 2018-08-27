@@ -22,7 +22,7 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Return the first 5 item from the given array
+     * Return the first 6 item from the given array
      * 
      * @param  Array    $repositoryArray
      * 

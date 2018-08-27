@@ -13,6 +13,9 @@ return [
     */
 
     'title' => 'Movies',
+    'search_on_port' => 'Search on Port.hu',
+    'search_on_mafab' => 'Search on Mafab.hu',
+    'general_search' => 'Search on Mafab.hu and Port.hu',
     'star' => [
         '0' => 'I need to watch again',
         '3' => 'OMG this is sh@t',
@@ -22,13 +25,14 @@ return [
         '101' => 'Tale',
     ],
     'rating' => 'Rating',
-    'movie_title_placeholder' => 'Movie English or Hungarian title',
+    'title_hu' => 'Movie name in hungarian',
     'watched_today_chkBox' => 'Watched today',
     'date' => 'Date',
     'date_format' => 'mm/dd/yyyy',
-    'port_id_placeholder' => 'Port.hu ID',
+    'port_id_hu_placeholder' => 'ID of the Port.hu Movie',
+    'mafab_id_hu_placeholder' => 'https://www.mafab.hu/movies/{id}.html',
     'cover_img_placeholder' => 'Cover image URL for movie',
-    'comment_placeholder' => 'Your comment about the movie',
+    'comment_hu' => 'Hungarian comment about the movie',
     'save_btn' => 'Save',
     'success_save' => 'Movie saved.',
     'load_more' => 'Load more',
