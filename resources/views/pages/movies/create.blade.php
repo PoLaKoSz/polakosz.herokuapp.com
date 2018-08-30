@@ -3,12 +3,26 @@
 @section('content')
     @include('inc.navbar');
 
-    <div class="container section-padding">
+    <div class="container-fluid section-padding">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg4"></div>
+            <div id="searchResults_" class="col-xs-12 col-md-8">
+                <div class="row">
+                    <div id="portSearchResults" class="col-xs-6">
+                        <input type="text" name="port_search_query" class="form-control" placeholder="{{ trans('movies.search_on_port') }}">
 
-            <form action="{{ LaravelLocalization::localizeURL('movies') }}" method="POST" class="col-xs-12 col-sm-12 col-md-4 col-lg4">
-                <input type="text" name="title" class="form-control" placeholder="{{ trans('movies.movie_title_placeholder') }}">
+                        <div id="port"></div>
+                    </div>
+                    <div id="mafabSearchResults" class="col-xs-6">
+                        <input type="text" name="mafab_search_query" class="form-control" placeholder="{{ trans('movies.search_on_mafab') }}">
+                        <div id="mafab"></div>
+                    </div>
+                </div>
+            </div>
+
+            <form action="{{ LaravelLocalization::localizeURL('movies') }}" method="POST" class="col-xs-12 col-md-2">
+                <input type="text" name="search_query" class="form-control" placeholder="{{ trans('movies.general_search') }}">
+
+                <input type="text" name="title_hu" class="form-control" placeholder="{{ trans('movies.title_hu') }}" readonly>
 
                 <fieldset>
                     <input id="hideShowDateFieldCheckBox" type="checkbox" checked style="width:auto;">
@@ -20,9 +34,11 @@
 
                 <input type="hidden" name="rating" class="form-control" placeholder="{{ trans('movies.rating') }}">
 
-                <input type="number" name="portId" class="form-control" placeholder="{{ trans('movies.port_id_placeholder') }}">
+                <input type="text" name="port_id" class="form-control" placeholder="{{ trans('movies.port_id_hu_placeholder') }}" readonly>
 
-                <input type="text" name="coverImage" class="form-control" placeholder="{{ trans('movies.cover_img_placeholder') }}">
+                <input type="text" name="mafab_id" class="form-control" placeholder="{{ trans('movies.mafab_id_hu_placeholder') }}" readonly>
+
+                <input type="text" name="cover_image" class="form-control" placeholder="{{ trans('movies.cover_img_placeholder') }}">
 
                 <div class="dropdown form-group">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{ trans('movies.rating') }}<span class="caret"></span></button>
@@ -43,14 +59,14 @@
                     </ul>
                 </div>
 
-                <input type="text" name="comment" class="form-control" placeholder="{{ trans('movies.comment_placeholder') }}">
+                <input type="text" name="comment_hu" class="form-control" placeholder="{{ trans('movies.comment_hu') }}">
                 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <button type="submit" class="btn btn-default">{{ trans('movies.save_btn') }}</button>
             </form>
 
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg4"></div>
+            <div id="moviePoster" class="col-xs-12 col-md-2"></div>
         </div>
     </div>
 @endsection

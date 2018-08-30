@@ -6,11 +6,14 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "doctrine/dbal": "^2.0",
         "graham-campbell/github": "^7.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "mcamara/laravel-localization": "^1.2",
-        "php-http/guzzle6-adapter": "^1.1"
+        "php-http/guzzle6-adapter": "^1.1",
+        "polakosz/mafab": "^1.1",
+        "polakosz/porthu": "^1.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

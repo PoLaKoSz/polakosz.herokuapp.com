@@ -17,7 +17,7 @@ return [
         'numeric' => 'A(z) :attribute :min és :max között kell legyen.',
     ],
     'email'                => 'Nem adtál meg valós E-mail címet.',
-    'integer'              => 'A(z) :attribute nme számjegy.',
+    'integer'              => 'A(z) :attribute nem számjegy.',
     'min'                  => [
         'string'  => 'A(z) :attribute minimum :min karakter kell hogy legyen.',
     ],
