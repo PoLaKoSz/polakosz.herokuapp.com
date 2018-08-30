@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\MovieSelector;
 use Carbon\Carbon;
 use App\HungarianMovie;
 use App\Mafab;
@@ -17,31 +18,22 @@ class MoviesController extends Controller
 {
     protected $resultCount = 6;
 
-    public function module()
+    public function module(int $startIndex = 0) : array
     {
-        // TODO: Not so S.O.L.I.D.
-        return $movies = DB::table('movies')
-                                            ->orderBy('date', 'desc')
-                                            ->orderBy('id', 'desc')
-                                            ->take($this->resultCount)
-                                            ->get();
+        $selector = new MovieSelector( $startIndex, $this->resultCount );
+
+        return $selector->get( LaravelLocalization::getCurrentLocale());
     }
 
     public function jSonModule(Request $request)
     {
-        // TODO: Not so S.O.L.I.D.
         $firstShownID = $request->id;
 
-        $movies = DB::table('movies')
-                                    ->orderBy('date', 'desc')
-                                    ->orderBy('id', 'desc')
-                                    ->skip($firstShownID)
-                                    ->take($this->resultCount)
-                                    ->get();
+        $movies = $this->module( $firstShownID );
         
         $view = view("inc.movies")
-                            ->with('movies', $movies)
-                            ->render();
+            ->with('movies', $movies)
+            ->render();
 
         $data = [
             'data' => $view,

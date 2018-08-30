@@ -13,7 +13,7 @@
                     <div class="item @if ($i == 0) {{ 'active' }} @endif">
                         <div class="carousel-content">
                             <div>
-                                <h1>{{ $movies[$i]->title }}</h1>
+                                <h1>{{ $movies[$i]->name }}</h1>
                                 <h3>{{ $movies[$i]->comment }}</h3>
                             </div>
                         </div>

@@ -18,19 +18,4 @@ class Mafab extends Model
 
     // Now id column can be string
     public $incrementing = false;
-
-    /**
-     * Get the Movie that owns the Mafab movie.
-     */
-    public function movie()
-    {
-        return $this->belongsTo('App\HungarianMovie');
-    }
-
-    public function getURL() : string {
-        if ( $this->id != '' )
-            return 'https://mafab.hu/movies/' . $this->id . '.html';
-        else
-            return '';
-    }
 }

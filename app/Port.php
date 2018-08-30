@@ -15,12 +15,4 @@ class Port extends Model
 
     // Disable created_at, updated_at TABLE fields
     public $timestamps = false;
-
-    /**
-     * Get the Movie that owns the Mafab movie.
-     */
-    public function movie()
-    {
-        return $this->belongsTo('App\HungarianMovie');
-    }
 }
