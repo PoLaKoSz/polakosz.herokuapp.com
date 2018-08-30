@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fdfbf770101910b3276e956de666f0a2",
+    "content-hash": "b7a00678fc23d909e91b0abf8d71eb22",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -915,6 +915,46 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
+        },
+        {
+            "name": "imdbphp/imdbphp",
+            "version": "v6.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tboothman/imdbphp.git",
+                "reference": "ce0cd847eaff39594f01f1f2ce28c4fea7b31f92"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tboothman/imdbphp/zipball/ce0cd847eaff39594f01f1f2ce28c4fea7b31f92",
+                "reference": "ce0cd847eaff39594f01f1f2ce28c4fea7b31f92",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-dom": "*",
+                "php": ">=5.6",
+                "psr/log": "~1.0",
+                "psr/simple-cache": "^1.0"
+            },
+            "require-dev": {
+                "cache/array-adapter": "^1.0",
+                "mockery/mockery": "~0.9",
+                "phpstan/phpstan": "^0.9.2",
+                "phpunit/phpunit": "5.4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Imdb\\": "src/Imdb"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Library for retrieving film and tv information from IMDb",
+            "time": "2018-08-18T22:29:04+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -2199,16 +2239,16 @@
         },
         {
             "name": "polakosz/porthu",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PoLaKoSz/Port.hu.git",
-                "reference": "8a37f379453966e030f5d53e6f665d1cfde81bc6"
+                "reference": "51897121311aefd794909c0168ca6d98cee24c42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PoLaKoSz/Port.hu/zipball/8a37f379453966e030f5d53e6f665d1cfde81bc6",
-                "reference": "8a37f379453966e030f5d53e6f665d1cfde81bc6",
+                "url": "https://api.github.com/repos/PoLaKoSz/Port.hu/zipball/51897121311aefd794909c0168ca6d98cee24c42",
+                "reference": "51897121311aefd794909c0168ca6d98cee24c42",
                 "shasum": ""
             },
             "require": {
@@ -2244,7 +2284,7 @@
                 "port",
                 "wrapper"
             ],
-            "time": "2018-08-29T07:47:35+00:00"
+            "time": "2018-08-29T09:13:28+00:00"
         },
         {
             "name": "psr/cache",
