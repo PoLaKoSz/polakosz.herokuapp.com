@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Components\MovieUnifier;
 use App\Movie;
 
 use Illuminate\Database\Eloquent\Collection;
@@ -53,14 +55,14 @@ class MovieSelector
             if ($this->hasMafab($hun))
             {
                 array_push( $response,
-                    $this->addMovie(
+                    $this->addHungarianMovie(
                         'https://mafab.hu/movies/' . $hun->mafab->id . '.html',
                         $movie));
             }
             else if ($this->hasPort($hun))
             {
                 array_push( $response,
-                    $this->addMovie(
+                    $this->addHungarianMovie(
                         'https://port.hu/adatlap/film/tv/-/movie-' . $hun->port->id,
                         $movie));
             }
@@ -79,14 +81,16 @@ class MovieSelector
         return $movie->port != null;
     }
 
-    private function addMovie(string $url, Movie $movie) : object
+    private function addHungarianMovie(string $url, Movie $movie) : object
     {
-        return (object) [
-            'url'     => $url,
-            'name'    => $movie->hungarian->title,
-            'rating'  => $movie->rating,
-            'comment' => $movie->hungarian->comment,
-            'image'   => $movie->cover_image
-        ];
+        return MovieUnifier::get(
+            0,
+            $url,
+            $movie->hungarian->title,
+            $movie->rating,
+            0,
+            $movie->hungarian->comment,
+            $movie->cover_image
+        );
     }
 }

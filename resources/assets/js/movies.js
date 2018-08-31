@@ -69,8 +69,8 @@ function updateColumn( data ) {
 
     $.each(data.response, function(index, item) {
         var movieDOM = $('<p class="searchResult" data-index="' + index +'" data-column="' + data.column + '">' +
-            '<img src="' + item['thumbnail_image'] + '" style="width:60px;height:90px">' +
-            '<span style="display: inline-table;"><a href="' + item['url'] + '" target="_blank">' + item['hungarian_title'] + '</a><br>' + item['year'] + '</span></p>');
+            '<img src="' + item['image'] + '" style="width:60px;height:90px">' +
+            '<span style="display: inline-table;"><a href="' + item['url'] + '" target="_blank">' + item['name'] + '</a><br>' + item['year'] + '</span></p>');
 
         container.append( movieDOM );
     });
