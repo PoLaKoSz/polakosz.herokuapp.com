@@ -120,7 +120,6 @@ var results = [];
 genericSearchBox.focusout(function(){
     mafabSearch( genericSearchBox.val() );
     portSearch( genericSearchBox.val() );
-    imdbSearch( genericSearchBox.val() );
 });
 
 portSearchBox.focusout(function(){

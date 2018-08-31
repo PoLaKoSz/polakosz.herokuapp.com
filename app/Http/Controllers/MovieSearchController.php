@@ -95,15 +95,9 @@ class MovieSearchController extends Controller
      */
     public function imdb(Request $request)
     {
-        $executionTime = ini_get("max_execution_time");
-
-        set_time_limit(0);
-
         $searchResults = $this->imdb->search(
             $request->movie_name,
             [ TitleSearch::MOVIE, TitleSearch::TV_SERIES ]);
-
-        set_time_limit( $executionTime );
 
         $response = array();
 
