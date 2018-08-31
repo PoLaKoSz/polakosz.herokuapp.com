@@ -47,13 +47,11 @@ class MovieSearchController extends Controller
         {
             array_push(
                 $response,
-                MovieUnifier::get(
+                MovieUnifier::fromSearch(
                     $movie->getID(),
                     $movie->getURL(),
                     $movie->getHungarianTitle(),
-                    0,
                     $movie->getYear(),
-                    '',
                     $movie->getThumbnailImage()
                 ));
         }
@@ -113,13 +111,11 @@ class MovieSearchController extends Controller
         {
             array_push(
                 $response,
-                MovieUnifier::get(
+                MovieUnifier::fromSearch(
                     $imdbMovie->imdbid(),
                     $imdbMovie->main_url(),
                     $imdbMovie->title(),
-                    0,
                     $imdbMovie->year(),
-                    '',
                     $imdbMovie->photo(false)
                 ));
         }

@@ -90,12 +90,10 @@ class MovieSelector
 
     private function addHungarianMovie(string $url, Movie $movie) : object
     {
-        return MovieUnifier::get(
-            0,
+        return MovieUnifier::fromDB(
             $url,
             $movie->hungarian->title,
             $movie->rating,
-            0,
             $movie->hungarian->comment,
             $movie->cover_image
         );

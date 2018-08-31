@@ -9,18 +9,32 @@ namespace App\Components;
 class MovieUnifier
 {
     /**
-     * Generate a unified Movie object
+     * Generate a unified Movie object coming from some search
      * 
      * @return  Object
      */
-    public static function get($id, string $url, string $title, int $rating, int $year, $comment, string $coverImage) : object
+    public static function fromSearch($id, string $url, string $title, int $year, string $coverImage) : object
     {
         return (object) [
             'id'      => $id,
             'url'     => $url,
             'name'    => $title,
-            'rating'  => $rating,
             'year'    => $year,
+            'image'   => $coverImage
+        ];
+    }
+
+    /**
+     * Generate a unified Movie object coming from DB
+     * 
+     * @return  Object
+     */
+    public static function fromDB(string $url, string $title, int $rating, $comment, string $coverImage) : object
+    {
+        return (object) [
+            'url'     => $url,
+            'name'    => $title,
+            'rating'  => $rating,
             'comment' => $comment,
             'image'   => $coverImage
         ];
