@@ -13,4 +13,9 @@ class Movie extends Model
     {
         return $this->hasOne('App\HungarianMovie');
     }
+
+    public function english()
+    {
+        return $this->hasOne('App\IMDb');
+    }
 }

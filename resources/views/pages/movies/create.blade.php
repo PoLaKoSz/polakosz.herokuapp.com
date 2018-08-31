@@ -7,14 +7,18 @@
         <div class="row">
             <div id="searchResults_" class="col-xs-12 col-md-8">
                 <div class="row">
-                    <div id="portSearchResults" class="col-xs-6">
+                    <div id="portSearchResults" class="col-xs-4">
                         <input type="text" name="port_search_query" class="form-control" placeholder="{{ trans('movies.search_on_port') }}">
 
                         <div id="port"></div>
                     </div>
-                    <div id="mafabSearchResults" class="col-xs-6">
+                    <div id="mafabSearchResults" class="col-xs-4">
                         <input type="text" name="mafab_search_query" class="form-control" placeholder="{{ trans('movies.search_on_mafab') }}">
                         <div id="mafab"></div>
+                    </div>
+                    <div id="imdbSearchResults" class="col-xs-4">
+                        <input type="text" name="imdb_search_query" class="form-control" placeholder="{{ trans('movies.search_on_imdb') }}">
+                        <div id="imdb"></div>
                     </div>
                 </div>
             </div>
@@ -23,6 +27,8 @@
                 <input type="text" name="search_query" class="form-control" placeholder="{{ trans('movies.general_search') }}">
 
                 <input type="text" name="title_hu" class="form-control" placeholder="{{ trans('movies.title_hu') }}" readonly>
+
+                <input type="text" name="title_en" class="form-control" placeholder="{{ trans('movies.title_en') }}" readonly>
 
                 <fieldset>
                     <input id="hideShowDateFieldCheckBox" type="checkbox" checked style="width:auto;">
@@ -38,7 +44,9 @@
 
                 <input type="text" name="mafab_id" class="form-control" placeholder="{{ trans('movies.mafab_id_hu_placeholder') }}" readonly>
 
-                <input type="text" name="cover_image" class="form-control" placeholder="{{ trans('movies.cover_img_placeholder') }}">
+                <input type="text" name="imdb_id" class="form-control" placeholder="{{ trans('movies.imdb_id_en_placeholder') }}" readonly>
+
+                <input type="text" name="cover_image" class="form-control" placeholder="{{ trans('movies.cover_img_placeholder') }}" readonly>
 
                 <div class="dropdown form-group">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{ trans('movies.rating') }}<span class="caret"></span></button>
@@ -60,6 +68,8 @@
                 </div>
 
                 <input type="text" name="comment_hu" class="form-control" placeholder="{{ trans('movies.comment_hu') }}">
+
+                <input type="text" name="comment_en" class="form-control" placeholder="{{ trans('movies.comment_en') }}">
                 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

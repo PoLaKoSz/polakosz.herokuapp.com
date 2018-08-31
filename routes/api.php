@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/movies/search/mafab', 'MovieSearchController@mafab');
 Route::get('/movies/search/port',  'MovieSearchController@port');
+Route::get('/movies/search/imdb',  'MovieSearchController@imdb');

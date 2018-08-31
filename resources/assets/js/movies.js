@@ -82,10 +82,19 @@ function updateColumn( data ) {
         var movie = results[columnName][rowIndex];
 
         getElementByName( columnName + '_id' ).val( movie.id );
-        getElementByName( 'title_hu' ).val( movie.hungarian_title );
-        getElementByName( 'cover_image' ).val( movie.thumbnail_image );
 
-        $( '#moviePoster' ).html( $( '<img src="' + movie.thumbnail_image + '">' ) );
+        if (columnName == 'imdb')
+        {
+            getElementByName( 'title_en' ).val( movie.name );
+        }
+        else
+        {
+            getElementByName( 'title_hu' ).val( movie.name );
+        }
+
+        getElementByName( 'cover_image' ).val( movie.image );
+
+        $( '#moviePoster' ).html( $( '<img src="' + movie.image + '">' ) );
     });
 }
 
@@ -97,15 +106,21 @@ function portSearch( query ) {
     genericSearch( 'port', query, updateColumn );
 }
 
+function imdbSearch( query ) {
+    genericSearch( 'imdb', query, updateColumn );
+}
+
 var genericSearchBox = getElementByName('search_query');
 var portSearchBox    = getElementByName('port_search_query');
 var mafabSearchBox   = getElementByName('mafab_search_query');
+var imdbSearchBox    = getElementByName('imdb_search_query');
 
 var results = [];
 
 genericSearchBox.focusout(function(){
     mafabSearch( genericSearchBox.val() );
     portSearch( genericSearchBox.val() );
+    imdbSearch( genericSearchBox.val() );
 });
 
 portSearchBox.focusout(function(){
@@ -114,4 +129,8 @@ portSearchBox.focusout(function(){
 
 mafabSearchBox.focusout(function(){
     mafabSearch( mafabSearchBox.val() );
+});
+
+imdbSearchBox.focusout(function(){
+    imdbSearch( imdbSearchBox.val() );
 });

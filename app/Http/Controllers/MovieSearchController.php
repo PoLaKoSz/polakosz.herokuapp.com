@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Components\MovieUnifier;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Imdb\Config;
+use Imdb\TitleSearch;
 use PoLaKoSz\Mafab\Models\MafabMovie;
 use PoLaKoSz\Mafab\Search;
 use PoLaKoSz\PortHu\QuickSearch;
@@ -13,6 +15,7 @@ class MovieSearchController extends Controller
 {
     private $mafab;
     private $port;
+    private $imdb;
 
 
 
@@ -20,6 +23,11 @@ class MovieSearchController extends Controller
     {
         $this->mafab = new Search();
         $this->port = new QuickSearch();
+
+        $config = new Config();
+        $config->language = "en";
+
+        $this->imdb = new TitleSearch( $config );
     }
 
 
@@ -76,6 +84,43 @@ class MovieSearchController extends Controller
                     $movie->getYear(),
                     '',
                     $movie->getPoster()
+                ));
+        }
+
+        return response()->json( $response );
+    }
+
+    /**
+     * Handle when API request
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function imdb(Request $request)
+    {
+        $executionTime = ini_get("max_execution_time");
+
+        set_time_limit(0);
+
+        $searchResults = $this->imdb->search(
+            $request->movie_name,
+            [ TitleSearch::MOVIE, TitleSearch::TV_SERIES ]);
+
+        set_time_limit( $executionTime );
+
+        $response = array();
+
+        foreach($searchResults as $imdbMovie)
+        {
+            array_push(
+                $response,
+                MovieUnifier::get(
+                    $imdbMovie->imdbid(),
+                    $imdbMovie->main_url(),
+                    $imdbMovie->title(),
+                    0,
+                    $imdbMovie->year(),
+                    '',
+                    $imdbMovie->photo(false)
                 ));
         }
 

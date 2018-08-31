@@ -34,7 +34,14 @@ class MovieSelector
      */
     public function get(string $language) : array
     {
-        return $this->formatAsHungarian();
+        if ( $language == 'hu')
+        {
+            return $this->formatAsHungarian();
+        }
+        else if ( $language == 'en' )
+        {
+            return $this->formatAsEnglish();
+        }
     }
 
 
@@ -92,5 +99,27 @@ class MovieSelector
             $movie->hungarian->comment,
             $movie->cover_image
         );
+    }
+
+    private function formatAsEnglish()
+    {
+        $response = array();
+
+        $movies = Movie::skip( $this->startIndex )
+                        ->take( $this->resultCount )
+                        ->orderBy('id', 'desc')
+                        ->get();
+
+        foreach($movies as $movie)
+        {
+            dd( 'formatAsEnglish még nincs kész!' );
+            array_push(
+                $response,
+                MovieUnifier::get(
+                    'https://mafab.hu/movies/' . $hun->mafab->id . '.html',
+                    $movie));
+        }
+
+        return $response;
     }
 }
