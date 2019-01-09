@@ -14,7 +14,7 @@
         "mcamara/laravel-localization": "^1.2",
         "php-http/guzzle6-adapter": "^1.1",
         "polakosz/mafab": "^1.1",
-        "polakosz/porthu": "^1.2"
+        "polakosz/porthu": "3.0.0-alpha.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
