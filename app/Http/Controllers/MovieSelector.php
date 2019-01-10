@@ -80,12 +80,12 @@ class MovieSelector
 
     private function hasMafab($movie) : bool
     {
-        return $movie->mafab != null;
+        return $movie->mafab->id != null;
     }
 
     private function hasPort($movie) : bool
     {
-        return $movie->port != null;
+        return $movie->port->id != null;
     }
 
     private function addHungarianMovie(string $url, Movie $movie) : object
@@ -103,21 +103,29 @@ class MovieSelector
     {
         $response = array();
 
-        $movies = Movie::skip( $this->startIndex )
+        $movies = Movie::with('english')
+                        ->skip( $this->startIndex )
                         ->take( $this->resultCount )
                         ->orderBy('id', 'desc')
                         ->get();
 
         foreach($movies as $movie)
         {
-            dd( 'formatAsEnglish még nincs kész!' );
             array_push(
                 $response,
-                MovieUnifier::get(
-                    'https://mafab.hu/movies/' . $hun->mafab->id . '.html',
-                    $movie));
+                MovieUnifier::fromDB(
+                    'https://imdb.com/title/tt' . $this->appendLeadingZeros( $movie->english->id ),
+                    $movie->english->title,
+                    $movie->rating,
+                    $movie->english->comment,
+                    $movie->cover_image));
         }
 
         return $response;
+    }
+
+    private function appendLeadingZeros(int $number) : string
+    {
+        return sprintf('%07d', $number);
     }
 }
