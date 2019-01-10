@@ -24,6 +24,16 @@ class MoviesController extends Controller
 {
     protected $resultCount = 6;
 
+    public function index()
+    {
+        $movies = Movie::with('hungarian', 'hungarian.mafab', 'hungarian.port', 'english')
+                        ->take($this->resultCount)
+                        ->orderBy('id', 'desc')
+                        ->get();
+
+        return view('pages.movies.index')->with('movies', $movies);
+    }
+
     /**
      * Gets movies for the Movies section in the home page.
      * 
