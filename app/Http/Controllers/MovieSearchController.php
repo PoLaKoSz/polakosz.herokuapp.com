@@ -25,7 +25,7 @@ class MovieSearchController extends Controller
         $this->port = new QuickSearch();
 
         $config = new Config();
-        $config->language = "en";
+        $config->language = "en-US,en";
 
         $this->imdb = new TitleSearch( $config );
     }
@@ -74,13 +74,11 @@ class MovieSearchController extends Controller
         {
             array_push(
                 $response,
-                MovieUnifier::get(
+                MovieUnifier::fromSearch(
                     $movie->getID(),
                     $movie->getURL(),
                     $movie->getHungarianTitle(),
-                    0,
                     $movie->getYear(),
-                    '',
                     $movie->getPoster()
                 ));
         }
@@ -97,18 +95,31 @@ class MovieSearchController extends Controller
     {
         $searchResults = $this->imdb->search(
             $request->movie_name,
-            [ TitleSearch::MOVIE, TitleSearch::TV_SERIES ]);
+            [
+                TitleSearch::MOVIE,
+                TitleSearch::TV_MOVIE,
+                TitleSearch::TV_SERIES,
+                TitleSearch::TV_SPECIAL,
+                TitleSearch::VIDEO,
+                TitleSearch::SHORT
+            ],
+            2
+        );
 
         $response = array();
 
         foreach($searchResults as $imdbMovie)
         {
+            $title = $imdbMovie->orig_title();
+            if ( empty( $title ) )
+                $title = $imdbMovie->title();
+
             array_push(
                 $response,
                 MovieUnifier::fromSearch(
                     $imdbMovie->imdbid(),
                     $imdbMovie->main_url(),
-                    $imdbMovie->title(),
+                    $title,
                     $imdbMovie->year(),
                     $imdbMovie->photo(false)
                 ));

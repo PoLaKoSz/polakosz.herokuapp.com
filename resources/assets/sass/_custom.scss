@@ -292,6 +292,22 @@ a.freemail-color {
     padding: 5vw 0;
 }
 
+.row-no-padding {
+    [class*="col-"] {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+.movie-details-provider-image {
+    padding: 20%;
+}
+
+.small-size-favicon {
+    width: 16px;
+    margin-right: 10px;
+}
+
 
 /* Extra small devices (phones, less than 768px) */
 

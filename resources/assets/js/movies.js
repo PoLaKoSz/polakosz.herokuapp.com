@@ -26,9 +26,24 @@ function getElementByName(elementName) {
     return $('[name="' + elementName + '"]');
 }
 
+var originalHungarianTitle;
+
+var originalEnglishTitle;
+
 function genericSearch( endpoint, query, callbackFunction ) {
+    var container = $( '#' + endpoint );
+    container.empty();
+
+    container.append(
+        '<div class="progress">' +
+            '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>' +
+        '</div>');
+
     if ( query.length < 2 )
+    {
+        container.empty();
         return;
+    }
 
     $.ajax({
         url:       '/api/movies/search/' + endpoint,
@@ -86,15 +101,19 @@ function updateColumn( data ) {
         if (columnName == 'imdb')
         {
             getElementByName( 'title_en' ).val( movie.name );
+            originalEnglishTitle = movie.name;
         }
         else
         {
             getElementByName( 'title_hu' ).val( movie.name );
+            originalHungarianTitle = movie.name;
         }
 
-        getElementByName( 'cover_image' ).val( movie.image );
-
-        $( '#moviePoster' ).html( $( '<img src="' + movie.image + '">' ) );
+        if (columnName == 'imdb')
+        {
+            getElementByName( 'cover_image' ).val( movie.image );
+            $( '#moviePoster' ).html( $( '<img src="' + movie.image + '">' ) );
+        }
     });
 }
 
@@ -118,8 +137,9 @@ var imdbSearchBox    = getElementByName('imdb_search_query');
 var results = [];
 
 genericSearchBox.focusout(function(){
-    mafabSearch( genericSearchBox.val() );
     portSearch( genericSearchBox.val() );
+    mafabSearch( genericSearchBox.val() );
+    imdbSearch( genericSearchBox.val() );
 });
 
 portSearchBox.focusout(function(){
@@ -133,3 +153,46 @@ mafabSearchBox.focusout(function(){
 imdbSearchBox.focusout(function(){
     imdbSearch( imdbSearchBox.val() );
 });
+
+$('#is_tv_series').change(function(){
+    if ($(this).is(':checked')) {
+        $('#seasonContinainer').css('display', 'block');
+    }
+    else {
+        $('#seasonContinainer').css('display', 'none');
+    }
+});
+
+function resetMovieTitle( content ) {
+    getElementByName('title_hu').val(originalHungarianTitle + content );
+    getElementByName('title_en').val(originalEnglishTitle + content );
+}
+
+function addSeason( content ) {
+    resetMovieTitle(' S' + pad( $('#season_number').val(), 2 ) + content );
+}
+
+function addFirstEpisode( content ) {
+    addSeason(' EP' + pad( $('#ep_first_number').val(), 2 ) + content );
+}
+
+function addLastEpisode() {
+    addFirstEpisode('-' + pad( $('#ep_last_number').val(), 2 ) );
+}
+
+$('#season_number').change(function(){
+    addSeason('');
+});
+
+$('#ep_first_number').change(function(){
+    addFirstEpisode('');
+});
+
+$('#ep_last_number').change(function(){
+    addLastEpisode();
+});
+
+function pad (str, max) {
+    str = str.toString();
+    return str.length < max ? pad("0" + str, max) : str;
+}

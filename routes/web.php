@@ -17,8 +17,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     Route::get('/home', 'HomeController@index');
     
+    Route:: get('/movies/',    'MoviesController@index');
     Route:: get('/movies/new', 'MoviesController@create');
     Route::post('/movies',     'MoviesController@store');
+    Route::get('/movies/{id}/edit','MoviesController@edit');
+    Route::patch('/movies/{id}','MoviesController@update');
     Route:: get('/api/movies', 'MoviesController@jSonModule');
 
     Route::get('/about-me', 'AboutMeController@index');

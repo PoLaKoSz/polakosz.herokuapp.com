@@ -19,8 +19,7 @@ class CreateImdbTable extends Migration
             $table->unsignedBigInteger('movie_id');
 
             $table->string('title')
-                ->comment('Movie English name')
-                ->nullable();
+                ->comment('Movie English name');
 
             $table->string('comment')
                 ->nullable();
