@@ -45,7 +45,7 @@
                 {{ trans('login-panel.btn_login') }}
             </button>
 
-            <a class="btn btn-link" href="{{ route('password.request') }}">
+            <a class="btn btn-link" href="{{ LaravelLocalization::localizeURL(route('password.request')) }}">
                 {{ trans('login-panel.forgot_password') }}
             </a>
         </div>
