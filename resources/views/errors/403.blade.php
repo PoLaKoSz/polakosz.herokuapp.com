@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('inc.navbar');
+    @include('inc.navbar')
 
     <div class="container">
         <p class="alert alert-danger">{{ trans('http_statuscodes.403') }}</p>

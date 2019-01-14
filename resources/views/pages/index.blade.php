@@ -16,10 +16,10 @@
                     $title  = trans('projects.title');
                     $design = 'light-section-header';
                 ?>
-                @include('inc.section-header');
+                @include('inc.section-header')
             </div> 
             
-            @include('inc.projects');
+            @include('inc.projects')
         </div>
     </section>
     
