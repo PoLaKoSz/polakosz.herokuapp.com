@@ -87,7 +87,7 @@
         </div>
 
         <div class="row text-center section-padding">
-            <h4>{{ trans('contact.copyright_text', ['year' => '2017']) }}</h4>
+            <h4>{{ trans('contact.copyright_text', ['year' => date("Y")]) }}</h4>
         </div>
 
         <div class="row text-center">
