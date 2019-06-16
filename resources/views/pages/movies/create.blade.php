@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <form action="{{ LaravelLocalization::localizeURL('movies') }}" method="POST" class="col-xs-12 col-md-2">
+            <form action="{{ LaravelLocalization::localizeURL('movies') }}" method="POST" class="col-xs-12 col-md-2" autocomplete="off">
                 <input type="text" name="search_query" class="form-control" placeholder="{{ trans('movies.general_search') }}">
 
                 <input type="text" name="title_hu" class="form-control" placeholder="{{ trans('movies.title_hu') }}" readonly>
