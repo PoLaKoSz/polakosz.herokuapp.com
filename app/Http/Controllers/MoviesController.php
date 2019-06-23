@@ -273,7 +273,6 @@ class MoviesController extends Controller
     {
         $movie->cover_image = $request->input('cover_image');
         $movie->rating      = $request->input('rating');
-        $movie->save();
 
             $hungarian->id      = $movie->id;
             $hungarian->title   = $request->input('title_hu');
@@ -284,8 +283,8 @@ class MoviesController extends Controller
             $imdb->title     = $request->input('title_en');
             $imdb->comment   = $request->input('comment_en');
         
+        $movie->save();
         $movie->hungarian()->save($hungarian);
-        $movie = Movie::find($movie->id);
             $movie->hungarian->port()->save($port);
             $movie->hungarian->mafab()->save($mafab);
         $movie->english()->save($imdb);

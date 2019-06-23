@@ -18,4 +18,11 @@ class Mafab extends Model
 
     // Now id column can be string
     public $incrementing = false;
+
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'hungarian_movie_id';
 }
