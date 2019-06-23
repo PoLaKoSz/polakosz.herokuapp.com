@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MovieSelector;
-use App\Http\Controllers\Movies\UncompleteMovies;
 use Carbon\Carbon;
 use App\HungarianMovie;
 use App\Mafab;
@@ -199,9 +198,7 @@ class MoviesController extends Controller
 
         $this->abstractEditUpdate($request, $movie, $imdb, $hun, $mafab, $port);
 
-        $uncompletedMovie = new UncompleteMovies();
-
-        return redirect(LaravelLocalization::localizeURL('movies/'. $uncompletedMovie->getOneHungarian()->id .'/edit'));
+        return redirect(LaravelLocalization::localizeURL('movies'));
     }
 
 
