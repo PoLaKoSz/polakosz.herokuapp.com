@@ -29,7 +29,7 @@ class MovieUnifier
      * 
      * @return  Object
      */
-    public static function fromDB(string $url, string $title, int $rating, $comment, string $coverImage) : object
+    public static function fromDB(string $url, string $title, int $rating, ?string $comment, string $coverImage) : object
     {
         return (object) [
             'url'     => $url,

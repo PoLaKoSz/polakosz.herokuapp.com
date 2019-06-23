@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
 {
-    public function module()
+    public function module() : array
     {
         $type = 'public';
         $sort = 'pushed';

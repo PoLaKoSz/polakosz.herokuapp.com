@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MovieSelector;
 use Carbon\Carbon;
@@ -23,7 +24,12 @@ class MoviesController extends Controller
 {
     protected $resultCount = 6;
 
-    public function index()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index() : View
     {
         $movies = Movie::with('hungarian', 'hungarian.mafab', 'hungarian.port', 'english')
                         ->take($this->resultCount)
@@ -73,9 +79,9 @@ class MoviesController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function create()
+    public function create() : View
     {
         // TODO: This is only works, if logged in, not only for Admins!!!
         if (Auth::check())
@@ -104,6 +110,11 @@ class MoviesController extends Controller
         return redirect(LaravelLocalization::localizeURL('movies/new'))->with('success', trans('movies.success_save'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     */
     public function edit(int $id)
     {
         if (!Auth::check())
@@ -169,6 +180,12 @@ class MoviesController extends Controller
             ->with('data', $data);
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     */
     public function update(Request $request, $id)
     {
         $this->requestParameterValidation($request);
