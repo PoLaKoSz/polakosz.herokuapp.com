@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\MovieService;
+use App\Services\MovieServiceInterface;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -24,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('App\Services\MovieServiceInterface', function ($app) {
+            return new MovieService();
+        });
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Components\MovieUnifier;
 use App\Movie;
+use App\Services\MovieServiceInterface;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -12,15 +13,17 @@ use Illuminate\Support\Facades\DB;
 
 class MovieSelector
 {
+    private $movieService;
     private $startIndex;
     private $resultCount;
 
 
 
-    function __construct(int $startIndex, int $resultCount)
+    function __construct(MovieServiceInterface $movieService, int $startIndex, int $resultCount)
     {
-        $this->startIndex  = $startIndex;
-        $this->resultCount = $resultCount;
+        $this->movieService = $movieService;
+        $this->startIndex   = $startIndex;
+        $this->resultCount  = $resultCount;
     }
 
 
@@ -31,29 +34,29 @@ class MovieSelector
      * @param   String  User selected UI language (hu OR en)
      * 
      * @return  Array
+     * 
+     * @throws \Invalidargumentexception When $language parameter not 'hu' or 'en'.
      */
     public function get(string $language) : array
     {
+        $movies = $this->movieService->getWithDetails($this->resultCount, $this->startIndex);
+
         if ( $language == 'hu')
         {
-            return $this->formatAsHungarian();
+            return $this->formatAsHungarian($movies);
         }
         else if ( $language == 'en' )
         {
-            return $this->formatAsEnglish();
+            return $this->formatAsEnglish($movies);
         }
+
+        throw new \Invalidargumentexception('Parameter $language should be \'hu\' or \'en\'');
     }
 
 
-    private function formatAsHungarian()
+    private function formatAsHungarian(Collection $movies) : array
     {
         $response = array();
-
-        $movies = Movie::with('hungarian', 'hungarian.mafab', 'hungarian.port')
-                        ->skip( $this->startIndex )
-                        ->take( $this->resultCount )
-                        ->orderBy('id', 'desc')
-                        ->get();
 
         foreach($movies as $movie)
         {
@@ -61,17 +64,23 @@ class MovieSelector
 
             if ($this->hasMafab($hun))
             {
-                array_push( $response,
+                array_push(
+                    $response,
                     $this->addHungarianMovie(
                         'https://mafab.hu/movies/' . $hun->mafab->id . '.html',
                         $movie));
             }
             else if ($this->hasPort($hun))
             {
-                array_push( $response,
+                array_push(
+                    $response,
                     $this->addHungarianMovie(
                         'https://port.hu/adatlap/film/tv/-/movie-' . $hun->port->id,
                         $movie));
+            }
+            else
+            {
+                $this->addFromIMDb($movie, $response);
             }
         }
 
@@ -99,29 +108,28 @@ class MovieSelector
         );
     }
 
-    private function formatAsEnglish()
+    private function formatAsEnglish(Collection $movies) : array
     {
         $response = array();
 
-        $movies = Movie::with('english')
-                        ->skip( $this->startIndex )
-                        ->take( $this->resultCount )
-                        ->orderBy('id', 'desc')
-                        ->get();
-
         foreach($movies as $movie)
         {
-            array_push(
-                $response,
-                MovieUnifier::fromDB(
-                    'https://imdb.com/title/tt' . $this->appendLeadingZeros( $movie->english->id ),
-                    $movie->english->title,
-                    $movie->rating,
-                    $movie->english->comment,
-                    $movie->cover_image));
+            $this->addFromIMDb($movie, $response);
         }
 
         return $response;
+    }
+
+    private function addFromIMDb($movie, array &$container)
+    {
+        array_push(
+            $container,
+            MovieUnifier::fromDB(
+                'https://imdb.com/title/tt' . $this->appendLeadingZeros( $movie->english->id ),
+                $movie->english->title,
+                $movie->rating,
+                $movie->english->comment,
+                $movie->cover_image));
     }
 
     private function appendLeadingZeros(int $number) : string
