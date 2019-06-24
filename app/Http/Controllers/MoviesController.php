@@ -24,6 +24,14 @@ class MoviesController extends Controller
 {
     protected $resultCount = 6;
 
+    public function __construct()
+    {
+        $this->middleware('auth')->except([
+            'index',
+            'jSonModule'
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -83,11 +91,8 @@ class MoviesController extends Controller
      */
     public function create() : View
     {
-        // TODO: This is only works, if logged in, not only for Admins!!!
-        if (Auth::check())
-            return view('pages.movies.create');
-        else
-            abort(403);
+        // TODO: This is a security issue, because all registered user can access it, not just the Admin(s)!!!
+        return view('pages.movies.create');
     }
 
     /**
@@ -117,9 +122,6 @@ class MoviesController extends Controller
      */
     public function edit(int $id)
     {
-        if (!Auth::check())
-            abort(403);
-
         $movie = Movie::find($id);
 
         if ($movie == null)
