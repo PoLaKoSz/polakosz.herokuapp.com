@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Services\GitHubServiceInterface;
 use App\Services\MovieServiceInterface;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class PagesController extends Controller

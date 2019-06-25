@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -45,10 +46,19 @@ class ContactController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(int $id)
+    public function destroy(int $id) : JsonResponse
     {
-        //
+        $contact = Contact::find($id);
+
+        if ($contact == null)
+        {
+            abort(404);
+        }
+
+        $contact->delete();
+        
+        return response()->json(200);
     }
 }

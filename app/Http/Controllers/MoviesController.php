@@ -221,6 +221,24 @@ class MoviesController extends Controller
         return redirect(LaravelLocalization::localizeURL('movies'));
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     */
+    public function destroy(int $id)
+    {
+        $movie = $this->movieService->find($id);
+
+        if ($movie == null)
+        {
+            abort(404);
+        }
+
+        $movie->delete();
+        
+        return response()->json();
+    }
 
     private function isHungarianDetailsAvailable(Model $dbModel) : bool
     {
