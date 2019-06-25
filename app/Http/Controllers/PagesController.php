@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\GitHubServiceInterface;
 use App\Services\MovieServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -13,9 +14,15 @@ class PagesController extends Controller
      */
     private $movieService;
 
-    public function __construct(MovieServiceInterface $movieService)
+    /**
+     * @var GitHubServiceInterface
+     */
+    private $githubService;
+
+    public function __construct(MovieServiceInterface $movieService, GitHubServiceInterface $githubService)
     {
         $this->movieService  = $movieService;
+        $this->githubService = $githubService;
     }
 
     /**
@@ -24,8 +31,8 @@ class PagesController extends Controller
     public function index() : View
     {
         $movies   = new MoviesController($this->movieService);
-        $projects = new ProjectsController;
-        
+        $projects = new ProjectsController($this->githubService);
+
         return view('pages.index')
             ->with('movies',   $movies->module())
             ->with('projects', $projects->module());

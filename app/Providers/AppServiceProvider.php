@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\GitHubService;
+use App\Services\GitHubServiceInterface;
 use App\Services\MovieService;
 use App\Services\MovieServiceInterface;
 use Illuminate\Support\ServiceProvider;
@@ -28,6 +30,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind('App\Services\MovieServiceInterface', function ($app) {
             return new MovieService();
+        });
+
+        $this->app->bind('App\Services\GitHubServiceInterface', function ($app) {
+            return new GitHubService();
         });
     }
 }
