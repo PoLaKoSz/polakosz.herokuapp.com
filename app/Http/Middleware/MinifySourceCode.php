@@ -45,8 +45,6 @@ class MinifySourceCode
 
         $response->setContent($buffer);
 
-        ini_set('zlib.output_compression', 'On'); // Gzip enabled
-
         return $response;
     }
 }
