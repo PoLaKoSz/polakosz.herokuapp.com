@@ -288,8 +288,8 @@ class MoviesController extends Controller
             'title_en'   => 'required|string',
             'port_id'    => 'nullable|integer',
             'mafab_id'   => 'nullable|string',
-            'cover_image'=> 'required|url',
             'imdb_id'    => 'required|integer',
+            'cover_image'=> 'required|string',
             'rating'     => 'required|integer|between:0,101',
         ]);
     }
