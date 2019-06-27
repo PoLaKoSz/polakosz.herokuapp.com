@@ -61,3 +61,4 @@ Because env() function not working on the free 000webhostapp.com the `APP_REG_EN
 
 ## Test
 Run `$ composer run-all-tests` to run the Unit and Feature tests.
+Run `$ composer get-coverage` to generate HTML code coverage.
