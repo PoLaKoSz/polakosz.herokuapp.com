@@ -58,3 +58,6 @@ Because env() function not working on the free 000webhostapp.com the `APP_REG_EN
 ## Develop
 - JS, CSS
   - `npm run watch`
+
+## Test
+Run `$ composer run-all-tests` to run the Unit and Feature tests.
