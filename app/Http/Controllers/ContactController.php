@@ -52,8 +52,7 @@ class ContactController extends Controller
     {
         $contact = Contact::find($id);
 
-        if ($contact == null)
-        {
+        if ($contact == null) {
             abort(404);
         }
 

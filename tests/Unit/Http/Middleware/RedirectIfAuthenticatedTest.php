@@ -20,7 +20,8 @@ class RedirectIfAuthenticatedTest extends TestCase
     {
         $request = Request::create('/login', 'GET');
 
-        $response = self::$middleware->handle($request, function () { });
+        $response = self::$middleware->handle($request, function () {
+        });
         
         $this->assertNull($response);
     }
@@ -33,7 +34,8 @@ class RedirectIfAuthenticatedTest extends TestCase
 
         $request = Request::create('/login', 'GET');
 
-        $response = self::$middleware->handle($request, function () { });
+        $response = self::$middleware->handle($request, function () {
+        });
 
         $this->assertEquals(302, $response->status());
     }

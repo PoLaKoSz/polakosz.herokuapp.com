@@ -9,7 +9,7 @@ class GitHubService implements GitHubServiceInterface
 {
     /**
      * List all public repositories for the specified (PoLáKoSz) user.
-     * 
+     *
      * @return array
      */
     public function get() : array

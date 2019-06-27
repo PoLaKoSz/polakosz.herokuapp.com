@@ -56,6 +56,6 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect( LaravelLocalization::localizeURL('/') );
+        return redirect(LaravelLocalization::localizeURL('/'));
     }
 }

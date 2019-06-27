@@ -30,7 +30,7 @@ class ContactControllerTest extends TestCase
                 'name'    => 'Tom PoLáKoSz',
                 'email'   => 'polakosz@freemail.hu',
                 'message' => 'Hi! How are You?',
-        ]);
+            ]);
 
         $response->assertRedirect('/');
     }

@@ -54,7 +54,7 @@ class MoviesController extends Controller
 
     /**
      * Gets movies for the Movies section in the home page.
-     * 
+     *
      * @return  Movie   array.
      */
     public function module(int $startIndex = 0) : array
@@ -66,7 +66,7 @@ class MoviesController extends Controller
 
     /**
      * Gets movies for the Movies section when clicking on the "More" button.
-     * 
+     *
      * @return  Array
      */
     public function jSonModule(Request $request) : object
@@ -133,8 +133,9 @@ class MoviesController extends Controller
     {
         $movie = $this->movieService->find($id);
 
-        if ($movie == null)
+        if ($movie == null) {
             return redirect(LaravelLocalization::localizeURL('movies/'. ($id + 1) .'/edit'));
+        }
 
         $huMovie = $movie->hungarian;
 
@@ -142,20 +143,23 @@ class MoviesController extends Controller
         $mafab = $this->fakeHungarianDetails();
         $imdb  = $this->fakeIMDbDetails();
 
-        if ($this->isHungarianDetailsAvailable($movie))
-        {
-            if ($this->isMafabDetailsAvailable($huMovie))
+        if ($this->isHungarianDetailsAvailable($movie)) {
+            if ($this->isMafabDetailsAvailable($huMovie)) {
                 $mafab = $huMovie->mafab;
+            }
 
-            if ($this->isPortDetailsAvailable($huMovie))
+            if ($this->isPortDetailsAvailable($huMovie)) {
                 $port = $huMovie->port;
+            }
         }
 
-        if ($this->isEnglishDetailsAvailable($movie))
+        if ($this->isEnglishDetailsAvailable($movie)) {
             $imdb = $movie->english;
+        }
 
-        if ($movie->port == null)
+        if ($movie->port == null) {
             $movie->port = $this->fakeID();
+        }
 
         $data = (object) [
             'id'          => $movie->id,
@@ -199,21 +203,24 @@ class MoviesController extends Controller
                 $mafab = $this->movieService->asMafab();
                 $port = $this->movieService->asPort();
 
-        if ($movie == null)
+        if ($movie == null) {
             abort(404);
+        }
 
-        if ($this->isEnglishDetailsAvailable($movie))
+        if ($this->isEnglishDetailsAvailable($movie)) {
             $imdb = $movie->english;
+        }
 
-        if ($this->isHungarianDetailsAvailable($movie))
-        {
+        if ($this->isHungarianDetailsAvailable($movie)) {
             $hun = $movie->hungarian;
 
-            if ($this->isMafabDetailsAvailable($hun))
+            if ($this->isMafabDetailsAvailable($hun)) {
                 $mafab = $hun->mafab;
+            }
 
-            if ($this->isPortDetailsAvailable($hun))
+            if ($this->isPortDetailsAvailable($hun)) {
                 $port = $hun->port;
+            }
         }
 
         $this->abstractEditUpdate($request, $movie, $imdb, $hun, $mafab, $port);
@@ -230,8 +237,7 @@ class MoviesController extends Controller
     {
         $movie = $this->movieService->find($id);
 
-        if ($movie == null)
-        {
+        if ($movie == null) {
             abort(404);
         }
 

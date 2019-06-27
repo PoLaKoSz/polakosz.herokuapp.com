@@ -62,10 +62,8 @@ class StaticMovieService extends TestCase implements MovieServiceInterface
     {
         $movies = $this->getWithDetails(0, 0);
 
-        foreach ($movies as $movie)
-        {
-            if ($id == $movie->id)
-            {
+        foreach ($movies as $movie) {
+            if ($id == $movie->id) {
                 return $movie;
             }
         }
@@ -75,16 +73,15 @@ class StaticMovieService extends TestCase implements MovieServiceInterface
 
     /**
      * Get all movie with hungarian and english details.
-     * 
+     *
      * @param $count     The maximum required number of items.
      * @param $skipCount Number of items that should be skipped.
-     * 
+     *
      * @return Collection of App\Movie
      */
     public function getWithDetails(int $count, int $skipCount = 0) : Collection
     {
-        if ($this->cache == null)
-        {
+        if ($this->cache == null) {
             $this->cache = new Collection([
                 $this->fullDetailedMovie(),
                 $this->movieWithOnlyPortAndIMDb(),

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Components\MovieUnifier;
 use App\Movie;
 use App\Services\MovieServiceInterface;
@@ -30,23 +29,20 @@ class MovieSelector
 
     /**
      * Get the collection of Movies in a unified format
-     * 
+     *
      * @param   String  User selected UI language (hu OR en)
-     * 
+     *
      * @return  Array
-     * 
+     *
      * @throws \Invalidargumentexception When $language parameter not 'hu' or 'en'.
      */
     public function get(string $language) : array
     {
         $movies = $this->movieService->getWithDetails($this->resultCount, $this->startIndex);
 
-        if ( $language == 'hu')
-        {
+        if ($language == 'hu') {
             return $this->formatAsHungarian($movies);
-        }
-        else if ( $language == 'en' )
-        {
+        } elseif ($language == 'en') {
             return $this->formatAsEnglish($movies);
         }
 
@@ -58,28 +54,26 @@ class MovieSelector
     {
         $response = array();
 
-        foreach($movies as $movie)
-        {
+        foreach ($movies as $movie) {
             $hun = $movie->hungarian;
 
-            if ($this->hasMafab($hun))
-            {
+            if ($this->hasMafab($hun)) {
                 array_push(
                     $response,
                     $this->addHungarianMovie(
                         'https://mafab.hu/movies/' . $hun->mafab->id . '.html',
-                        $movie));
-            }
-            else if ($this->hasPort($hun))
-            {
+                        $movie
+                    )
+                );
+            } elseif ($this->hasPort($hun)) {
                 array_push(
                     $response,
                     $this->addHungarianMovie(
                         'https://port.hu/adatlap/film/tv/-/movie-' . $hun->port->id,
-                        $movie));
-            }
-            else
-            {
+                        $movie
+                    )
+                );
+            } else {
                 $this->addFromIMDb($movie, $response);
             }
         }
@@ -112,8 +106,7 @@ class MovieSelector
     {
         $response = array();
 
-        foreach($movies as $movie)
-        {
+        foreach ($movies as $movie) {
             $this->addFromIMDb($movie, $response);
         }
 
@@ -125,11 +118,13 @@ class MovieSelector
         array_push(
             $container,
             MovieUnifier::fromDB(
-                'https://imdb.com/title/tt' . $this->appendLeadingZeros( $movie->english->id ),
+                'https://imdb.com/title/tt' . $this->appendLeadingZeros($movie->english->id),
                 $movie->english->title,
                 $movie->rating,
                 $movie->english->comment,
-                $movie->cover_image));
+                $movie->cover_image
+            )
+        );
     }
 
     private function appendLeadingZeros(int $number) : string
