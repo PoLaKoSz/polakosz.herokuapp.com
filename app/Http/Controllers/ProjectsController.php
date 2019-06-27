@@ -2,26 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use GitHub;
-use Illuminate\Http\Request;
+use App\Services\GitHubServiceInterface;
 
 class ProjectsController extends Controller
 {
-    public function module()
+    /**
+     * @var GitHubServiceInterface
+     */
+    private $githubService;
+
+    public function __construct(GitHubServiceInterface $githubService)
     {
-        $type = 'public';
-        $sort = 'pushed';
-        $direction = 'desc';
-        $visibility = 'public';
-        $affiliation = 'owner,collaborator';
-        
-        $myRepositories = GitHub::users()->repositories('PoLaKoSz', $type, $sort, $direction, $visibility, $affiliation);
+        $this->githubService = $githubService;
+    }
+
+    public function module() : array
+    {
+        $myRepositories = $this->githubService->get();
 
         $myRepositories = $this->OnlySixRepository($myRepositories);
 
-        $myRepositories = $this->fixRepoLang($myRepositories);
-
-        return $myRepositories;
+        return $this->fixRepoLang($myRepositories);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Components\MovieUnifier;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Imdb\Config;
 use Imdb\TitleSearch;
@@ -33,11 +34,11 @@ class MovieSearchController extends Controller
 
 
     /**
-     * Handle when API request
+     * Handle Mafab.hu search request.
      * 
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function mafab(Request $request)
+    public function mafab(Request $request) : JsonResponse
     {
         $searchResults = $this->mafab->search( $request->movie_name );
 
@@ -60,11 +61,11 @@ class MovieSearchController extends Controller
     }
 
     /**
-     * Handle when API request
+     * Handle Port.hu search request.
      * 
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function port(Request $request)
+    public function port(Request $request) : JsonResponse
     {
         $searchResults = $this->port->get( $request->movie_name );
 
@@ -87,11 +88,11 @@ class MovieSearchController extends Controller
     }
 
     /**
-     * Handle when API request
+     * Handle IMDb.com search request.
      * 
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function imdb(Request $request)
+    public function imdb(Request $request) : JsonResponse
     {
         $searchResults = $this->imdb->search(
             $request->movie_name,

@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
+use App\Services\MovieServiceInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MovieSelector;
-use App\Http\Controllers\Movies\UncompleteMovies;
 use Carbon\Carbon;
 use App\HungarianMovie;
 use App\Mafab;
@@ -22,14 +23,31 @@ use PoLaKoSz\PortHu\MoviePage;
 
 class MoviesController extends Controller
 {
+    /**
+     * @var MovieServiceInterface
+     */
+    private $movieService;
+
     protected $resultCount = 6;
 
-    public function index()
+    public function __construct(MovieServiceInterface $movieService)
     {
-        $movies = Movie::with('hungarian', 'hungarian.mafab', 'hungarian.port', 'english')
-                        ->take($this->resultCount)
-                        ->orderBy('id', 'desc')
-                        ->get();
+        $this->middleware('auth')->except([
+            'index',
+            'jSonModule'
+        ]);
+
+        $this->movieService = $movieService;
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index() : View
+    {
+        $movies = $this->movieService->getWithDetails($this->resultCount);
 
         return view('pages.movies.index')->with('movies', $movies);
     }
@@ -41,7 +59,7 @@ class MoviesController extends Controller
      */
     public function module(int $startIndex = 0) : array
     {
-        $selector = new MovieSelector($startIndex, $this->resultCount);
+        $selector = new MovieSelector($this->movieService, $startIndex, $this->resultCount);
 
         return $selector->get(LaravelLocalization::getCurrentLocale());
     }
@@ -74,15 +92,12 @@ class MoviesController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function create()
+    public function create() : View
     {
-        // TODO: This is only works, if logged in, not only for Admins!!!
-        if (Auth::check())
-            return view('pages.movies.create');
-        else
-            abort(403);
+        // TODO: This is a security issue, because all registered user can access it, not just the Admin(s)!!!
+        return view('pages.movies.create');
     }
 
     /**
@@ -97,28 +112,34 @@ class MoviesController extends Controller
 
         $date = (strlen($request->input('date') == 0) ? Carbon::today() : date('Y-m-d', strtotime($request->input('date'))));
 
-        $movie       = new Movie();
+        $movie       = $this->movieService->create();
         $movie->date = $date;
+        $imdb        = $this->movieService->asIMDb();
+        $huMovie     = $this->movieService->asHungarian();
+        $mafab       = $this->movieService->asMafab();
+        $port        = $this->movieService->asPort();
 
-        $this->abstractEditUpdate($request, $movie, new IMDb(), new HungarianMovie(), new Mafab(), new Port());
+        $this->abstractEditUpdate($request, $movie, $imdb, $huMovie, $mafab, $port);
 
         return redirect(LaravelLocalization::localizeURL('movies/new'))->with('success', trans('movies.success_save'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     */
     public function edit(int $id)
     {
-        if (!Auth::check())
-            abort(403);
-
-        $movie = Movie::find($id);
+        $movie = $this->movieService->find($id);
 
         if ($movie == null)
             return redirect(LaravelLocalization::localizeURL('movies/'. ($id + 1) .'/edit'));
 
         $huMovie = $movie->hungarian;
 
-        $port  = $this->fakePortDetails();
-        $mafab = $this->fakeMafabDetails();
+        $port  = $this->fakeHungarianDetails();
+        $mafab = $this->fakeHungarianDetails();
         $imdb  = $this->fakeIMDbDetails();
 
         if ($this->isHungarianDetailsAvailable($movie))
@@ -135,14 +156,6 @@ class MoviesController extends Controller
 
         if ($movie->port == null)
             $movie->port = $this->fakeID();
-
-        if ($huMovie == null)
-        {
-            $huMovie = (object)[
-                'title'   => '',
-                'comment' => '',
-            ];
-        }
 
         $data = (object) [
             'id'          => $movie->id,
@@ -170,15 +183,21 @@ class MoviesController extends Controller
             ->with('data', $data);
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     */
     public function update(Request $request, $id)
     {
         $this->requestParameterValidation($request);
 
-        $movie = Movie::find($id);
-            $imdb = new IMDb();
-            $hun = new HungarianMovie();
-                $mafab = new Mafab();
-                $port = new Port();
+        $movie = $this->movieService->find($id);
+            $imdb = $this->movieService->asIMDb();
+            $hun = $this->movieService->asHungarian();
+                $mafab = $this->movieService->asMafab();
+                $port = $this->movieService->asPort();
 
         if ($movie == null)
             abort(404);
@@ -199,11 +218,27 @@ class MoviesController extends Controller
 
         $this->abstractEditUpdate($request, $movie, $imdb, $hun, $mafab, $port);
 
-        $uncompletedMovie = new UncompleteMovies();
-
-        return redirect(LaravelLocalization::localizeURL('movies/'. $uncompletedMovie->getOneHungarian()->id .'/edit'));
+        return redirect(LaravelLocalization::localizeURL('movies'));
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     */
+    public function destroy(int $id)
+    {
+        $movie = $this->movieService->find($id);
+
+        if ($movie == null)
+        {
+            abort(404);
+        }
+
+        $movie->delete();
+        
+        return response()->json();
+    }
 
     private function isHungarianDetailsAvailable(Model $dbModel) : bool
     {
@@ -225,16 +260,6 @@ class MoviesController extends Controller
         return $dbModel->english != null;
     }
 
-    private function fakeMafabDetails() : object
-    {
-        return $this->assignInValidIDForHungarian();
-    }
-
-    private function fakePortDetails() : object
-    {
-        return $this->assignInValidIDForHungarian();
-    }
-
     private function fakeIMDbDetails() : object
     {
         return (object)[
@@ -244,7 +269,7 @@ class MoviesController extends Controller
         ];
     }
 
-    private function assignInValidIDForHungarian() : object
+    private function fakeHungarianDetails() : object
     {
         return (object)[
             'id' => $this->fakeID()
@@ -263,8 +288,8 @@ class MoviesController extends Controller
             'title_en'   => 'required|string',
             'port_id'    => 'nullable|integer',
             'mafab_id'   => 'nullable|string',
-            'imdb_id'    => 'required|string',
-            'cover_image'=> 'required|url',
+            'imdb_id'    => 'required|integer',
+            'cover_image'=> 'required|string',
             'rating'     => 'required|integer|between:0,101',
         ]);
     }
@@ -285,7 +310,6 @@ class MoviesController extends Controller
             $imdb->comment   = $request->input('comment_en');
         
         $movie->hungarian()->save($hungarian);
-        $movie = Movie::find($movie->id);
             $movie->hungarian->port()->save($port);
             $movie->hungarian->mafab()->save($mafab);
         $movie->english()->save($imdb);

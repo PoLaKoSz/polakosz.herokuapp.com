@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AboutMeController extends Controller
 {
-    public function index() {
-        return View('pages.about-me');
+    /**
+     * Show the about me module.
+     * 
+     * @return \Illuminate\View\View
+     */
+    public function index() : View
+    {
+        return view('pages.about-me');
     }
 }

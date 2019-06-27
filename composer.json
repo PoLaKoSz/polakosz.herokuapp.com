@@ -36,6 +36,8 @@
         }
     },
     "scripts": {
+        "run-all-tests": ".\\vendor\\bin\\phpunit --bootstrap .\\vendor\\autoload.php --testdox .\\tests\\",
+        "get-coverage": ".\\vendor\\bin\\phpunit --bootstrap .\\vendor\\autoload.php --coverage-html code-cov .\\tests\\",
         "post-root-package-install": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],

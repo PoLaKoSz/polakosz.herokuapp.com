@@ -17,6 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware('auth')->get('/secret', function() {
+    return response()->json(200);
+});
+
 Route::get('/movies/search/mafab', 'MovieSearchController@mafab');
 Route::get('/movies/search/port',  'MovieSearchController@port');
 Route::get('/movies/search/imdb',  'MovieSearchController@imdb');

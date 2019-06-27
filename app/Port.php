@@ -15,4 +15,11 @@ class Port extends Model
 
     // Disable created_at, updated_at TABLE fields
     public $timestamps = false;
+
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'hungarian_movie_id';
 }
