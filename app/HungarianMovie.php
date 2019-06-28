@@ -16,9 +16,4 @@ class HungarianMovie extends Model
     {
         return $this->hasOne('App\Mafab');
     }
-
-    public function port()
-    {
-        return $this->hasOne('App\Port');
-    }
 }

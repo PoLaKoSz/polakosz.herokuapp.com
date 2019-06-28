@@ -22,20 +22,6 @@ class MovieSearchControllerTest extends TestCase
         $this->propertyCheckOn($movie);
     }
 
-    public function testPortResponseReturnNecessaryProperties()
-    {
-        $response = $this->json('GET', 'api/movies/search/port', ['movie_name' => $this->query]);
-
-        $response->assertStatus(200);
-
-        $response = (array) $response->getData();
-        $this->assertGreaterThan(0, count($response));
-
-        $movie = $response[0];
-        
-        $this->propertyCheckOn($movie);
-    }
-
     public function testImdbResponseReturnNecessaryProperties()
     {
         $response = $this->json('GET', 'api/movies/search/imdb', ['movie_name' => $this->query]);

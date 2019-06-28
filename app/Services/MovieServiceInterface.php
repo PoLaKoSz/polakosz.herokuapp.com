@@ -6,7 +6,6 @@ use App\HungarianMovie;
 use App\IMDb;
 use App\Mafab;
 use App\Movie;
-use App\Port;
 use Illuminate\Database\Eloquent\Collection;
 
 interface MovieServiceInterface
@@ -30,11 +29,6 @@ interface MovieServiceInterface
      * Get a new Movie eloquent model.
      */
     public function create() : Movie;
-
-    /**
-     * Get a new Port eloquent model.
-     */
-    public function asPort() : Port;
 
     /**
      * Get a Movie with the given unique ID.

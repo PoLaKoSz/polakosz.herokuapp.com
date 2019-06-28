@@ -97,7 +97,6 @@ class MoviesControllerTest extends TestCase
                 'comment_hu' => 'Magyar komment',
                 'title_en'   => 'Jay and Silent Bob Reboot',
                 'comment_en' => 'English comment',
-                'port_id'    => 42212,
                 'mafab_id'   => 'jay-es-nema-bob-visszavag-11027',
                 'imdb_id'    => '6521876',
                 'cover_image'=> 'jay-and-silent-bob-reboot.jpg',
@@ -160,7 +159,6 @@ class MoviesControllerTest extends TestCase
             ->patch('/movies/' . 999999999, [
                 'title_hu' => 'Magyar cím',
                 'title_en' => 'English title',
-                'port_id' => -1,
                 'mafab_id' => 'Mafab.hu ID',
                 'imdb_id' => -1,
                 'cover_image' => 'just a string',
@@ -182,7 +180,6 @@ class MoviesControllerTest extends TestCase
             ->patch('/movies/1', [
                 'title_hu' => $movie->hungarian->title,
                 'title_en' => $movie->english->title,
-                'port_id' => $movie->hungarian->port->id,
                 'mafab_id' => $movie->hungarian->mafab->id,
                 'imdb_id' => $movie->english->id,
                 'cover_image' => $movie->cover_image,

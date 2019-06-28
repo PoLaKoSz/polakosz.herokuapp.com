@@ -6,7 +6,6 @@ use App\HungarianMovie;
 use App\IMDb;
 use App\Mafab;
 use App\Movie;
-use App\Port;
 use App\Services\MovieServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -45,14 +44,6 @@ class MovieService implements MovieServiceInterface
     }
 
     /**
-     * Get a new Port eloquent model.
-     */
-    public function asPort() : Port
-    {
-        return new Port();
-    }
-
-    /**
      * Get a Movie with the given unique ID.
      */
     public function find(int $id) : ?Movie
@@ -70,7 +61,7 @@ class MovieService implements MovieServiceInterface
      */
     public function getWithDetails(int $count, int $skipCount = 0) : Collection
     {
-        return Movie::with('hungarian', 'hungarian.mafab', 'hungarian.port', 'english')
+        return Movie::with('hungarian', 'hungarian.mafab', 'english')
             ->skip($skipCount)
             ->take($count)
             ->orderBy('id', 'desc')

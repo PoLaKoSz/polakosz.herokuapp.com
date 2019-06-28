@@ -22,13 +22,6 @@
                         <div class="col-xs-4"></div>
                     </div>
 
-                    @if (!empty( $movie->hungarian->port->id ))
-                        <a href="https://port.hu/adatlap/film/tv/-/movie-{{ $movie->hungarian->port->id }}" target="_blank">
-                            <img src="{{ asset('images/movies/favicon.port.ico') }}" alt="Port.hu" class="small-size-favicon">
-                        </a>
-                    @else
-                        <img src="{{ asset('images/movies/favicon.port.png') }}" alt="Port.hu" class="small-size-favicon">
-                    @endif
 
                     @if (!empty( $movie->hungarian->mafab->id ))
                         <a href="https://mafab.hu/movies/{{ $movie->hungarian->mafab->id }}" target="_blank">

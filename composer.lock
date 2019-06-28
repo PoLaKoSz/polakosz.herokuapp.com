@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ada2039b3e0361fbed45b72df9dff25d",
+    "content-hash": "644401fa0f990987d658a908c158a14a",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -2236,55 +2236,6 @@
                 "wrapper"
             ],
             "time": "2018-08-27T13:39:17+00:00"
-        },
-        {
-            "name": "polakosz/porthu",
-            "version": "v3.0.0-alpha.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PoLaKoSz/Port.hu.git",
-                "reference": "ed6f45c04407f235d0c0cebe74443ae640463bdc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PoLaKoSz/Port.hu/zipball/ed6f45c04407f235d0c0cebe74443ae640463bdc",
-                "reference": "ed6f45c04407f235d0c0cebe74443ae640463bdc",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "PoLaKoSz\\PortHu\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tom PoLáKoSz",
-                    "email": "polakosz@freemail.hu",
-                    "homepage": "https://polakosz.000webhostapp.com/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Library to search for movies and to get informations for a specific movie from https://port.hu/",
-            "homepage": "https://github.com/PoLaKoSz/Port.hu",
-            "keywords": [
-                "PoLáKoSz",
-                "Port.hu",
-                "api",
-                "port",
-                "wrapper"
-            ],
-            "time": "2019-01-13T10:31:27+00:00"
         },
         {
             "name": "psr/cache",
@@ -5493,9 +5444,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "polakosz/porthu": 15
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

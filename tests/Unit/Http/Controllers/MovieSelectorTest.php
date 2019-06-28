@@ -32,23 +32,23 @@ class MovieSelectorTest extends TestCase
         $this->assertEquals('jay-and-silent-bob-reboot.jpg', $movie->image);
     }
 
-    public function testGetForHungarianUserWhenMovieHasPortButNotMafabDetails()
+    public function testGetForHungarianUserWhenMovieHasNotMafabDetails()
     {
         $actual = self::$selector->get('hu');
 
         $movie = $actual[1];
-        $this->assertEquals('https://port.hu/adatlap/film/tv/-/movie-2', $movie->url);
-        $this->assertEquals('The Party\'s Just Beginning', $movie->name);
-        $this->assertEquals(5, $movie->rating);
-        $this->assertEquals('Érdekes', $movie->comment);
-        $this->assertEquals('the-party-just-beginning.jpg', $movie->image);
+        $this->assertEquals('https://imdb.com/title/tt1063669', $movie->url);
+        $this->assertEquals('The Wave', $movie->name);
+        $this->assertEquals(6, $movie->rating);
+        $this->assertEquals('Interesting', $movie->comment);
+        $this->assertEquals('the-wave.jpg', $movie->image);
     }
 
     public function testGetForEnglishUserWhenWhenOnlyIMDbDetails()
     {
         $actual = self::$selector->get('en');
 
-        $movie = $actual[2];
+        $movie = $actual[1];
         $this->assertEquals('https://imdb.com/title/tt1063669', $movie->url);
         $this->assertEquals('The Wave', $movie->name);
         $this->assertEquals(6, $movie->rating);

@@ -10,12 +10,10 @@ use Imdb\Config;
 use Imdb\TitleSearch;
 use PoLaKoSz\Mafab\Models\MafabMovie;
 use PoLaKoSz\Mafab\Search;
-use PoLaKoSz\PortHu\QuickSearch;
 
 class MovieSearchController extends Controller
 {
     private $mafab;
-    private $port;
     private $imdb;
 
 
@@ -23,7 +21,6 @@ class MovieSearchController extends Controller
     public function __construct()
     {
         $this->mafab = new Search();
-        $this->port = new QuickSearch();
 
         $config = new Config();
         $config->language = "en-US,en";
@@ -53,33 +50,6 @@ class MovieSearchController extends Controller
                     $movie->getHungarianTitle(),
                     $movie->getYear(),
                     $movie->getThumbnailImage()
-                )
-            );
-        }
-
-        return response()->json($response);
-    }
-
-    /**
-     * Handle Port.hu search request.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function port(Request $request) : JsonResponse
-    {
-        $searchResults = $this->port->get($request->movie_name);
-
-        $response = array();
-
-        foreach ($searchResults as $movie) {
-            array_push(
-                $response,
-                MovieUnifier::fromSearch(
-                    $movie->getID(),
-                    $movie->getURL(),
-                    $movie->getHungarianTitle(),
-                    $movie->getYear(),
-                    $movie->getPoster()
                 )
             );
         }

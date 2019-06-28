@@ -7,16 +7,11 @@
         <div class="row">
             <div id="searchResults_" class="col-xs-12 col-md-8">
                 <div class="row">
-                    <div id="portSearchResults" class="col-xs-4">
-                        <input type="text" name="port_search_query" class="form-control" placeholder="{{ trans('movies.search_on_port') }}">
-
-                        <div id="port"></div>
-                    </div>
-                    <div id="mafabSearchResults" class="col-xs-4">
+                    <div id="mafabSearchResults" class="col-xs-6">
                         <input type="text" name="mafab_search_query" class="form-control" placeholder="{{ trans('movies.search_on_mafab') }}">
                         <div id="mafab"></div>
                     </div>
-                    <div id="imdbSearchResults" class="col-xs-4">
+                    <div id="imdbSearchResults" class="col-xs-6">
                         <input type="text" name="imdb_search_query" class="form-control" placeholder="{{ trans('movies.search_on_imdb') }}">
                         <div id="imdb"></div>
                     </div>
@@ -39,8 +34,6 @@
                 </fieldset>
 
                 <input type="hidden" name="rating" class="form-control" placeholder="{{ trans('movies.rating') }}">
-
-                <input type="text" name="port_id" class="form-control" placeholder="{{ trans('movies.port_id_hu_placeholder') }}" readonly>
 
                 <input type="text" name="mafab_id" class="form-control" placeholder="{{ trans('movies.mafab_id_hu_placeholder') }}" readonly>
 

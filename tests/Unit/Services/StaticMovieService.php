@@ -6,7 +6,6 @@ use App\HungarianMovie;
 use App\IMDb;
 use App\Mafab;
 use App\Movie;
-use App\Port;
 use App\Services\MovieServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Tests\TestCase;
@@ -48,14 +47,6 @@ class StaticMovieService extends TestCase implements MovieServiceInterface
     }
 
     /**
-     * Get a new Port eloquent model.
-     */
-    public function asPort() : Port
-    {
-        return new Port();
-    }
-
-    /**
      * Get a Movie with the given unique ID.
      */
     public function find(int $id) : ?Movie
@@ -84,7 +75,6 @@ class StaticMovieService extends TestCase implements MovieServiceInterface
         if ($this->cache == null) {
             $this->cache = new Collection([
                 $this->fullDetailedMovie(),
-                $this->movieWithOnlyPortAndIMDb(),
                 $this->movieWithOnlyIMDb(),
             ]);
         }
@@ -109,12 +99,7 @@ class StaticMovieService extends TestCase implements MovieServiceInterface
             'id' => 'jay-es-nema-bob-visszavag-11027',
         ]);
 
-        $port = factory(\App\Port::class)->make([
-            'id' => 42212,
-        ]);
-
         $hu->setRelation('mafab', $mafab);
-        $hu->setRelation('port', $port);
         $movie->setRelation('hungarian', $hu);
 
         $imdb = factory(\App\IMDb::class)->make([
@@ -123,40 +108,6 @@ class StaticMovieService extends TestCase implements MovieServiceInterface
             'comment' => 'No comment :D',
         ]);
 
-        $movie->setRelation('english', $imdb);
-        
-        return $movie;
-    }
-
-    private function movieWithOnlyPortAndIMDb() : Movie
-    {
-        $movie = factory('App\Movie')->make([
-            'id' => 99000 + 1,
-            'rating' => 5,
-            'cover_image' => 'the-party-just-beginning.jpg',
-        ]);
-
-        $hu = factory(\App\HungarianMovie::class)->make([
-            'title' => 'The Party\'s Just Beginning',
-            'comment' => 'Érdekes',
-        ]);
-
-        $mafab = factory(\App\Mafab::class)->make();
-
-        $port = factory(\App\Port::class)->make([
-            'id' => 2,
-        ]);
-
-        $hu->setRelation('mafab', $mafab);
-        $hu->setRelation('port', $port);
-        $movie->setRelation('hungarian', $hu);
-
-        $imdb = factory(\App\IMDb::class)->make([
-            'id' => 6219314,
-            'title' => 'The Party\'s Just Beginning',
-            'comment' => 'Interesting',
-        ]);
-        
         $movie->setRelation('english', $imdb);
         
         return $movie;
@@ -173,9 +124,6 @@ class StaticMovieService extends TestCase implements MovieServiceInterface
         $hu = factory(\App\HungarianMovie::class)->make();
             $mafab = factory(\App\Mafab::class)->make();
             $hu->setRelation('mafab', $mafab);
-
-            $port = factory(\App\Port::class)->make();
-            $hu->setRelation('port', $port);
 
         $movie->setRelation('hungarian', $hu);
 

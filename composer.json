@@ -13,8 +13,7 @@
         "laravel/tinker": "~1.0",
         "mcamara/laravel-localization": "^1.2",
         "php-http/guzzle6-adapter": "^1.1",
-        "polakosz/mafab": "^1.1",
-        "polakosz/porthu": "3.0.0-alpha.1"
+        "polakosz/mafab": "^1.1"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

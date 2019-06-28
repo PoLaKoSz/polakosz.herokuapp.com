@@ -16,16 +16,12 @@ class MovieSelector
     private $startIndex;
     private $resultCount;
 
-
-
     function __construct(MovieServiceInterface $movieService, int $startIndex, int $resultCount)
     {
         $this->movieService = $movieService;
         $this->startIndex   = $startIndex;
         $this->resultCount  = $resultCount;
     }
-
-
 
     /**
      * Get the collection of Movies in a unified format
@@ -65,14 +61,6 @@ class MovieSelector
                         $movie
                     )
                 );
-            } elseif ($this->hasPort($hun)) {
-                array_push(
-                    $response,
-                    $this->addHungarianMovie(
-                        'https://port.hu/adatlap/film/tv/-/movie-' . $hun->port->id,
-                        $movie
-                    )
-                );
             } else {
                 $this->addFromIMDb($movie, $response);
             }
@@ -84,11 +72,6 @@ class MovieSelector
     private function hasMafab($movie) : bool
     {
         return $movie->mafab->id != null;
-    }
-
-    private function hasPort($movie) : bool
-    {
-        return $movie->port->id != null;
     }
 
     private function addHungarianMovie(string $url, Movie $movie) : object
