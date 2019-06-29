@@ -2,9 +2,7 @@
 
 namespace App\Services;
 
-use App\HungarianMovie;
 use App\IMDb;
-use App\Mafab;
 use App\Movie;
 use App\Services\MovieServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
@@ -12,27 +10,11 @@ use Illuminate\Database\Eloquent\Collection;
 class MovieService implements MovieServiceInterface
 {
     /**
-     * Get a new HungarianMovie eloquent model.
-     */
-    public function asHungarian() : HungarianMovie
-    {
-        return new HungarianMovie();
-    }
-
-    /**
      * Get a new IMDb eloquent model.
      */
     public function asIMDb() : IMDb
     {
         return new IMDb();
-    }
-
-    /**
-     * Get a new Mafab eloquent model.
-     */
-    public function asMafab() : Mafab
-    {
-        return new Mafab();
     }
 
     /**
@@ -61,7 +43,7 @@ class MovieService implements MovieServiceInterface
      */
     public function getWithDetails(int $count, int $skipCount = 0) : Collection
     {
-        return Movie::with('hungarian', 'hungarian.mafab', 'english')
+        return Movie::with('english')
             ->skip($skipCount)
             ->take($count)
             ->orderBy('id', 'desc')

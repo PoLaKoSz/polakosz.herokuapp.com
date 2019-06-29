@@ -2,28 +2,16 @@
 
 namespace App\Services;
 
-use App\HungarianMovie;
 use App\IMDb;
-use App\Mafab;
 use App\Movie;
 use Illuminate\Database\Eloquent\Collection;
 
 interface MovieServiceInterface
 {
     /**
-     * Get a new HungarianMovie eloquent model.
-     */
-    public function asHungarian() : HungarianMovie;
-
-    /**
      * Get a new IMDb eloquent model.
      */
     public function asIMDb() : IMDb;
-
-    /**
-     * Get a new Mafab eloquent model.
-     */
-    public function asMafab() : Mafab;
 
     /**
      * Get a new Movie eloquent model.

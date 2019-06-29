@@ -24,6 +24,22 @@ class MoviesControllerTest extends TestCase
         self::$fullyDetailedMovieID = 1113;
     }
 
+    public function testIndexReturnDataWhenIdValid()
+    {
+        $response = self::$moviesController->index();
+
+        $actualMovie = $response->getData()['movies'][0];
+        $this->assertEquals(99000, $actualMovie->id);
+        $this->assertEquals(6, $actualMovie->rating);
+        $this->assertEquals('jay-and-silent-bob-reboot.jpg', $actualMovie->cover_image);
+        $this->assertEquals('Jay és Néma Bob visszavág', $actualMovie->hu_title);
+        $this->assertEquals('Füvet szívsz ... :)', $actualMovie->hu_comment);
+        $this->assertEquals('jay-es-nema-bob-visszavag-11027', $actualMovie->mafab_id);
+        $this->assertEquals('Jay and Silent Bob Reboot', $actualMovie->english->title);
+        $this->assertEquals('No comment :D', $actualMovie->english->comment);
+        $this->assertEquals(6521876, $actualMovie->english->id);
+    }
+
     public function testEditReturnCorrectViewWhenIdValid()
     {
         $user = factory(User::class)->create();

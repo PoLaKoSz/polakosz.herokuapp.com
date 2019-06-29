@@ -2,9 +2,7 @@
 
 namespace Tests\Unit\Services;
 
-use App\HungarianMovie;
 use App\IMDb;
-use App\Mafab;
 use App\Movie;
 use App\Services\MovieServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
@@ -15,27 +13,11 @@ class StaticMovieService extends TestCase implements MovieServiceInterface
     private $cache;
 
     /**
-     * Get a new HungarianMovie eloquent model.
-     */
-    public function asHungarian() : HungarianMovie
-    {
-        return new HungarianMovie();
-    }
-
-    /**
      * Get a new IMDb eloquent model.
      */
     public function asIMDb() : IMDb
     {
         return new IMDb();
-    }
-
-    /**
-     * Get a new Mafab eloquent model.
-     */
-    public function asMafab() : Mafab
-    {
-        return new Mafab();
     }
 
     /**
@@ -84,23 +66,14 @@ class StaticMovieService extends TestCase implements MovieServiceInterface
 
     private function fullDetailedMovie() : Movie
     {
-        $movie = factory('App\Movie')->make([
+        $movie = factory(\App\Movie::class)->make([
             'id' => 99000 + 0,
+            'hu_title' => 'Jay és Néma Bob visszavág',
+            'hu_comment' => 'Füvet szívsz ... :)',
+            'mafab_id' => 'jay-es-nema-bob-visszavag-11027',
             'rating' => 6,
             'cover_image' => 'jay-and-silent-bob-reboot.jpg',
         ]);
-
-        $hu = factory(\App\HungarianMovie::class)->make([
-            'title' => 'Jay és Néma Bob visszavág',
-            'comment' => 'Füvet szívsz ... :)',
-        ]);
-
-        $mafab = factory(\App\Mafab::class)->make([
-            'id' => 'jay-es-nema-bob-visszavag-11027',
-        ]);
-
-        $hu->setRelation('mafab', $mafab);
-        $movie->setRelation('hungarian', $hu);
 
         $imdb = factory(\App\IMDb::class)->make([
             'id' => 6521876,
@@ -120,12 +93,6 @@ class StaticMovieService extends TestCase implements MovieServiceInterface
             'rating' => 6,
             'cover_image' => 'the-wave.jpg',
         ]);
-
-        $hu = factory(\App\HungarianMovie::class)->make();
-            $mafab = factory(\App\Mafab::class)->make();
-            $hu->setRelation('mafab', $mafab);
-
-        $movie->setRelation('hungarian', $hu);
 
         $imdb = factory(\App\IMDb::class)->make([
             'id' => 1063669,

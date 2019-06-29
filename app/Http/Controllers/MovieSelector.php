@@ -51,13 +51,11 @@ class MovieSelector
         $response = array();
 
         foreach ($movies as $movie) {
-            $hun = $movie->hungarian;
-
-            if ($this->hasMafab($hun)) {
+            if ($this->hasMafab($movie)) {
                 array_push(
                     $response,
                     $this->addHungarianMovie(
-                        'https://mafab.hu/movies/' . $hun->mafab->id . '.html',
+                        'https://mafab.hu/movies/' . $movie->mafab_id . '.html',
                         $movie
                     )
                 );
@@ -71,16 +69,16 @@ class MovieSelector
 
     private function hasMafab($movie) : bool
     {
-        return $movie->mafab->id != null;
+        return $movie->mafab_id != null;
     }
 
     private function addHungarianMovie(string $url, Movie $movie) : object
     {
         return MovieUnifier::fromDB(
             $url,
-            $movie->hungarian->title,
+            $movie->hu_title,
             $movie->rating,
-            $movie->hungarian->comment,
+            $movie->hu_comment,
             $movie->cover_image
         );
     }

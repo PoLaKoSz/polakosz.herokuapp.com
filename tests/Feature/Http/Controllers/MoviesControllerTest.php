@@ -85,7 +85,7 @@ class MoviesControllerTest extends TestCase
             'rating'
         ]);
     }
-    
+
     public function testStoreReturnCorrectViewWhenUserAuthenticated()
     {
         $user = factory(User::class)->create();
@@ -178,10 +178,10 @@ class MoviesControllerTest extends TestCase
         $response = $this->withoutMiddleware(MinifySourceCode::class)
             ->actingAs($user)
             ->patch('/movies/1', [
-                'title_hu' => $movie->hungarian->title,
                 'title_en' => $movie->english->title,
-                'mafab_id' => $movie->hungarian->mafab->id,
                 'imdb_id' => $movie->english->id,
+                'title_hu' => $movie->hu_title,
+                'mafab_id' => $movie->mafab_id,
                 'cover_image' => $movie->cover_image,
                 'rating' => $movie->rating,
             ]);

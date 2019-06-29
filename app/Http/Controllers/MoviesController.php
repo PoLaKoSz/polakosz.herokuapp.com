@@ -11,8 +11,6 @@ use App\Services\MovieServiceInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MovieSelector;
 use Carbon\Carbon;
-use App\HungarianMovie;
-use App\Mafab;
 use App\Movie;
 use App\IMDb;
 use LaravelLocalization;
@@ -111,10 +109,8 @@ class MoviesController extends Controller
         $movie       = $this->movieService->create();
         $movie->date = $date;
         $imdb        = $this->movieService->asIMDb();
-        $huMovie     = $this->movieService->asHungarian();
-        $mafab       = $this->movieService->asMafab();
 
-        $this->abstractEditUpdate($request, $movie, $imdb, $huMovie, $mafab);
+        $this->abstractEditUpdate($request, $movie, $imdb);
 
         return redirect(LaravelLocalization::localizeURL('movies/new'))->with('success', trans('movies.success_save'));
     }
@@ -132,15 +128,7 @@ class MoviesController extends Controller
             return redirect(LaravelLocalization::localizeURL('movies/'. ($id + 1) .'/edit'));
         }
 
-        $huMovie = $movie->hungarian;
-        $mafab = $this->fakeHungarianDetails();
         $imdb  = $this->fakeIMDbDetails();
-
-        if ($this->isHungarianDetailsAvailable($movie)) {
-            if ($this->isMafabDetailsAvailable($huMovie)) {
-                $mafab = $huMovie->mafab;
-            }
-        }
 
         if ($this->isEnglishDetailsAvailable($movie)) {
             $imdb = $movie->english;
@@ -151,9 +139,11 @@ class MoviesController extends Controller
             'rating'      => $movie->rating,
             'cover_image' => $movie->cover_image,
             'hu'          => (object) [
-                'title'   => $huMovie->title,
-                'comment' => $huMovie->comment,
-                'mafab'   => $mafab
+                'title'   => $movie->hu_title,
+                'comment' => $movie->hu_comment,
+                'mafab'   => (object) [
+                    'id'  => $movie->mafab_id
+                ]
             ],
             'en'          => (object) [
                 'title'   => $imdb->title,
@@ -179,15 +169,14 @@ class MoviesController extends Controller
         $this->requestParameterValidation($request);
 
         $movie = $this->movieService->find($id);
-            $imdb = $this->movieService->asIMDb();
-            $hun = $this->movieService->asHungarian();
-                $mafab = $this->movieService->asMafab();
 
         if ($movie == null) {
             abort(404);
         }
 
-        $this->createOrUpdate($request, $movie);
+        $imdb = $movie->english;
+
+        $this->abstractEditUpdate($request, $movie, $imdb);
 
         return redirect(LaravelLocalization::localizeURL('movies'));
     }
@@ -210,16 +199,6 @@ class MoviesController extends Controller
         return response()->json();
     }
 
-    private function isHungarianDetailsAvailable(Model $dbModel) : bool
-    {
-        return $dbModel->hungarian != null;
-    }
-
-    private function isMafabDetailsAvailable(Model $dbModel) : bool
-    {
-        return $dbModel->mafab != null;
-    }
-
     private function isEnglishDetailsAvailable(Model $dbModel) : bool
     {
         return $dbModel->english != null;
@@ -231,13 +210,6 @@ class MoviesController extends Controller
             'id'      => $this->fakeID(),
             'title'   => '',
             'comment' => ''
-        ];
-    }
-
-    private function fakeHungarianDetails() : object
-    {
-        return (object)[
-            'id' => $this->fakeID()
         ];
     }
 
@@ -258,22 +230,20 @@ class MoviesController extends Controller
         ]);
     }
 
-    private function abstractEditUpdate(Request $request, Movie $movie, IMDb $imdb, HungarianMovie $hungarian, Mafab $mafab)
+    private function abstractEditUpdate(Request $request, Movie $movie, IMDb $imdb)
     {
         $movie->cover_image = $request->input('cover_image');
         $movie->rating      = $request->input('rating');
+        $movie->hu_title    = $request->input('title_hu');
+        $movie->hu_comment  = $request->input('comment_hu');
+        $movie->mafab_id    = $request->input('mafab_id');
+
         $movie->save();
 
-            $hungarian->id      = $movie->id;
-            $hungarian->title   = $request->input('title_hu');
-            $hungarian->comment = $request->input('comment_hu');
-                $mafab->id       = $request->input('mafab_id');
             $imdb->id        = $request->input('imdb_id');
             $imdb->title     = $request->input('title_en');
             $imdb->comment   = $request->input('comment_en');
-        
-        $movie->hungarian()->save($hungarian);
-            $movie->hungarian->mafab()->save($mafab);
+
         $movie->english()->save($imdb);
     }
 }
