@@ -27,9 +27,9 @@ class ProjectsController extends Controller
 
     /**
      * Return the first 6 item from the given array
-     * 
+     *
      * @param  Array    $repositoryArray
-     * 
+     *
      * @return Array
      */
     private function OnlySixRepository(array $repositoryArray) : array
@@ -39,17 +39,15 @@ class ProjectsController extends Controller
 
     /**
      * Adds repository language if doesn't have.
-     * 
+     *
      * @param  Array    $repositories
-     * 
+     *
      * @return Array
      */
     private function fixRepoLang(array $repositories) : array
     {
-        foreach ($repositories as &$repository)
-        {
-            if ( !isset($repository['language']))
-            {
+        foreach ($repositories as &$repository) {
+            if (!isset($repository['language'])) {
                 $repository['language'] = 'unknown';
             }
         }

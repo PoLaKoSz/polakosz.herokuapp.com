@@ -11,15 +11,8 @@ use App\Services\MovieServiceInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MovieSelector;
 use Carbon\Carbon;
-use App\HungarianMovie;
-use App\Mafab;
 use App\Movie;
-use App\Port;
-use App\IMDb;
 use LaravelLocalization;
-
-use PoLaKoSz\PortHu\Deserializers\MoviePageDeserializer;
-use PoLaKoSz\PortHu\MoviePage;
 
 class MoviesController extends Controller
 {
@@ -54,8 +47,8 @@ class MoviesController extends Controller
 
     /**
      * Gets movies for the Movies section in the home page.
-     * 
-     * @return  Movie   array.
+     *
+     * @return  Array of App\Movie.
      */
     public function module(int $startIndex = 0) : array
     {
@@ -66,7 +59,7 @@ class MoviesController extends Controller
 
     /**
      * Gets movies for the Movies section when clicking on the "More" button.
-     * 
+     *
      * @return  Array
      */
     public function jSonModule(Request $request) : object
@@ -114,12 +107,8 @@ class MoviesController extends Controller
 
         $movie       = $this->movieService->create();
         $movie->date = $date;
-        $imdb        = $this->movieService->asIMDb();
-        $huMovie     = $this->movieService->asHungarian();
-        $mafab       = $this->movieService->asMafab();
-        $port        = $this->movieService->asPort();
 
-        $this->abstractEditUpdate($request, $movie, $imdb, $huMovie, $mafab, $port);
+        $this->abstractEditUpdate($request, $movie);
 
         return redirect(LaravelLocalization::localizeURL('movies/new'))->with('success', trans('movies.success_save'));
     }
@@ -133,48 +122,26 @@ class MoviesController extends Controller
     {
         $movie = $this->movieService->find($id);
 
-        if ($movie == null)
+        if ($movie == null) {
             return redirect(LaravelLocalization::localizeURL('movies/'. ($id + 1) .'/edit'));
-
-        $huMovie = $movie->hungarian;
-
-        $port  = $this->fakeHungarianDetails();
-        $mafab = $this->fakeHungarianDetails();
-        $imdb  = $this->fakeIMDbDetails();
-
-        if ($this->isHungarianDetailsAvailable($movie))
-        {
-            if ($this->isMafabDetailsAvailable($huMovie))
-                $mafab = $huMovie->mafab;
-
-            if ($this->isPortDetailsAvailable($huMovie))
-                $port = $huMovie->port;
         }
-
-        if ($this->isEnglishDetailsAvailable($movie))
-            $imdb = $movie->english;
-
-        if ($movie->port == null)
-            $movie->port = $this->fakeID();
 
         $data = (object) [
             'id'          => $movie->id,
-            'old_port_URL'=> MoviePageDeserializer::BASE_URL . MoviePageDeserializer::ENDPOINT_URL . $movie->port,
-            'old_title'   => $movie->title,
-            'old_comment' => $movie->comment,
             'rating'      => $movie->rating,
             'cover_image' => $movie->cover_image,
             'hu'          => (object) [
-                'title'   => $huMovie->title,
-                'comment' => $huMovie->comment,
-                'port'    => $port,
-                'mafab'   => $mafab
+                'title'   => $movie->hu_title,
+                'comment' => $movie->hu_comment,
+                'mafab'   => (object) [
+                    'id'  => $movie->mafab_id
+                ]
             ],
             'en'          => (object) [
-                'title'   => $imdb->title,
-                'comment' => $imdb->comment,
+                'title'   => $movie->en_title,
+                'comment' => $movie->en_comment,
                 'imdb'    => (object) [
-                    'id'  => $imdb->id,
+                    'id'  => $movie->imdb_id,
                 ]
             ]
         ];
@@ -194,29 +161,12 @@ class MoviesController extends Controller
         $this->requestParameterValidation($request);
 
         $movie = $this->movieService->find($id);
-            $imdb = $this->movieService->asIMDb();
-            $hun = $this->movieService->asHungarian();
-                $mafab = $this->movieService->asMafab();
-                $port = $this->movieService->asPort();
 
-        if ($movie == null)
+        if ($movie == null) {
             abort(404);
-
-        if ($this->isEnglishDetailsAvailable($movie))
-            $imdb = $movie->english;
-
-        if ($this->isHungarianDetailsAvailable($movie))
-        {
-            $hun = $movie->hungarian;
-
-            if ($this->isMafabDetailsAvailable($hun))
-                $mafab = $hun->mafab;
-
-            if ($this->isPortDetailsAvailable($hun))
-                $port = $hun->port;
         }
 
-        $this->abstractEditUpdate($request, $movie, $imdb, $hun, $mafab, $port);
+        $this->abstractEditUpdate($request, $movie);
 
         return redirect(LaravelLocalization::localizeURL('movies'));
     }
@@ -230,8 +180,7 @@ class MoviesController extends Controller
     {
         $movie = $this->movieService->find($id);
 
-        if ($movie == null)
-        {
+        if ($movie == null) {
             abort(404);
         }
 
@@ -240,53 +189,11 @@ class MoviesController extends Controller
         return response()->json();
     }
 
-    private function isHungarianDetailsAvailable(Model $dbModel) : bool
-    {
-        return $dbModel->hungarian != null;
-    }
-
-    private function isPortDetailsAvailable(Model $dbModel) : bool
-    {
-        return $dbModel->port != null;
-    }
-
-    private function isMafabDetailsAvailable(Model $dbModel) : bool
-    {
-        return $dbModel->mafab != null;
-    }
-
-    private function isEnglishDetailsAvailable(Model $dbModel) : bool
-    {
-        return $dbModel->english != null;
-    }
-
-    private function fakeIMDbDetails() : object
-    {
-        return (object)[
-            'id'      => $this->fakeID(),
-            'title'   => '',
-            'comment' => ''
-        ];
-    }
-
-    private function fakeHungarianDetails() : object
-    {
-        return (object)[
-            'id' => $this->fakeID()
-        ];
-    }
-
-    private function fakeID() : string
-    {
-        return '';
-    }
-
     private function requestParameterValidation(Request $request)
     {
         $this->validate($request, [
             'title_hu'   => 'required|string',
             'title_en'   => 'required|string',
-            'port_id'    => 'nullable|integer',
             'mafab_id'   => 'nullable|string',
             'imdb_id'    => 'required|integer',
             'cover_image'=> 'required|string',
@@ -294,24 +201,18 @@ class MoviesController extends Controller
         ]);
     }
 
-    private function abstractEditUpdate(Request $request, Movie $movie, IMDb $imdb, HungarianMovie $hungarian, Mafab $mafab, Port $port)
+    private function abstractEditUpdate(Request $request, Movie $movie)
     {
         $movie->cover_image = $request->input('cover_image');
         $movie->rating      = $request->input('rating');
-        $movie->save();
+        $movie->hu_title    = $request->input('title_hu');
+        $movie->hu_comment  = $request->input('comment_hu');
+        $movie->mafab_id    = $request->input('mafab_id');
 
-            $hungarian->id      = $movie->id;
-            $hungarian->title   = $request->input('title_hu');
-            $hungarian->comment = $request->input('comment_hu');
-                $mafab->id       = $request->input('mafab_id');
-                $port->id        = $request->input('port_id');
-            $imdb->id        = $request->input('imdb_id');
-            $imdb->title     = $request->input('title_en');
-            $imdb->comment   = $request->input('comment_en');
-        
-        $movie->hungarian()->save($hungarian);
-            $movie->hungarian->port()->save($port);
-            $movie->hungarian->mafab()->save($mafab);
-        $movie->english()->save($imdb);
+        $movie->imdb_id        = $request->input('imdb_id');
+        $movie->en_title     = $request->input('title_en');
+        $movie->en_comment   = $request->input('comment_en');
+
+        $movie->save();
     }
 }

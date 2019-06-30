@@ -13,14 +13,14 @@
         "laravel/tinker": "~1.0",
         "mcamara/laravel-localization": "^1.2",
         "php-http/guzzle6-adapter": "^1.1",
-        "polakosz/mafab": "^1.1",
-        "polakosz/porthu": "3.0.0-alpha.1"
+        "polakosz/mafab": "^1.1"
     },
     "require-dev": {
+        "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~6.0",
-        "filp/whoops": "~2.0"
+        "squizlabs/php_codesniffer": "^3.4"
     },
     "autoload": {
         "classmap": [
@@ -38,6 +38,9 @@
     "scripts": {
         "run-all-tests": ".\\vendor\\bin\\phpunit --bootstrap .\\vendor\\autoload.php --testdox .\\tests\\",
         "get-coverage": ".\\vendor\\bin\\phpunit --bootstrap .\\vendor\\autoload.php --coverage-html code-cov .\\tests\\",
+
+        "run-tidy": ".\\vendor\\bin\\phpcbf --extensions=php ./app --standard=PSR2 && .\\vendor\\bin\\phpcbf --extensions=php ./tests --standard=PSR2",
+
         "post-root-package-install": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],

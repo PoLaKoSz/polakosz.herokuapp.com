@@ -10,12 +10,10 @@ use Imdb\Config;
 use Imdb\TitleSearch;
 use PoLaKoSz\Mafab\Models\MafabMovie;
 use PoLaKoSz\Mafab\Search;
-use PoLaKoSz\PortHu\QuickSearch;
 
 class MovieSearchController extends Controller
 {
     private $mafab;
-    private $port;
     private $imdb;
 
 
@@ -23,29 +21,27 @@ class MovieSearchController extends Controller
     public function __construct()
     {
         $this->mafab = new Search();
-        $this->port = new QuickSearch();
 
         $config = new Config();
         $config->language = "en-US,en";
 
-        $this->imdb = new TitleSearch( $config );
+        $this->imdb = new TitleSearch($config);
     }
 
 
 
     /**
      * Handle Mafab.hu search request.
-     * 
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function mafab(Request $request) : JsonResponse
     {
-        $searchResults = $this->mafab->search( $request->movie_name );
+        $searchResults = $this->mafab->search($request->movie_name);
 
         $response = array();
 
-        foreach($searchResults as $movie)
-        {
+        foreach ($searchResults as $movie) {
             array_push(
                 $response,
                 MovieUnifier::fromSearch(
@@ -54,42 +50,16 @@ class MovieSearchController extends Controller
                     $movie->getHungarianTitle(),
                     $movie->getYear(),
                     $movie->getThumbnailImage()
-                ));
+                )
+            );
         }
 
-        return response()->json( $response );
-    }
-
-    /**
-     * Handle Port.hu search request.
-     * 
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function port(Request $request) : JsonResponse
-    {
-        $searchResults = $this->port->get( $request->movie_name );
-
-        $response = array();
-
-        foreach($searchResults as $movie)
-        {
-            array_push(
-                $response,
-                MovieUnifier::fromSearch(
-                    $movie->getID(),
-                    $movie->getURL(),
-                    $movie->getHungarianTitle(),
-                    $movie->getYear(),
-                    $movie->getPoster()
-                ));
-        }
-
-        return response()->json( $response );
+        return response()->json($response);
     }
 
     /**
      * Handle IMDb.com search request.
-     * 
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function imdb(Request $request) : JsonResponse
@@ -109,11 +79,11 @@ class MovieSearchController extends Controller
 
         $response = array();
 
-        foreach($searchResults as $imdbMovie)
-        {
+        foreach ($searchResults as $imdbMovie) {
             $title = $imdbMovie->orig_title();
-            if ( empty( $title ) )
+            if (empty($title)) {
                 $title = $imdbMovie->title();
+            }
 
             array_push(
                 $response,
@@ -123,9 +93,10 @@ class MovieSearchController extends Controller
                     $title,
                     $imdbMovie->year(),
                     $imdbMovie->photo(false)
-                ));
+                )
+            );
         }
 
-        return response()->json( $response );
+        return response()->json($response);
     }
 }

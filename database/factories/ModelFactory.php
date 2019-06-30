@@ -46,12 +46,6 @@ $factory->define(App\Mafab::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Port::class, function (Faker\Generator $faker) {
-    return [
-        'id' => null,
-    ];
-});
-
 $factory->define(App\IMDb::class, function (Faker\Generator $faker) {
     return [
         'id' => $faker->unique()->numberBetween(99999, 999999),

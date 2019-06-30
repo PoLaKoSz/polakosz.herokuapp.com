@@ -7,15 +7,11 @@
         <div class="row">
             <div id="searchResults_" class="col-xs-12 col-md-8">
                 <div class="row">
-                    <div id="portSearchResults" class="col-xs-4">
-                        <input type="text" name="port_search_query" value="{{ $data->hu->title }}" class="form-control" placeholder="{{ trans('movies.search_on_port') }}">
-                        <div id="port"></div>
-                    </div>
-                    <div id="mafabSearchResults" class="col-xs-4">
+                    <div id="mafabSearchResults" class="col-xs-6">
                         <input type="text" name="mafab_search_query" value="{{ $data->hu->title }}" class="form-control" placeholder="{{ trans('movies.search_on_mafab') }}">
                         <div id="mafab"></div>
                     </div>
-                    <div id="imdbSearchResults" class="col-xs-4">
+                    <div id="imdbSearchResults" class="col-xs-6">
                         <input type="text" name="imdb_search_query" value="{{ $data->en->title }}" class="form-control" placeholder="{{ trans('movies.search_on_imdb') }}">
                         <div id="imdb"></div>
                     </div>
@@ -25,13 +21,7 @@
             <form action="{{ LaravelLocalization::localizeURL('movies/' . $data->id) }}" method="POST" class="col-xs-12 col-md-2">
                 <input name="_method" type="hidden" value="PATCH">
 
-                <input type="text" value="{{ $data->old_title }}" readonly class="form-control">
-
-                <p><a href="{{ $data->old_port_URL }}" target="_blank">Port.hu URL</a></p>
-
                 <input name="rating" type="text" value="{{ $data->rating }}" readonly>
-
-                <input type="text" value="{{ $data->old_comment }}" readonly class="form-control">
 
                 <div class="row row-no-padding">
                     <div class="col-xs-2">
@@ -69,15 +59,6 @@
                     </div>
                     <div class="col-xs-10">
                     <input type="text" name="title_en" value="{{ $data->en->title }}" class="form-control" placeholder="{{ trans('movies.title_en') }}">
-                    </div>
-                </div>
-
-                <div class="row row-no-padding">
-                    <div class="col-xs-2">
-                        <img src="{{ asset('images/movies/favicon.port.ico') }}" alt="Port.hu" class="movie-details-provider-image">
-                    </div>
-                    <div class="col-xs-10">
-                        <input type="text" name="port_id" value="{{ $data->hu->port->id }}" class="form-control" placeholder="{{ trans('movies.port_id_hu_placeholder') }}">
                     </div>
                 </div>
 

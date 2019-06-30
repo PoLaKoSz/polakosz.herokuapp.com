@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Components\MovieUnifier;
 use App\Movie;
 use App\Services\MovieServiceInterface;
@@ -17,8 +16,6 @@ class MovieSelector
     private $startIndex;
     private $resultCount;
 
-
-
     function __construct(MovieServiceInterface $movieService, int $startIndex, int $resultCount)
     {
         $this->movieService = $movieService;
@@ -26,27 +23,22 @@ class MovieSelector
         $this->resultCount  = $resultCount;
     }
 
-
-
     /**
      * Get the collection of Movies in a unified format
-     * 
+     *
      * @param   String  User selected UI language (hu OR en)
-     * 
+     *
      * @return  Array
-     * 
+     *
      * @throws \Invalidargumentexception When $language parameter not 'hu' or 'en'.
      */
     public function get(string $language) : array
     {
         $movies = $this->movieService->getWithDetails($this->resultCount, $this->startIndex);
 
-        if ( $language == 'hu')
-        {
+        if ($language == 'hu') {
             return $this->formatAsHungarian($movies);
-        }
-        else if ( $language == 'en' )
-        {
+        } elseif ($language == 'en') {
             return $this->formatAsEnglish($movies);
         }
 
@@ -58,28 +50,16 @@ class MovieSelector
     {
         $response = array();
 
-        foreach($movies as $movie)
-        {
-            $hun = $movie->hungarian;
-
-            if ($this->hasMafab($hun))
-            {
+        foreach ($movies as $movie) {
+            if ($this->hasMafab($movie)) {
                 array_push(
                     $response,
                     $this->addHungarianMovie(
-                        'https://mafab.hu/movies/' . $hun->mafab->id . '.html',
-                        $movie));
-            }
-            else if ($this->hasPort($hun))
-            {
-                array_push(
-                    $response,
-                    $this->addHungarianMovie(
-                        'https://port.hu/adatlap/film/tv/-/movie-' . $hun->port->id,
-                        $movie));
-            }
-            else
-            {
+                        'https://mafab.hu/movies/' . $movie->mafab_id . '.html',
+                        $movie
+                    )
+                );
+            } else {
                 $this->addFromIMDb($movie, $response);
             }
         }
@@ -89,21 +69,16 @@ class MovieSelector
 
     private function hasMafab($movie) : bool
     {
-        return $movie->mafab->id != null;
-    }
-
-    private function hasPort($movie) : bool
-    {
-        return $movie->port->id != null;
+        return $movie->mafab_id != null;
     }
 
     private function addHungarianMovie(string $url, Movie $movie) : object
     {
         return MovieUnifier::fromDB(
             $url,
-            $movie->hungarian->title,
+            $movie->hu_title,
             $movie->rating,
-            $movie->hungarian->comment,
+            $movie->hu_comment,
             $movie->cover_image
         );
     }
@@ -112,8 +87,7 @@ class MovieSelector
     {
         $response = array();
 
-        foreach($movies as $movie)
-        {
+        foreach ($movies as $movie) {
             $this->addFromIMDb($movie, $response);
         }
 
@@ -125,11 +99,13 @@ class MovieSelector
         array_push(
             $container,
             MovieUnifier::fromDB(
-                'https://imdb.com/title/tt' . $this->appendLeadingZeros( $movie->english->id ),
-                $movie->english->title,
+                'https://imdb.com/title/tt' . $this->appendLeadingZeros($movie->imdb_id),
+                $movie->en_title,
                 $movie->rating,
-                $movie->english->comment,
-                $movie->cover_image));
+                $movie->en_comment,
+                $movie->cover_image
+            )
+        );
     }
 
     private function appendLeadingZeros(int $number) : string

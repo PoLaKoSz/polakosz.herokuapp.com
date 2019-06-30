@@ -121,29 +121,19 @@ function mafabSearch( query ) {
     genericSearch( 'mafab', query, updateColumn );
 }
 
-function portSearch( query ) {
-    genericSearch( 'port', query, updateColumn );
-}
-
 function imdbSearch( query ) {
     genericSearch( 'imdb', query, updateColumn );
 }
 
 var genericSearchBox = getElementByName('search_query');
-var portSearchBox    = getElementByName('port_search_query');
 var mafabSearchBox   = getElementByName('mafab_search_query');
 var imdbSearchBox    = getElementByName('imdb_search_query');
 
 var results = [];
 
 genericSearchBox.focusout(function(){
-    portSearch( genericSearchBox.val() );
     mafabSearch( genericSearchBox.val() );
     imdbSearch( genericSearchBox.val() );
-});
-
-portSearchBox.focusout(function(){
-    portSearch( portSearchBox.val() );
 });
 
 mafabSearchBox.focusout(function(){

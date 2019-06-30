@@ -24,6 +24,22 @@ class MoviesControllerTest extends TestCase
         self::$fullyDetailedMovieID = 1113;
     }
 
+    public function testIndexReturnDataWhenIdValid()
+    {
+        $response = self::$moviesController->index();
+
+        $actualMovie = $response->getData()['movies'][0];
+        $this->assertEquals(99000, $actualMovie->id);
+        $this->assertEquals(6, $actualMovie->rating);
+        $this->assertEquals('jay-and-silent-bob-reboot.jpg', $actualMovie->cover_image);
+        $this->assertEquals('Jay és Néma Bob visszavág', $actualMovie->hu_title);
+        $this->assertEquals('Füvet szívsz ... :)', $actualMovie->hu_comment);
+        $this->assertEquals('jay-es-nema-bob-visszavag-11027', $actualMovie->mafab_id);
+        $this->assertEquals('Jay and Silent Bob Reboot', $actualMovie->en_title);
+        $this->assertEquals('No comment :D', $actualMovie->en_comment);
+        $this->assertEquals(6521876, $actualMovie->imdb_id);
+    }
+
     public function testEditReturnCorrectViewWhenIdValid()
     {
         $user = factory(User::class)->create();
@@ -44,13 +60,10 @@ class MoviesControllerTest extends TestCase
 
         $actualMovie = $response->getData()['data'];
         $this->assertEquals(99000, $actualMovie->id);
-        $this->assertEquals('https://port.hu/adatlap/film/tv/-/movie-', $actualMovie->old_port_URL);
-        $this->assertNull($actualMovie->old_title);
         $this->assertEquals(6, $actualMovie->rating);
         $this->assertEquals('jay-and-silent-bob-reboot.jpg', $actualMovie->cover_image);
         $this->assertEquals('Jay és Néma Bob visszavág', $actualMovie->hu->title);
         $this->assertEquals('Füvet szívsz ... :)', $actualMovie->hu->comment);
-        $this->assertEquals(42212, $actualMovie->hu->port->id);
         $this->assertEquals('jay-es-nema-bob-visszavag-11027', $actualMovie->hu->mafab->id);
         $this->assertEquals('Jay and Silent Bob Reboot', $actualMovie->en->title);
         $this->assertEquals('No comment :D', $actualMovie->en->comment);
@@ -68,13 +81,10 @@ class MoviesControllerTest extends TestCase
         
         $actualMovie = $response->getData()['data'];
         $this->assertEquals(99000 + 2, $actualMovie->id);
-        $this->assertEquals('https://port.hu/adatlap/film/tv/-/movie-', $actualMovie->old_port_URL);
-        $this->assertNull($actualMovie->old_title);
         $this->assertEquals(6, $actualMovie->rating);
         $this->assertEquals('the-wave.jpg', $actualMovie->cover_image);
         $this->assertEquals('', $actualMovie->hu->title);
         $this->assertEquals('', $actualMovie->hu->comment);
-        $this->assertEquals('', $actualMovie->hu->port->id);
         $this->assertEquals('', $actualMovie->hu->mafab->id);
         $this->assertEquals('The Wave', $actualMovie->en->title);
         $this->assertEquals('Interesting', $actualMovie->en->comment);

@@ -33,7 +33,7 @@ class PagesController extends Controller
         $projects = new ProjectsController($this->githubService);
 
         return view('pages.index')
-            ->with('movies',   $movies->module())
+            ->with('movies', $movies->module())
             ->with('projects', $projects->module());
     }
 }
