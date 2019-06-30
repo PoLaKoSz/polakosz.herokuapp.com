@@ -2,21 +2,12 @@
 
 namespace App\Services;
 
-use App\IMDb;
 use App\Movie;
 use App\Services\MovieServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
 
 class MovieService implements MovieServiceInterface
 {
-    /**
-     * Get a new IMDb eloquent model.
-     */
-    public function asIMDb() : IMDb
-    {
-        return new IMDb();
-    }
-
     /**
      * Get a new Movie eloquent model.
      */
@@ -43,8 +34,7 @@ class MovieService implements MovieServiceInterface
      */
     public function getWithDetails(int $count, int $skipCount = 0) : Collection
     {
-        return Movie::with('english')
-            ->skip($skipCount)
+        return Movie::skip($skipCount)
             ->take($count)
             ->orderBy('id', 'desc')
             ->get();

@@ -12,7 +12,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\MovieSelector;
 use Carbon\Carbon;
 use App\Movie;
-use App\IMDb;
 use LaravelLocalization;
 
 class MoviesController extends Controller
@@ -108,9 +107,8 @@ class MoviesController extends Controller
 
         $movie       = $this->movieService->create();
         $movie->date = $date;
-        $imdb        = $this->movieService->asIMDb();
 
-        $this->abstractEditUpdate($request, $movie, $imdb);
+        $this->abstractEditUpdate($request, $movie);
 
         return redirect(LaravelLocalization::localizeURL('movies/new'))->with('success', trans('movies.success_save'));
     }
@@ -128,12 +126,6 @@ class MoviesController extends Controller
             return redirect(LaravelLocalization::localizeURL('movies/'. ($id + 1) .'/edit'));
         }
 
-        $imdb  = $this->fakeIMDbDetails();
-
-        if ($this->isEnglishDetailsAvailable($movie)) {
-            $imdb = $movie->english;
-        }
-
         $data = (object) [
             'id'          => $movie->id,
             'rating'      => $movie->rating,
@@ -146,10 +138,10 @@ class MoviesController extends Controller
                 ]
             ],
             'en'          => (object) [
-                'title'   => $imdb->title,
-                'comment' => $imdb->comment,
+                'title'   => $movie->en_title,
+                'comment' => $movie->en_comment,
                 'imdb'    => (object) [
-                    'id'  => $imdb->id,
+                    'id'  => $movie->imdb_id,
                 ]
             ]
         ];
@@ -174,9 +166,7 @@ class MoviesController extends Controller
             abort(404);
         }
 
-        $imdb = $movie->english;
-
-        $this->abstractEditUpdate($request, $movie, $imdb);
+        $this->abstractEditUpdate($request, $movie);
 
         return redirect(LaravelLocalization::localizeURL('movies'));
     }
@@ -199,25 +189,6 @@ class MoviesController extends Controller
         return response()->json();
     }
 
-    private function isEnglishDetailsAvailable(Model $dbModel) : bool
-    {
-        return $dbModel->english != null;
-    }
-
-    private function fakeIMDbDetails() : object
-    {
-        return (object)[
-            'id'      => $this->fakeID(),
-            'title'   => '',
-            'comment' => ''
-        ];
-    }
-
-    private function fakeID() : string
-    {
-        return '';
-    }
-
     private function requestParameterValidation(Request $request)
     {
         $this->validate($request, [
@@ -230,7 +201,7 @@ class MoviesController extends Controller
         ]);
     }
 
-    private function abstractEditUpdate(Request $request, Movie $movie, IMDb $imdb)
+    private function abstractEditUpdate(Request $request, Movie $movie)
     {
         $movie->cover_image = $request->input('cover_image');
         $movie->rating      = $request->input('rating');
@@ -238,12 +209,10 @@ class MoviesController extends Controller
         $movie->hu_comment  = $request->input('comment_hu');
         $movie->mafab_id    = $request->input('mafab_id');
 
+        $movie->imdb_id        = $request->input('imdb_id');
+        $movie->en_title     = $request->input('title_en');
+        $movie->en_comment   = $request->input('comment_en');
+
         $movie->save();
-
-            $imdb->id        = $request->input('imdb_id');
-            $imdb->title     = $request->input('title_en');
-            $imdb->comment   = $request->input('comment_en');
-
-        $movie->english()->save($imdb);
     }
 }

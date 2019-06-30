@@ -12,11 +12,11 @@
 
                 <div class="col-xs-12 col-md-8">
                     <p>{{ $movie->hu_title }}</p>
-                    <p>{{ $movie->english->title }}</p>
+                    <p>{{ $movie->en_title }}</p>
                     <p>{{ trans('movies.star.' . $movie->rating) }}</p>
                     <p>{{ substr($movie->date, 0, 10) }}</p>
                     <p>{{ $movie->hu_comment }}</p>
-                    <p>{{ $movie->english->comment }}</p>
+                    <p>{{ $movie->en_comment }}</p>
 
                     <div class="col-xs-12">
                         <div class="col-xs-4"></div>
@@ -31,8 +31,8 @@
                         <img src="{{ asset('images/movies/favicon.mafab.png') }}" alt="Mafab.hu" class="small-size-favicon">
                     @endif
 
-                    @if (!empty( $movie->english->id ))
-                        <a href="https://imdb.com/title/tt{{ $movie->english->id }}" target="_blank">
+                    @if (!empty( $movie->imdb_id ))
+                        <a href="https://imdb.com/title/tt{{ $movie->imdb_id }}" target="_blank">
                             <img src="{{ asset('images/movies/favicon.imdb.ico') }}" alt="IMDb.com" class="small-size-favicon">
                         </a>
                     @else

@@ -2,17 +2,11 @@
 
 namespace App\Services;
 
-use App\IMDb;
 use App\Movie;
 use Illuminate\Database\Eloquent\Collection;
 
 interface MovieServiceInterface
 {
-    /**
-     * Get a new IMDb eloquent model.
-     */
-    public function asIMDb() : IMDb;
-
     /**
      * Get a new Movie eloquent model.
      */

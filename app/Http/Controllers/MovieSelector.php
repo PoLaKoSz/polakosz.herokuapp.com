@@ -99,10 +99,10 @@ class MovieSelector
         array_push(
             $container,
             MovieUnifier::fromDB(
-                'https://imdb.com/title/tt' . $this->appendLeadingZeros($movie->english->id),
-                $movie->english->title,
+                'https://imdb.com/title/tt' . $this->appendLeadingZeros($movie->imdb_id),
+                $movie->en_title,
                 $movie->rating,
-                $movie->english->comment,
+                $movie->en_comment,
                 $movie->cover_image
             )
         );

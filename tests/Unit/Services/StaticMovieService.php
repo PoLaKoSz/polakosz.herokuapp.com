@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\Services;
 
-use App\IMDb;
 use App\Movie;
 use App\Services\MovieServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
@@ -11,14 +10,6 @@ use Tests\TestCase;
 class StaticMovieService extends TestCase implements MovieServiceInterface
 {
     private $cache;
-
-    /**
-     * Get a new IMDb eloquent model.
-     */
-    public function asIMDb() : IMDb
-    {
-        return new IMDb();
-    }
 
     /**
      * Get a new Movie eloquent model.
@@ -71,17 +62,14 @@ class StaticMovieService extends TestCase implements MovieServiceInterface
             'hu_title' => 'Jay és Néma Bob visszavág',
             'hu_comment' => 'Füvet szívsz ... :)',
             'mafab_id' => 'jay-es-nema-bob-visszavag-11027',
+
+            'imdb_id' => 6521876,
+            'en_title' => 'Jay and Silent Bob Reboot',
+            'en_comment' => 'No comment :D',
+
             'rating' => 6,
             'cover_image' => 'jay-and-silent-bob-reboot.jpg',
         ]);
-
-        $imdb = factory(\App\IMDb::class)->make([
-            'id' => 6521876,
-            'title' => 'Jay and Silent Bob Reboot',
-            'comment' => 'No comment :D',
-        ]);
-
-        $movie->setRelation('english', $imdb);
         
         return $movie;
     }
@@ -90,17 +78,14 @@ class StaticMovieService extends TestCase implements MovieServiceInterface
     {
         $movie = factory('App\Movie')->make([
             'id' => 99000 + 2,
+
+            'imdb_id' => 1063669,
+            'en_title' => 'The Wave',
+            'en_comment' => 'Interesting',
+
             'rating' => 6,
             'cover_image' => 'the-wave.jpg',
         ]);
-
-        $imdb = factory(\App\IMDb::class)->make([
-            'id' => 1063669,
-            'title' => 'The Wave',
-            'comment' => 'Interesting',
-        ]);
-
-        $movie->setRelation('english', $imdb);
         
         return $movie;
     }
