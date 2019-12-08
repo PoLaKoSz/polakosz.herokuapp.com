@@ -88,7 +88,7 @@ class MovieSearchController extends Controller
             array_push(
                 $response,
                 MovieUnifier::fromSearch(
-                    $imdbMovie->imdbid(),
+                    ltrim($imdbMovie->imdbid(), '0'),
                     $imdbMovie->main_url(),
                     $title,
                     $imdbMovie->year(),
