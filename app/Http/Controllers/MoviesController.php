@@ -192,7 +192,6 @@ class MoviesController extends Controller
     private function requestParameterValidation(Request $request)
     {
         $this->validate($request, [
-            'title_hu'   => 'required|string',
             'title_en'   => 'required|string',
             'mafab_id'   => 'nullable|string',
             'imdb_id'    => 'required|integer',
@@ -203,6 +202,10 @@ class MoviesController extends Controller
 
     private function abstractEditUpdate(Request $request, Movie $movie)
     {
+        if ($request->input('title_hu') === null) {
+            $request->request->add(['title_hu' => $request->input('title_en')]);
+        }
+
         $movie->cover_image = $request->input('cover_image');
         $movie->rating      = $request->input('rating');
         $movie->hu_title    = $request->input('title_hu');

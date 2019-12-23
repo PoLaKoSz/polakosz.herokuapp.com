@@ -25,7 +25,7 @@ return [
         '101' => 'Tale',
     ],
     'rating' => 'Rating',
-    'title_hu' => 'Movie name in hungarian',
+    'title_hu' => 'Movie name in Hungarian',
     'title_en' => 'Movie name in English',
     'watched_today_chkBox' => 'Watched today',
     'date' => 'Date',
