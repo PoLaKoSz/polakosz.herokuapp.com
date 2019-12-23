@@ -9,6 +9,7 @@ $(window).scroll(function () {
 
 $(window).resize(function () {
     navBarHeight = $('nav.navbar').outerHeight();
+    offsetValue = navBarHeight;
 });
 
 setNavBar();
@@ -26,16 +27,19 @@ function setNavBar() {
 
 $('body').scrollspy({
     target: '#navbar',
-    offset: offsetValue,
+    offset: offsetValue + 1,
 });
 
 $('ul.fixed-nav').find('a').click(function () {
-    var $href = $(this).attr('href');
+    const href = $(this).attr('href').substring(1);
+    if (href === 'modalLoginReg') {
+        return false;
+    }
+    const targetDiv = $('#' + href);
+    const anchor = targetDiv.offset();
 
-    var $anchor = $($href).offset();
-
-    $('body').animate({
-        scrollTop: $anchor.top - offsetValue
+    $('html,body').animate({
+        scrollTop: anchor.top - offsetValue,
     });
 
     return false;
