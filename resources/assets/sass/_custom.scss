@@ -169,6 +169,11 @@ textarea {
     background-color: $tertiary-color;
 }
 
+td.day.active {
+    background-color: red;
+    border-radius: 5px;
+}
+
 #BootstrapTab .nav-pills>li>a {
     border-radius: 4px 4px 0 0;
 }
