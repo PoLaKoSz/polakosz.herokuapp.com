@@ -21,7 +21,7 @@
             <form action="{{ LaravelLocalization::localizeURL('movies/' . $data->id) }}" method="POST" class="col-xs-12 col-md-2">
                 <input name="_method" type="hidden" value="PATCH">
 
-                <input name="rating" type="text" value="{{ $data->rating }}" readonly>
+                <input name="rating" type="hidden" value="{{ $data->rating }}" readonly>
 
                 <div class="row row-no-padding">
                     <div class="col-xs-2">
