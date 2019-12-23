@@ -14,7 +14,6 @@ return [
     'email_image_alt' => 'Küldj levelet ide',
 
     'menu_home'       => 'Kezdőlap',
-    'menu_about-me'   => 'Rólam',
     'menu_projects'   => 'Projektjeim',
     'menu_movies'     => 'Filmek',
     'menu_new_movie'  => 'Új film hozzáadása',
