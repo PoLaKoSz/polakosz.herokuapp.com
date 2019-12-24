@@ -25,6 +25,29 @@
 
                 <input type="text" name="title_en" class="form-control" placeholder="{{ trans('movies.title_en') }}" readonly>
 
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="is_tv_series"> Has Series?
+                    </label>
+                </div>
+
+                <fieldset>
+                    <div id="seasonContinainer" style="display: none">
+                        <div class="col-xs-4">
+                            SEASON
+                            <input type="number" class="form-control" min="1" id="season_number">
+                        </div>
+                        <div class="col-xs-4">
+                            FIRST EP.
+                            <input type="number" class="form-control" min="0" id="ep_first_number">
+                        </div>
+                        <div class="col-xs-4">
+                            LAST EP.
+                            <input type="number" class="form-control" min="1" id="ep_last_number">
+                        </div>
+                    </div>
+                </fieldset>
+                
                 <fieldset>
                     <input id="hideShowDateFieldCheckBox" type="checkbox" checked style="width:auto;">
                     <label for="hideShowDateFieldCheckBox"><p>{{ trans('movies.watched_today_chkBox') }}</p></label>
