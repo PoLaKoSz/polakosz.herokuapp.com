@@ -68,6 +68,7 @@ class MovieSearchController extends Controller
             $request->movie_name,
             [
                 TitleSearch::MOVIE,
+                TitleSearch::TV_MINI_SERIES,
                 TitleSearch::TV_MOVIE,
                 TitleSearch::TV_SERIES,
                 TitleSearch::TV_SPECIAL,
