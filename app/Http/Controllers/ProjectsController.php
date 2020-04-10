@@ -16,13 +16,17 @@ class ProjectsController extends Controller
         $this->githubService = $githubService;
     }
 
-    public function module() : array
+    public function index() : array
     {
         $myRepositories = $this->githubService->get();
 
         $myRepositories = $this->OnlySixRepository($myRepositories);
 
-        return $this->fixRepoLang($myRepositories);
+        $myRepositories = $this->fixRepoLang($myRepositories);
+
+        $myRepositories = $this->removeUnnecessaryData($myRepositories);
+
+        return $myRepositories;
     }
 
     /**
@@ -53,5 +57,22 @@ class ProjectsController extends Controller
         }
 
         return $repositories;
+    }
+
+    private function removeUnnecessaryData(array $repositories) : array
+    {
+        $cleanedRepositories = [];
+
+        foreach ($repositories as $repository) {
+            $cleanedRepository = (object) [
+                'name' => $repository['name'],
+                'description' => $repository['description'],
+                'html_url' => $repository['html_url'],
+                'language' => $repository['language'],
+            ];
+            array_push($cleanedRepositories, $cleanedRepository);
+        }
+
+        return $cleanedRepositories;
     }
 }

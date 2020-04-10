@@ -23,3 +23,4 @@ Route::middleware('auth')->get('/secret', function() {
 
 Route::get('/movies/search/mafab', 'MovieSearchController@mafab');
 Route::get('/movies/search/imdb',  'MovieSearchController@imdb');
+Route::get('/projects',            'ProjectsController@index');

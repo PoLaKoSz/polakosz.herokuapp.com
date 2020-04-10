@@ -9,17 +9,18 @@
         @include('inc.welcome_text')
     </div>
 
-    <section id="{{ trans('navbar.menu_projects') }}" class="projects">
-        <div class="container section-padding">
-            <div class="row">
-                <?php
-                    $title  = trans('projects.title');
-                    $design = 'light-section-header';
-                ?>
-                @include('inc.section-header')
-            </div> 
-            
-            @include('inc.projects')
+    <section id="{{ trans('navbar.menu_projects') }}" class="projects container-fluid">
+        <div class="container">
+            <div class="section-padding">
+                <div class="row">
+                    <?php
+                        $title  = trans('projects.title');
+                        $design = 'light-section-header';
+                    ?>
+                    @include('inc.section-header')
+                </div>
+                <div id="dynamicProjects" class="row"></div>
+            </div>
         </div>
     </section>
     

@@ -9,3 +9,5 @@ require('./menu');
 require('./bootstrap-datepicker');
 
 require('./movies');
+
+require('./projects');
