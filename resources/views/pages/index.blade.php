@@ -44,6 +44,7 @@
 
     <script>
         function getMovies(button) {
+            button.disabled = true;
             var lastID = parseInt( $(button).attr('data-nextID') );
             var container = $(button).attr('data-container');
 
@@ -60,6 +61,7 @@
                     $('#dynamicMovies').append(data['data']);
 
                     $(button).attr('data-nextID', lastID + 6);
+                    button.disabled = false;
                 }
             });
         }
