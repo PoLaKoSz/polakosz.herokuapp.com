@@ -32,28 +32,9 @@
 
       `/storage/` folder
 
-## Deploy on https://www.000webhost.com/
+## Deploying to https://www.000webhost.com
+
 15. Rename `/public/` folder to `/public_html/`
-16. [env() helper](https://laravel.com/docs/5.5/helpers#method-env) function [useless](https://www.000webhost.com/forum/t/laravel-has-stopper-seeing-env/127154/5) on free plan so one workaround is to hard code (jajjj) into
-    - `/config/app.php`
-
-         Change `'name' => env('APP_NAME', 'Laravel'),` to `'name' => env('APP_NAME', 'PoLáKoSz Corp.'),`
-         
-         Change `'key' => env('APP_KEY'),` to `'key' => '<previously_generated_APP_KEY>',`
-
-    - `/config/database.php`
-
-         Change `'host' => env('DB_HOST', '127.0.0.1'),` to `'host' => env('DB_HOST', 'localhost'),`
-         
-         Change `'database' => env('DB_DATABASE', 'forge'),` to `'database' => '<ACTUAL_DB_NAME>',`
-         
-         Change `'database' => env('DB_USERNAME', 'forge'),` to `'database' => '<ACTUAL_DB_USERNAME>',`
-         
-         Change `'database' => env('DB_PASSWORD', 'forge'),` to `'database' => '<ACTUAL_DB_PASSWORD>',`
-    
-
-## WARNING!
-Because env() function not working on the free 000webhostapp.com the `APP_REG_ENABLED` allways be `false`.
 
 ## Develop
 - JS, CSS
