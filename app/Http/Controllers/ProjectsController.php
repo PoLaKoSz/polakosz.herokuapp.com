@@ -53,6 +53,8 @@ class ProjectsController extends Controller
         foreach ($repositories as &$repository) {
             if (!isset($repository['language'])) {
                 $repository['language'] = 'unknown';
+            } else if ($repository['language'] == 'C#') {
+                $repository['language'] = 'csharp';
             }
         }
 
