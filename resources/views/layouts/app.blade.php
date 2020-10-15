@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/mdb.css') }}" rel="stylesheet">
 
     <script type="text/javascript" src="{!! asset('js/required.js') !!}"></script>
 </head>
@@ -24,6 +26,8 @@
         @include('inc.notifications')
     </div>
 
+    <script type="text/javascript" src="{!! asset('js/manifest.js') !!}"></script>
+    <script type="text/javascript" src="{!! asset('js/vendor.js') !!}"></script>
     <script type="text/javascript" src="{!! asset('js/app.js') !!}"></script>
 
     <div id="fb-root"></div>
