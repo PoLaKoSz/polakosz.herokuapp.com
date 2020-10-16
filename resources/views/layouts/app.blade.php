@@ -11,9 +11,9 @@
     <title>{{ config('app.name') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/mdb.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/mdb.css') }}" rel="stylesheet">
 
 </head>
 <body data-spy="scroll" data-target="#navbar">
@@ -25,9 +25,9 @@
         @include('inc.notifications')
     </div>
 
-    <script type="text/javascript" src="{!! asset('js/manifest.js') !!}"></script>
-    <script type="text/javascript" src="{!! asset('js/vendor.js') !!}"></script>
-    <script type="text/javascript" src="{!! asset('js/app.js') !!}"></script>
+    <script type="text/javascript" src="{!! mix('js/manifest.js') !!}"></script>
+    <script type="text/javascript" src="{!! mix('js/vendor.js') !!}"></script>
+    <script type="text/javascript" src="{!! mix('js/app.js') !!}"></script
 
     <div id="fb-root"></div>
 
