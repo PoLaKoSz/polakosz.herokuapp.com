@@ -12,7 +12,7 @@ const { mix } = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .extract(['bootstrap', 'bootstrap-datepicker'])
+   .extract(['axios', 'bootstrap', 'bootstrap-datepicker', 'jquery', 'lodash'])
 
    .sass('resources/assets/sass/app.scss', 'public/css')
    .copy('node_modules/bootstrap/dist/css/bootstrap.min.css', 'public/css')
