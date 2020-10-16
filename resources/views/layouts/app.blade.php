@@ -15,7 +15,6 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/mdb.css') }}" rel="stylesheet">
 
-    <script type="text/javascript" src="{!! asset('js/required.js') !!}"></script>
 </head>
 <body data-spy="scroll" data-target="#navbar">
     <div id="app">

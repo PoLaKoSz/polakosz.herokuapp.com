@@ -11,3 +11,5 @@ require('bootstrap-datepicker');
 require('./movies');
 
 require('./projects');
+
+require('./required');
