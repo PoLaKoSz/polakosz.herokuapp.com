@@ -30,7 +30,7 @@ $('body').scrollspy({
     offset: offsetValue + 1,
 });
 
-$('ul.fixed-nav').find('a').click(function () {
+$('ul.navbar-nav').find('a').click(function () {
     const href = $(this).attr('href').substring(1);
     if (href === 'modalLoginReg') {
         return false;

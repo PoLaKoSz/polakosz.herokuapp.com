@@ -1,5 +1,5 @@
-<li class="active"><a href="#{{ trans('navbar.menu_home') }}">{{ trans('navbar.menu_home') }} <span class="sr-only">(current)</span></a></li>
-<li><a href="#{{ trans('navbar.menu_projects') }}">{{ trans('navbar.menu_projects') }}</a></li>
-<li><a href="#{{ trans('navbar.menu_movies') }}">{{ trans('navbar.menu_movies') }}</a></li>
-<li><a href="#modalLoginReg" data-toggle="modal" id="LoginRegMenu" data-target="#modalLoginReg">{{ trans('navbar.menu_login') }}</a></li>
-<li><a href="#{{ trans('navbar.menu_contact') }}">{{ trans('navbar.menu_contact') }}</a></li>
+<li class="nav-item"><a href="#{{ trans('navbar.menu_home') }}" class="nav-link active">{{ trans('navbar.menu_home') }}<span class="sr-only">(current)</span></a></li>
+<li class="nav-item"><a href="#{{ trans('navbar.menu_projects') }}" class="nav-link">{{ trans('navbar.menu_projects') }}</a></li>
+<li class="nav-item"><a href="#{{ trans('navbar.menu_movies') }}" class="nav-link">{{ trans('navbar.menu_movies') }}</a></li>
+<li class="nav-item"><a href="#modalLoginReg" data-toggle="modal" id="LoginRegMenu" data-target="#modalLoginReg" class="nav-link">{{ trans('navbar.menu_login') }}</a></li>
+<li class="nav-item"><a href="#{{ trans('navbar.menu_contact') }}" class="nav-link">{{ trans('navbar.menu_contact') }}</a></li>

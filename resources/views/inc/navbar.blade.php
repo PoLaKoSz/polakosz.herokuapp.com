@@ -1,29 +1,28 @@
 <header id="contact-header">
     <div class="container">
         <div class="row">
-            <div class="col-xs-3">
+            <div class="col-3">
                 <div class="fb-like" data-href="https://www.facebook.com/PoLaKoSz/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
             </div>
-            <div class="col-xs-9 text-right">
-                <img src="{{asset('images/email.png')}}" alt="{{ trans('navbar.email_image_alt') }}">polakosz@freemail.hu
+            <div class="col-9 text-right">
+                <small>
+                    <img src="{{asset('images/email.png')}}" alt="{{ trans('navbar.email_image_alt') }}">
+                    polakosz@freemail.hu
+                </small>
             </div>
         </div>
     </div>
 </header>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-expand-md navbar-default navbar-light bg-light py-4">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand signature" href="#">PoLáKoSz</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right fixed-nav">
+        <a class="navbar-brand signature" href="#">PoLáKoSz</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav ml-auto mt-2 mt-md-0">
                 @if ( !Auth::guest() )
                     @include('inc.navbar-types.authenticated')
                 @else

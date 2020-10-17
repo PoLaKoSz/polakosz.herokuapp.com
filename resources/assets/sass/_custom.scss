@@ -1,13 +1,3 @@
-$primary-color: #e67e22;
-$dark-primary-color:#d35400;
-$secondary-color: #777777;
-$tertiary-color: #fff;
-$quaternary-color: #eeeeee;
-@font-face {
-    font-family: LogoFont;
-    src: url("/fonts/Jayadhira LILA EE01.ttf");
-}
-
 body {
     font-size: 100%;
     line-height: 1.5;
@@ -35,7 +25,6 @@ p {
 }
 
 h4,
-#navbar,
 input,
 textarea {
     font-size: 120%;
@@ -123,50 +112,8 @@ textarea {
     vertical-align: middle !important;
 }
 
-.signature {
-    font-family: LogoFont;
-    color: black !important;
-}
-
 #contact-header img {
     width: auto;
-}
-
-.navbar-default {
-    border: none;
-    text-transform: uppercase;
-    position: fixed;
-    top: 0;
-    background: $tertiary-color;
-    z-index: 16;
-    width: 100%;
-    border-radius: 0px;
-    box-shadow: rgb(152, 152, 152) 1px 1px 13px;
-}
-
-.navbar-default,
-.navbar-header {
-    margin: 0;
-}
-
-.navbar-default .navbar-nav>.active>a,
-.navbar-default .navbar-nav>.active>a:hover,
-.navbar-default .navbar-nav>li>a:hover {
-    background: $primary-color !important;
-    color: $tertiary-color;
-}
-
-.navbar-default .navbar-toggle {
-    border-color: $primary-color;
-}
-
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: $primary-color;
-}
-
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-    background-color: $tertiary-color;
 }
 
 td.day.active {
@@ -312,33 +259,6 @@ a.freemail-color {
     width: 16px;
     margin-right: 10px;
 }
-
-
-/* Extra small devices (phones, less than 768px) */
-
-
-/* No media query since this is the default in Bootstrap */
-
-
-/* Small devices (tablets, 768px and up) */
-
-@media only screen and (min-width: 768px) {
-    .navbar {
-        margin: 0;
-    }
-    #navbar {
-        height: 110px !important;
-        display: flex !important;
-        justify-content: flex-end !important;
-        align-items: center !important;
-    }
-}
-
-
-/* Medium devices (desktops, 992px and up) */
-
-@media only screen and (min-width: 992px) {}
-
 
 /* Large devices (large desktops, 1200px and up) */
 

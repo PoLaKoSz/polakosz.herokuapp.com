@@ -1,0 +1,46 @@
+@font-face {
+    font-family: LogoFont;
+    src: url("/fonts/Jayadhira LILA EE01.ttf");
+}
+
+.navbar-default {
+    position: fixed;
+    top: 0;
+    background: $tertiary-color;
+    z-index: 16;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: rgb(152, 152, 152) 1px 1px 13px;
+}
+
+.signature {
+    font-family: LogoFont;
+    color: black;
+}
+
+.navbar .navbar-nav .nav-link {
+    padding: 15px;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.navbar-nav .nav-item .nav-link.active,
+.navbar .navbar-nav .nav-item a:hover {
+    background: $primary-color;
+    color: $tertiary-color;
+}
+
+.navbar .navbar-toggler,
+.navbar-toggler:hover {
+    border-color: $primary-color;
+}
+
+button.navbar-toggler:focus {
+    outline-color: $primary-color;
+}
+
+.navbar-toggler-icon {
+    filter: invert(73%) sepia(56%) saturate(5149%) hue-rotate(348deg)
+        brightness(95%) contrast(88%);
+}

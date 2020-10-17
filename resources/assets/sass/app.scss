@@ -1,5 +1,8 @@
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
-// Custom Style
-@import 'custom';
+@import "variables";
+
+@import "custom";
+
+@import "navbar";
