@@ -11,9 +11,9 @@
     <title>{{ config('app.name') }}</title>
 
     <!-- Styles -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ mix('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ mix('css/mdb.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
 </head>
 <body data-spy="scroll" data-target="#navbar">
