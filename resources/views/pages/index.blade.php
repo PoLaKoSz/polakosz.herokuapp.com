@@ -3,8 +3,8 @@
 @section('content')
     <div id="{{ trans('navbar.menu_home') }}">
         @include('inc.navbar')
-        
-        @include('inc.bootstrap_carousel')
+
+        <div class="budapest-img"></div>
 
         @include('inc.welcome_text')
     </div>

@@ -121,23 +121,10 @@ td.day.active {
     border-radius: 5px;
 }
 
-.carousel {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/slideshow.jpg') no-repeat center center fixed;
-    color: $tertiary-color;
-}
-
-.carousel-content {
-    @extend .vh-middle;
+.budapest-img {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("/images/slideshow.jpg") no-repeat center center fixed;
     height: 500px;
-    letter-spacing: 4px;
-}
-
-.carousel-content>div {
-    width: 100%;
-}
-
-.carousel-content h1 {
-    text-transform: uppercase;
 }
 
 #welcome-text {
