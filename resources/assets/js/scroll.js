@@ -31,12 +31,12 @@ $('body').scrollspy({
 });
 
 $('ul.navbar-nav').find('a').click(function () {
-    const href = $(this).attr('href').substring(1);
-    if (href === 'modalLoginReg') {
-        return false;
+    let target = $(this).data('target');
+    if (target !== undefined) {
+        return true;
     }
-    const targetDiv = $('#' + href);
-    const anchor = targetDiv.offset();
+    target = $(this).attr('href');
+    const anchor = $(target).offset();
 
     $('html,body').animate({
         scrollTop: anchor.top - offsetValue,

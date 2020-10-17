@@ -36,25 +36,31 @@
 <div id="navbar-helper"></div>
 
 <div class="container">
-    <div id="modalLoginReg" class="modal" role="dialog">
+    <div id="authModal" class="modal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    
-                    <div id="BootstrapTab" class="col-xs-">	
-                        <ul  class="nav nav-pills">
-                            <li class="active"><a  href="#1b" data-toggle="tab">{{ trans('navbar.menu_login') }}</a></li>
-                            <li><a href="#2b" data-toggle="tab">{{ trans('navbar.menu_register') }}</a></li>
-                        </ul>
 
-                        <div class="tab-content clearfix">
-                            <div class="tab-pane active" id="1b">
-                                @include('auth.login')
-                            </div>
-                            <div class="tab-pane" id="2b">
-                                @include('auth.register')
-                            </div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">
+                                {{ trans('navbar.menu_login') }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">
+                                {{ trans('navbar.menu_register') }}
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content mt-3">
+                        <div class="tab-pane active fade show" id="login">
+                            @include('auth.login')
+                        </div>
+                        <div class="tab-pane fade" id="register">
+                            @include('auth.register')
                         </div>
                     </div>
                 </div>

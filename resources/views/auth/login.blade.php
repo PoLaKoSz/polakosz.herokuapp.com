@@ -1,53 +1,20 @@
-<form class="form-horizontal" method="POST" action="{{ route('login') }}">
+<form method="POST" action="{{ route('login') }}">
     {{ csrf_field() }}
 
-    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-        <label for="email" class="col-md-4 control-label">{{ trans('login-panel.email') }}</label>
-
-        <div class="col-md-6">
-            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-            @if ($errors->has('email'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('email') }}</strong>
-                </span>
-            @endif
-        </div>
-    </div>
-
-    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-        <label for="password" class="col-md-4 control-label">{{ trans('login-panel.password') }}</label>
-
-        <div class="col-md-6">
-            <input id="password" type="password" class="form-control" name="password" required>
-
-            @if ($errors->has('password'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('password') }}</strong>
-                </span>
-            @endif
-        </div>
+    <div class="form-group">
+        <label for="inputEmail">{{ trans('login-panel.email') }}</label>
+        <input type="email" name="email" id="inputEmail" required autocomplete="email" class="form-control" aria-describedby="emailHelp">
     </div>
 
     <div class="form-group">
-        <div class="col-md-6 col-md-offset-4">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ trans('login-panel.remember_me') }}
-                </label>
-            </div>
-        </div>
+        <label for="inputPassword">{{ trans('login-panel.password') }}</label>
+        <input type="password" name="password" id="inputPassword" required autocomplete="current-password" class="form-control">
     </div>
 
-    <div class="form-group">
-        <div class="col-md-8 col-md-offset-4">
-            <button type="submit" class="btn btn-primary">
-                {{ trans('login-panel.btn_login') }}
-            </button>
-
-            <a class="btn btn-link" href="{{ LaravelLocalization::localizeURL(route('password.request')) }}">
-                {{ trans('login-panel.forgot_password') }}
-            </a>
-        </div>
+    <div class="form-check mb-2">
+        <input type="checkbox" name="remember" id="rememberMe" class="form-check-input">
+        <label class="form-check-label" for="rememberMe">{{ trans('login-panel.remember_me') }}</label>
     </div>
+
+    <button type="submit" class="btn btn-orange">{{ trans('login-panel.btn_login') }}</button>
 </form>
