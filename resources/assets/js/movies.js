@@ -30,6 +30,16 @@ function bootstrapDropDown(containerName) {
 
         hiddenElement.val(rating.attr('data-value'));
     });
+
+    if (hiddenElement.val() === "") {
+        return;
+    }
+
+    listItem.each((i, option) => {
+        if ($(option).attr("data-value") === hiddenElement.val()) {
+            button.html($(option).text());
+        }
+    });
 };
 
 bootstrapDropDown('.dropdown');

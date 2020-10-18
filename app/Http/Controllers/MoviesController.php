@@ -67,7 +67,7 @@ class MoviesController extends Controller
         $firstShownID = $request->id;
 
         $movies = $this->module($firstShownID);
-        
+
         $view = view("inc.movies")
             ->with('movies', $movies)
             ->render();
@@ -78,7 +78,7 @@ class MoviesController extends Controller
                 'next-id' => $firstShownID + $this->resultCount,
             ],
         ];
-  
+
         return response()->json($data);
     }
 
@@ -129,6 +129,7 @@ class MoviesController extends Controller
         $data = (object) [
             'id'          => $movie->id,
             'rating'      => $movie->rating,
+            'date'        => date_format(date_create($movie->date), trans('movies.date_php_format')),
             'cover_image' => $movie->cover_image,
             'hu'          => (object) [
                 'title'   => $movie->hu_title,
@@ -185,7 +186,7 @@ class MoviesController extends Controller
         }
 
         $movie->delete();
-        
+
         return response()->json();
     }
 
@@ -207,6 +208,7 @@ class MoviesController extends Controller
         }
 
         $movie->cover_image = $request->input('cover_image');
+        $movie->date      = $request->input('date');
         $movie->rating      = $request->input('rating');
         $movie->hu_title    = $request->input('title_hu');
         $movie->hu_comment  = $request->input('comment_hu');
