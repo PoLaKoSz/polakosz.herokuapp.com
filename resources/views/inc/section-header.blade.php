@@ -1,9 +1,5 @@
-<div class="row">
-    <div class="section-header {{ $design }}">
-        <div class="section-header-line"></div>
-        <div class="section-header-name">
-            <h2>{{ $title }}</h2>
-        </div>
-        <div class="section-header-line"></div>
-    </div>
+<div class="row section {{ $design }} pb-5">
+    <div class="col my-auto"><hr></div>
+    <div class="col-auto name p-0 my-auto">{{ $title }}</div>
+    <div class="col my-auto"><hr></div>
 </div>

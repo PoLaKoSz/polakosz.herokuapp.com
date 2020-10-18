@@ -20,6 +20,7 @@ return [
 
     'name_field' => 'Your First Name',
     'email_field' => 'Your E-mail Address',
+    'email_info' => 'We\'ll never share your email with anyone else.',
     'send_button' => 'Send',
 
     'copyright_text' => 'The webdesign was recoded based on "TemplateMO/Urbanic Template" webpage-template. Recoded by Tom PoLáKoSz. Copyright © 2009-:year',

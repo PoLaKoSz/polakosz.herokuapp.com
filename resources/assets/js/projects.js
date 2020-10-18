@@ -26,23 +26,14 @@ getProjects(function(response) {
 
 function getProjectTemplate(repository) {
     return `
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
-            <div class="row">
-                <div class="view overlay hm-black-strong">
-                    <img src="images/languages/${repository.language}.png" alt="${repository.language}">
-                    <div class="mask flex-center">
-                        <div>
-                        <p class="white-text">${repository.description}</p>
-                        </div>
-                    </div>
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="view overlay hm-black-strong">
+                <img class="img-fluid" src="images/languages/${repository.language}.png" alt="${repository.language}">
+                <div class="mask text-white d-flex">
+                    <div class="align-self-center w-100">${repository.description ? repository.description : ""}</div>
                 </div>
             </div>
-
-            <div class="row text-center">
-                <h5>
-                    <a href="${repository.html_url}" target="_blank">${repository.name}</a>
-                </h5>
-            </div>
+            <a href="${repository.html_url}" target="_blank">${repository.name}</a>
         </div>
     `
 }

@@ -4,7 +4,7 @@
             <div class="col-3">
                 <div class="fb-like" data-href="https://www.facebook.com/PoLaKoSz/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
             </div>
-            <div class="col-9 text-right">
+            <div class="col-9 text-right primary-text">
                 <small>
                     <img src="{{asset('images/email.png')}}" alt="{{ trans('navbar.email_image_alt') }}">
                     polakosz@freemail.hu

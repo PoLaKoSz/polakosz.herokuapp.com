@@ -5,7 +5,6 @@ body {
 }
 
 #contact-header {
-    color: $primary-color;
     background: $quaternary-color;
 }
 
@@ -25,4 +24,47 @@ body {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url("/images/slideshow.jpg") no-repeat center center fixed;
     height: 500px;
+}
+
+.primary-text {
+    color: $primary-color;
+}
+
+.projects {
+    background: url("/images//background.png");
+    min-height: 453.03px;
+}
+
+.section hr {
+    border-width: 1px;
+    border-style: solid;
+}
+
+.light.section hr {
+    border-color: white;
+}
+
+.light.section {
+    color: white;
+}
+
+.dark.section hr {
+    border-color: $secondary-color;
+}
+
+.dark.section {
+    color: $secondary-color;
+}
+
+.btn-orange {
+    text-transform: uppercase;
+    background-color: $primary-color;
+    border-bottom: 2px solid $dark-primary-color;
+    border-radius: 0;
+    color: $tertiary-color;
+}
+
+.btn-orange:hover {
+    background-color: $dark-primary-color;
+    color: $tertiary-color;
 }
