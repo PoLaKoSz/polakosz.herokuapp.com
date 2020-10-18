@@ -1,11 +1,23 @@
-$('#hideShowDateFieldCheckBox').on('change', function() {
-    $(this).closest('fieldset').find('.hideshow').toggle(!this.checked);
+$('#isWatchedToday').change(function() {
+    if ($(this).is(':checked')) {
+        $('#datepicker').addClass('d-none');
+    }
+    else {
+        $('#datepicker').removeClass('d-none');
+    }
 });
 
-function BootstrapDropDown(containerName) {
-    var button = $(containerName + ' button#dropdownMenu');
-    var listItem = $(containerName + ' ul.dropdown-menu li');
-    var hiddenElement = $('input[name="rating"]');
+$(document).ready(function () {
+    $(".datepicker").datepicker({
+        todayHighlight: true,
+        autoclose: true,
+    });
+});
+
+function bootstrapDropDown(containerName) {
+    const button = $(containerName + ' button');
+    const listItem = $(containerName + ' .dropdown-menu .dropdown-item');
+    const hiddenElement = $('input[name="rating"]');
 
     $(listItem).click(function(e) {
         var rating = $(this);
@@ -20,7 +32,7 @@ function BootstrapDropDown(containerName) {
     });
 };
 
-BootstrapDropDown('.dropdown');
+bootstrapDropDown('.dropdown');
 
 function getElementByName(elementName) {
     return $('[name="' + elementName + '"]');
@@ -35,7 +47,7 @@ function genericSearch( endpoint, query, callbackFunction ) {
     container.empty();
 
     container.append(
-        '<div class="progress">' +
+        '<div class="progress mb-2">' +
             '<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>' +
         '</div>');
 
@@ -82,15 +94,24 @@ function updateColumn( data ) {
 
     results[data.column] = data.response;
 
-    $.each(data.response, function(index, item) {
-        var movieDOM = $('<p class="searchResult" data-index="' + index +'" data-column="' + data.column + '">' +
-            '<img src="' + item['image'] + '" style="width:60px;height:90px">' +
-            '<span style="display: inline-table;"><a href="' + item['url'] + '" target="_blank">' + item['name'] + '</a><br>' + item['year'] + '</span></p>');
+    $.each(data.response, function(index, movie) {
+        const movieDOM = $(
+            `<div data-index="${index}" data-column="${data.column}" class="result row mb-2">
+                <div class="col-4 pr-0">
+                    <img src="${movie.image}" class="img-fluid">
+                </div>
+                <div class="col-8 pl-2">
+                    <div>
+                        <a href="${movie.url}" target="_blank">${movie.name}</a>
+                    </div>
+                    (<small class="font-italic text-muted">${movie.year}</small>)
+                </div>
+            </div>`);
 
         container.append( movieDOM );
     });
 
-    container.on("click", "p.searchResult", function(){
+    container.on("click", ".result", function(){
         var rowIndex = $(this).data('index');
         var columnName = $(this).data('column');
 
@@ -112,7 +133,7 @@ function updateColumn( data ) {
         if (columnName == 'imdb')
         {
             getElementByName( 'cover_image' ).val( movie.image );
-            $( '#moviePoster' ).html( $( '<img src="' + movie.image + '">' ) );
+            $( '#moviePoster' ).html( $( '<img src="' + movie.image + '" class="img-fluid">' ) );
         }
     });
 }
@@ -146,10 +167,10 @@ imdbSearchBox.focusout(function(){
 
 $('#is_tv_series').change(function(){
     if ($(this).is(':checked')) {
-        $('#seasonContinainer').css('display', 'block');
+        $('#seasonContinainer').removeClass('d-none');
     }
     else {
-        $('#seasonContinainer').css('display', 'none');
+        $('#seasonContinainer').addClass('d-none');
     }
 });
 
