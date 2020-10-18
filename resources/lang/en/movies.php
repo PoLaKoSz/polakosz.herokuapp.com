@@ -30,6 +30,7 @@ return [
     'watched_today_chkBox' => 'Watched today',
     'date' => 'Date',
     'date_format' => 'mm/dd/yyyy',
+    'date_php_format' => 'm/d/Y',
     'mafab_id_hu_placeholder' => 'https://www.mafab.hu/movies/{id}.html',
     'imdb_id_en_placeholder' => 'https://www.imdb.com/title/tt{id}/',
     'cover_img_placeholder' => 'Cover image URL for movie',

@@ -30,6 +30,7 @@ return [
     'watched_today_chkBox' => 'Ma néztem',
     'date' => 'Dátum',
     'date_format' => 'yyyy-mm-dd',
+    'date_php_format' => 'Y. m. d.',
     'mafab_id_hu_placeholder' => 'https://www.mafab.hu/movies/{id}.html',
     'imdb_id_en_placeholder' => 'https://www.imdb.com/title/tt{id}/',
     'cover_img_placeholder' => 'Film borítóképe',
