@@ -3,42 +3,38 @@
 @section('content')
     <div id="{{ trans('navbar.menu_home') }}">
         @include('inc.navbar')
-        
-        @include('inc.bootstrap_carousel')
+
+        <div class="budapest-img"></div>
 
         @include('inc.welcome_text')
     </div>
 
     <section id="{{ trans('navbar.menu_projects') }}" class="projects container-fluid">
-        <div class="container">
-            <div class="section-padding">
-                <div class="row">
-                    <?php
-                        $title  = trans('projects.title');
-                        $design = 'light-section-header';
-                    ?>
-                    @include('inc.section-header')
-                </div>
-                <div id="dynamicProjects" class="row"></div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="{{ trans('navbar.menu_movies') }}" class="container section-padding">
-        <div class="row">
+        <div class="container py-5">
             <?php
-                $title  = trans('movies.title');
-                $design = 'dark-section-header';
+                $title  = trans('projects.title');
+                $design = 'light';
             ?>
             @include('inc.section-header')
+            <div id="dynamicProjects" class="row text-center"></div>
         </div>
-        
-        @include('inc.movies')
+    </section>
 
-        <div id="dynamicMovies"></div>
+    <section id="{{ trans('navbar.menu_movies') }}" class="container-fluid py-5">
+        <div class="container">
+            <?php
+                $title  = trans('movies.title');
+                $design = 'dark';
+            ?>
+            @include('inc.section-header')
 
-        <div class="row text-center">
-            <button class="btn btn-orange" onClick="getMovies(this)" data-container="{{ trans('navbar.menu_movies') }}" data-nextID="6">{{ trans('movies.load_more') }}</button>
+            @include('inc.movies')
+
+            <div id="dynamicMovies"></div>
+
+            <div class="row mt-4">
+                <button class="btn btn-orange mx-auto" onClick="getMovies(this)" data-container="{{ trans('navbar.menu_movies') }}" data-nextID="6">{{ trans('movies.load_more') }}</button>
+            </div>
         </div>
     </section>
 

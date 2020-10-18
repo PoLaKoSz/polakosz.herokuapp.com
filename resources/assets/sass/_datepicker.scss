@@ -1,0 +1,29 @@
+.datepicker-dropdown {
+    padding: 10px;
+    text-align: center;
+}
+
+.datepicker.day.active,
+.datepicker .day.today {
+    border-radius: 5px;
+}
+
+.datepicker .day.active {
+    background-color: $primary-color;
+}
+
+.datepicker .day.today {
+    background-color: $dark-primary-color;
+}
+
+.datepicker .day.old,
+.datepicker .day.new {
+    color: $secondary-color;
+}
+
+.datepicker .prev,
+.datepicker .datepicker-switch,
+.datepicker .next,
+.datepicker .day {
+    cursor: pointer;
+}

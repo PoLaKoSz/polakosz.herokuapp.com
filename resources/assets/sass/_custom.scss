@@ -1,117 +1,10 @@
-$primary-color: #e67e22;
-$dark-primary-color:#d35400;
-$secondary-color: #777777;
-$tertiary-color: #fff;
-$quaternary-color: #eeeeee;
-@font-face {
-    font-family: LogoFont;
-    src: url("/fonts/Jayadhira LILA EE01.ttf");
-}
-
 body {
     font-size: 100%;
     line-height: 1.5;
     font-family: 'Open Sans', Arial, Helvetice Neue, sans-serif;
 }
 
-h1,
-h2,
-h3,
-.h4 {
-    margin: 10px 0;
-}
-
-h1 {
-    font-size: 500%;
-}
-
-h2 {
-    font-size: 200%;
-}
-
-h3,
-p {
-    font-size: 170%;
-}
-
-h4,
-#navbar,
-input,
-textarea {
-    font-size: 120%;
-}
-
-p {
-    margin: 10px 0;
-}
-
-img {
-    width: 100%;
-    height: auto;
-}
-
-input,
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0px;
-    max-width: 100%;
-}
-
-.primary-text {
-    color: $primary-color;
-}
-
-.secondary-text {
-    color: $secondary-color;
-}
-
-.italic-text {
-    font-style: italic;
-}
-
-.uppercase-text {
-    text-transform: uppercase;
-}
-
-.bold-text {
-    font-weight: bold;
-}
-
-.row {
-    margin: 0;
-}
-
-.remove-padding {
-    padding: 0;
-}
-
-.btn-orange {
-    @extend .uppercase-text;
-    background-color: $primary-color;
-    border-bottom: 2px solid $dark-primary-color;
-    border-radius: 0;
-    color: $tertiary-color;
-}
-
-.btn-orange:hover {
-    background-color: $dark-primary-color;
-    color: $tertiary-color;
-}
-
-.v-middle {
-    display: flex;
-    align-items: center;
-    margin: auto;
-}
-
-.vh-middle {
-    @extend .v-middle;
-    text-align: center;
-}
-
 #contact-header {
-    color: $primary-color;
     background: $quaternary-color;
 }
 
@@ -123,227 +16,55 @@ textarea {
     vertical-align: middle !important;
 }
 
-.signature {
-    font-family: LogoFont;
-    color: black !important;
-}
-
 #contact-header img {
     width: auto;
 }
 
-.navbar-default {
-    border: none;
-    text-transform: uppercase;
-    position: fixed;
-    top: 0;
-    background: $tertiary-color;
-    z-index: 16;
-    width: 100%;
-    border-radius: 0px;
-    box-shadow: rgb(152, 152, 152) 1px 1px 13px;
-}
-
-.navbar-default,
-.navbar-header {
-    margin: 0;
-}
-
-.navbar-default .navbar-nav>.active>a,
-.navbar-default .navbar-nav>.active>a:hover,
-.navbar-default .navbar-nav>li>a:hover {
-    background: $primary-color !important;
-    color: $tertiary-color;
-}
-
-.navbar-default .navbar-toggle {
-    border-color: $primary-color;
-}
-
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: $primary-color;
-}
-
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-    background-color: $tertiary-color;
-}
-
-td.day.active {
-    background-color: red;
-    border-radius: 5px;
-}
-
-#BootstrapTab .nav-pills>li>a {
-    border-radius: 4px 4px 0 0;
-}
-
-#BootstrapTab .tab-content {
-    color: black;
-    background: #f5f5f5;
-    padding: 5px 15px;
-}
-
-.carousel {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/slideshow.jpg') no-repeat center center fixed;
-    color: $tertiary-color;
-}
-
-.carousel-content {
-    @extend .vh-middle;
+.budapest-img {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("/images/slideshow.jpg") no-repeat center center fixed;
     height: 500px;
-    letter-spacing: 4px;
 }
 
-.carousel-content>div {
-    width: 100%;
-}
-
-.carousel-content h1 {
-    text-transform: uppercase;
-}
-
-#welcome-text {
-    border-bottom: 1px solid #cccccc;
-    display: flex;
-    align-items: center;
-    margin: auto;
-    text-align: center;
-    min-height: 15vw;
-}
-
-.welcome-text>div {
-    margin: auto;
-}
-
-.about-me {
-    color: $secondary-color;
+.primary-text {
+    color: $primary-color;
 }
 
 .projects {
-    background: url('/images//background.png');
+    background: url("/images//background.png");
+    min-height: 453.03px;
 }
 
-.section-header {
-    display: flex;
-    width: 100%;
-    height: 100px;
-    align-items: center;
+.section hr {
+    border-width: 1px;
+    border-style: solid;
 }
 
-.section-header-line {
-    width: 100%;
-    height: 0px;
+.light.section hr {
+    border-color: white;
 }
 
-.section-header-name {
-    padding: 0 20px;
+.light.section {
+    color: white;
 }
 
-.dark-section-header {
+.dark.section hr {
+    border-color: $secondary-color;
+}
+
+.dark.section {
     color: $secondary-color;
 }
 
-.dark-section-header .section-header-line {
-    border: 1px solid $secondary-color;
+.btn-orange {
+    text-transform: uppercase;
+    background-color: $primary-color;
+    border-bottom: 2px solid $dark-primary-color;
+    border-radius: 0;
+    color: $tertiary-color;
 }
 
-.light-section-header {
-    color: $tertiary-color !important;
-}
-
-.light-section-header .section-header-line {
-    border: 1px solid $tertiary-color;
-}
-
-.mask.flex-center {
-    @extend .vh-middle;
-}
-
-.mask.flex-center>div {
-    margin: auto;
-}
-
-.footer {
-    background: $quaternary-color;
-    border-top: 1px solid #cccccc;
-}
-
-.footer img {
-    width: auto;
-}
-
-a.facebook-color {
-    color: #465994;
-    font-weight: bold;
-}
-
-a.youtube-color {
-    color: #cb1e22;
-    font-weight: bold;
-}
-
-a.github-color {
-    color: #000;
-    font-weight: bold;
-}
-
-a.freemail-color {
-    color: #f89a1e;
-    font-weight: bold;
-}
-
-.section-padding {
-    padding: 5vw 0;
-}
-
-.row-no-padding {
-    [class*="col-"] {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-}
-
-.movie-details-provider-image {
-    padding: 20%;
-}
-
-.small-size-favicon {
-    width: 16px;
-    margin-right: 10px;
-}
-
-
-/* Extra small devices (phones, less than 768px) */
-
-
-/* No media query since this is the default in Bootstrap */
-
-
-/* Small devices (tablets, 768px and up) */
-
-@media only screen and (min-width: 768px) {
-    .navbar {
-        margin: 0;
-    }
-    #navbar {
-        height: 110px !important;
-        display: flex !important;
-        justify-content: flex-end !important;
-        align-items: center !important;
-    }
-}
-
-
-/* Medium devices (desktops, 992px and up) */
-
-@media only screen and (min-width: 992px) {}
-
-
-/* Large devices (large desktops, 1200px and up) */
-
-@media only screen and (min-width: 1200px) {
-    .col-padding {
-        padding: 0px 10px;
-    }
+.btn-orange:hover {
+    background-color: $dark-primary-color;
+    color: $tertiary-color;
 }
