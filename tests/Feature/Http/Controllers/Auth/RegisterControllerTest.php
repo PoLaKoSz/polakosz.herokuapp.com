@@ -19,9 +19,8 @@ class RegisterControllerTest extends TestCase
 
     public function testRegistrationCurrentlyDisabled()
     {
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->json('GET', 'register');
+        $response = $this->json('GET', 'register');
 
-        $this->assertEquals('<p class="alert alert-info">A regisztráció jelenleg le van zárva.</p> ', $response->getContent());
+        $this->assertEquals('<p class="alert alert-info">A regisztráció jelenleg le van zárva.</p>', $response->getContent());
     }
 }

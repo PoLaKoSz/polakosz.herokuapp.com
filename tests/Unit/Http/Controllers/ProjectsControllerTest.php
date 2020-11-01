@@ -10,7 +10,7 @@ class ProjectsControllerTest extends TestCase
 {
     private static $projectsController;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass() : void
     {
         $githubService = new FakeGitHubService();
 
@@ -19,16 +19,16 @@ class ProjectsControllerTest extends TestCase
 
     public function testModuleReturnOnly6Item()
     {
-        $result = self::$projectsController->module();
+        $result = self::$projectsController->index();
 
         $this->assertEquals(6, count($result));
     }
 
     public function testModuleAddMissingRepositoryLanguageProperty()
     {
-        $result = self::$projectsController->module();
+        $result = self::$projectsController->index();
 
         $repository = $result[0];
-        $this->assertEquals('unknown', $repository['language']);
+        $this->assertEquals('unknown', $repository->language);
     }
 }

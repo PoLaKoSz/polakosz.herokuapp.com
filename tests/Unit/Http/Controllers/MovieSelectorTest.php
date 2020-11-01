@@ -10,7 +10,7 @@ class MovieSelectorTest extends TestCase
 {
     private static $selector;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass() : void
     {
         $movieService = new StaticMovieService();
 

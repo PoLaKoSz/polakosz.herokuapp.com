@@ -11,13 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
+mix.js('resources/js/app.js', 'public/js')
    .sourceMaps()
    .extract(['axios', 'bootstrap', 'bootstrap-datepicker', 'jquery', 'lodash'])
 
-   .sass('resources/assets/sass/app.scss', 'public/css')
+   .sass('resources/sass/app.scss', 'public/css')
    .copy('node_modules/bootstrap/dist/css/bootstrap.min.css', 'public/css')
    .copy('node_modules/bootstrap/dist/css/bootstrap.min.css.map', 'public/css')
-   .sass('resources/assets/sass/mdb.scss', 'public/css')
+   .sass('resources/sass/mdb.scss', 'public/css')
 
    .version();

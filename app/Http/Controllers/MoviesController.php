@@ -11,6 +11,7 @@ use App\Services\MovieServiceInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MovieSelector;
 use Carbon\Carbon;
+use \DateTime;
 use App\Movie;
 use LaravelLocalization;
 
@@ -103,10 +104,15 @@ class MoviesController extends Controller
     {
         $this->requestParameterValidation($request);
 
-        $date = (strlen($request->input('date') == 0) ? Carbon::today() : date('Y-m-d', strtotime($request->input('date'))));
+        $date = Carbon::today();
+        if ($request->input('date') != null)
+            $date = Carbon::createFromFormat(trans('movies.date_php_format'), $request->input('date'));
 
-        $movie       = $this->movieService->create();
-        $movie->date = $date;
+        $request->merge([
+            'date' => $date->format('Y-m-d'),
+        ]);
+
+        $movie = $this->movieService->create();
 
         $this->abstractEditUpdate($request, $movie);
 
@@ -129,7 +135,7 @@ class MoviesController extends Controller
         $data = (object) [
             'id'          => $movie->id,
             'rating'      => $movie->rating,
-            'date'        => date_format(date_create($movie->date), trans('movies.date_php_format')),
+            'date'        => date_format($movie->date, trans('movies.date_php_format')),
             'cover_image' => $movie->cover_image,
             'hu'          => (object) [
                 'title'   => $movie->hu_title,
@@ -208,15 +214,15 @@ class MoviesController extends Controller
         }
 
         $movie->cover_image = $request->input('cover_image');
-        $movie->date      = $request->input('date');
+        $movie->date        = $request->input('date');
         $movie->rating      = $request->input('rating');
         $movie->hu_title    = $request->input('title_hu');
         $movie->hu_comment  = $request->input('comment_hu');
         $movie->mafab_id    = $request->input('mafab_id');
 
-        $movie->imdb_id        = $request->input('imdb_id');
-        $movie->en_title     = $request->input('title_en');
-        $movie->en_comment   = $request->input('comment_en');
+        $movie->imdb_id     = $request->input('imdb_id');
+        $movie->en_title    = $request->input('title_en');
+        $movie->en_comment  = $request->input('comment_en');
 
         $movie->save();
     }

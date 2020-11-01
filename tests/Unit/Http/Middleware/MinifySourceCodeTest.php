@@ -12,7 +12,7 @@ class MinifySourceCodeTest extends TestCase
 {
     private static $middleware;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass() : void
     {
         self::$middleware = new MinifySourceCode();
     }
@@ -26,7 +26,7 @@ class MinifySourceCodeTest extends TestCase
             $resp->setContent('<html><!-- hi --></html>');
             return $resp;
         });
-        
+
         $this->assertEquals('<html></html>', $response->getOriginalContent());
     }
 
@@ -39,7 +39,7 @@ class MinifySourceCodeTest extends TestCase
             $resp->setContent('<pre>  </pre>');
             return $resp;
         });
-        
+
         $this->assertEquals('<pre>  </pre>', $response->getOriginalContent());
     }
 }

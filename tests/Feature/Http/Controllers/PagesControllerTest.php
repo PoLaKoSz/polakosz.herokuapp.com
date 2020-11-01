@@ -16,7 +16,6 @@ class PagesControllerTest extends TestCase
 
         $response
             ->assertStatus(200)
-            ->assertViewHas('movies')
-            ->assertViewHas('projects');
+            ->assertViewHas('movies');
     }
 }

@@ -11,7 +11,7 @@ class RedirectIfAuthenticatedTest extends TestCase
 {
     private static $middleware;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass() : void
     {
         self::$middleware = new RedirectIfAuthenticated();
     }
@@ -22,7 +22,7 @@ class RedirectIfAuthenticatedTest extends TestCase
 
         $response = self::$middleware->handle($request, function () {
         });
-        
+
         $this->assertNull($response);
     }
 

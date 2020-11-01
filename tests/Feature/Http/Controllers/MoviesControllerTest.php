@@ -6,7 +6,9 @@ use App\Movie;
 use App\User;
 use App\Http\Middleware\MinifySourceCode;
 use App\Services\MovieService;
+use LaravelLocalization;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\App;
 use Tests\TestCase;
 
 class MoviesControllerTest extends TestCase
@@ -47,7 +49,7 @@ class MoviesControllerTest extends TestCase
 
         $response->assertRedirect();
     }
-    
+
     public function testCreateReturnCorrectViewWhenUserAuthenticated()
     {
         $user = factory(User::class)->create();
@@ -78,7 +80,6 @@ class MoviesControllerTest extends TestCase
             ->post('/movies');
 
         $response->assertSessionHasErrors([
-            'title_hu',
             'title_en',
             'imdb_id',
             'cover_image',
@@ -99,6 +100,49 @@ class MoviesControllerTest extends TestCase
                 'comment_en' => 'English comment',
                 'mafab_id'   => 'jay-es-nema-bob-visszavag-11027',
                 'imdb_id'    => '6521876',
+                'cover_image'=> 'jay-and-silent-bob-reboot.jpg',
+                'rating'     => 6,
+            ]);
+
+        $response->assertRedirect('hu/movies/new');
+    }
+
+    public function testStoreSaveMovieWhenTheDateIsInEnglishFormat()
+    {
+        $user = factory(User::class)->create();
+        LaravelLocalization::setLocale('en');
+
+        $response = $this->withoutMiddleware(MinifySourceCode::class)
+            ->actingAs($user)
+            ->post('/movies', [
+                'title_hu'   => 'Jay és Néma Bob visszavág',
+                'comment_hu' => 'Magyar komment',
+                'title_en'   => 'Jay and Silent Bob Reboot',
+                'comment_en' => 'English comment',
+                'mafab_id'   => 'jay-es-nema-bob-visszavag-11027',
+                'imdb_id'    => '6521876',
+                'date'       => (new \DateTime)->format(trans('movies.date_php_format')),
+                'cover_image'=> 'jay-and-silent-bob-reboot.jpg',
+                'rating'     => 6,
+            ]);
+
+        $response->assertRedirect('en/movies/new');
+    }
+
+    public function testStoreSaveMovieWhenTheDateIsInHungarianFormat()
+    {
+        $user = factory(User::class)->create();
+
+        $response = $this->withoutMiddleware(MinifySourceCode::class)
+            ->actingAs($user)
+            ->post('/movies', [
+                'title_hu'   => 'Jay és Néma Bob visszavág',
+                'comment_hu' => 'Magyar komment',
+                'title_en'   => 'Jay and Silent Bob Reboot',
+                'comment_en' => 'English comment',
+                'mafab_id'   => 'jay-es-nema-bob-visszavag-11027',
+                'imdb_id'    => '6521876',
+                'date'       => (new \DateTime)->format(trans('movies.date_php_format')),
                 'cover_image'=> 'jay-and-silent-bob-reboot.jpg',
                 'rating'     => 6,
             ]);
@@ -142,14 +186,13 @@ class MoviesControllerTest extends TestCase
             ->patch('/movies/1');
 
         $response->assertSessionHasErrors([
-            'title_hu',
             'title_en',
             'imdb_id',
             'cover_image',
             'rating'
         ]);
     }
-    
+
     public function testUpdateThrow404WhenUserPassNotExistingId()
     {
         $user = factory(User::class)->create();
@@ -198,7 +241,7 @@ class MoviesControllerTest extends TestCase
 
         $response->assertRedirect();
     }
-    
+
     public function testDestroyThrow404WhenUserPassNotExistingId()
     {
         $user = factory(User::class)->create();

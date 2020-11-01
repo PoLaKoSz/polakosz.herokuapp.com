@@ -15,7 +15,7 @@ class MoviesControllerTest extends TestCase
     private static $moviesController;
     private static $fullyDetailedMovieID;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass() : void
     {
         $movieService = new StaticMovieService();
 
@@ -78,7 +78,7 @@ class MoviesControllerTest extends TestCase
         $this->actingAs($user);
 
         $response = self::$moviesController->edit(99000 + 2);
-        
+
         $actualMovie = $response->getData()['data'];
         $this->assertEquals(99000 + 2, $actualMovie->id);
         $this->assertEquals(6, $actualMovie->rating);
