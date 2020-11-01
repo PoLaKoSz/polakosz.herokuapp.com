@@ -31,7 +31,7 @@ class StaticMovieService extends TestCase implements MovieServiceInterface
                 return $movie;
             }
         }
-        
+
         return null;
     }
 
@@ -57,7 +57,7 @@ class StaticMovieService extends TestCase implements MovieServiceInterface
 
     private function fullDetailedMovie() : Movie
     {
-        $movie = factory(\App\Movie::class)->make([
+        $movie = factory(Movie::class)->make([
             'id' => 99000 + 0,
             'hu_title' => 'Jay és Néma Bob visszavág',
             'hu_comment' => 'Füvet szívsz ... :)',
@@ -70,23 +70,22 @@ class StaticMovieService extends TestCase implements MovieServiceInterface
             'rating' => 6,
             'cover_image' => 'jay-and-silent-bob-reboot.jpg',
         ]);
-        
+
         return $movie;
     }
 
     private function movieWithOnlyIMDb() : Movie
     {
-        $movie = factory('App\Movie')->make([
-            'id' => 99000 + 2,
+        $movie = new Movie();
+        $movie->id = 99000 + 2;
 
-            'imdb_id' => 1063669,
-            'en_title' => 'The Wave',
-            'en_comment' => 'Interesting',
+        $movie->imdb_id = 1063669;
+        $movie->en_title = 'The Wave';
+        $movie->en_comment = 'Interesting';
 
-            'rating' => 6,
-            'cover_image' => 'the-wave.jpg',
-        ]);
-        
+        $movie->rating = 6;
+        $movie->cover_image = 'the-wave.jpg';
+
         return $movie;
     }
 }

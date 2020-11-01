@@ -135,7 +135,7 @@ class MoviesController extends Controller
         $data = (object) [
             'id'          => $movie->id,
             'rating'      => $movie->rating,
-            'date'        => date_format($movie->date, trans('movies.date_php_format')),
+            'date'        => (new \DateTime($movie->date))->format(trans('movies.date_php_format')),
             'cover_image' => $movie->cover_image,
             'hu'          => (object) [
                 'title'   => $movie->hu_title,
@@ -172,6 +172,10 @@ class MoviesController extends Controller
         if ($movie == null) {
             abort(404);
         }
+
+        $request->merge([
+            'date' => Carbon::createFromFormat(trans('movies.date_php_format'), $request->input('date'))->format('Y-m-d'),
+        ]);
 
         $this->abstractEditUpdate($request, $movie);
 

@@ -10,6 +10,8 @@ use Tests\TestCase;
 
 class HomeControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testIndexViewWhenUserAuthenticated()
     {
         $user = factory(User::class)->create();

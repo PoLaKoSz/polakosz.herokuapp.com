@@ -32,7 +32,7 @@ class MovieSelectorTest extends TestCase
         $this->assertEquals('jay-and-silent-bob-reboot.jpg', $movie->image);
     }
 
-    public function testGetForHungarianUserWhenMovieHasNotMafabDetails()
+    public function testGetForHungarianUserWhenMovieHasNoMafabDetails()
     {
         $actual = self::$selector->get('hu');
 

@@ -4,11 +4,13 @@ namespace Tests\Feature\Http\Controllers;
 
 use App\User;
 use App\Http\Middleware\MinifySourceCode;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class LoginControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testUnauthenticatedUserCanAccess()
     {
         $response = $this->withoutMiddleware(MinifySourceCode::class)

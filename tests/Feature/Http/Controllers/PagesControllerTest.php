@@ -3,8 +3,6 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Http\Middleware\MinifySourceCode;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
 
 class PagesControllerTest extends TestCase

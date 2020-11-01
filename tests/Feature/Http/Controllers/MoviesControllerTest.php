@@ -3,9 +3,9 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Movie;
-use App\User;
 use App\Http\Middleware\MinifySourceCode;
 use App\Services\MovieService;
+use App\User;
 use LaravelLocalization;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\App;
@@ -13,6 +13,8 @@ use Tests\TestCase;
 
 class MoviesControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testIndexReturnCorrectView()
     {
         $response = $this->withoutMiddleware(MinifySourceCode::class)
@@ -44,8 +46,7 @@ class MoviesControllerTest extends TestCase
 
     public function testCreateRedirectWhenUserNotAuthenticated()
     {
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->get('/movies/new');
+        $response = $this->get('/movies/new');
 
         $response->assertRedirect();
     }
@@ -65,8 +66,7 @@ class MoviesControllerTest extends TestCase
 
     public function testStoreRedirectWhenUserNotAuthenticated()
     {
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->post('/movies');
+        $response = $this->post('/movies');
 
         $response->assertRedirect();
     }
@@ -75,8 +75,7 @@ class MoviesControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->actingAs($user)
+        $response = $this->actingAs($user)
             ->post('/movies');
 
         $response->assertSessionHasErrors([
@@ -91,8 +90,7 @@ class MoviesControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->actingAs($user)
+        $response = $this->actingAs($user)
             ->post('/movies', [
                 'title_hu'   => 'Jay és Néma Bob visszavág',
                 'comment_hu' => 'Magyar komment',
@@ -112,8 +110,7 @@ class MoviesControllerTest extends TestCase
         $user = factory(User::class)->create();
         LaravelLocalization::setLocale('en');
 
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->actingAs($user)
+        $response = $this->actingAs($user)
             ->post('/movies', [
                 'title_hu'   => 'Jay és Néma Bob visszavág',
                 'comment_hu' => 'Magyar komment',
@@ -133,8 +130,7 @@ class MoviesControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->actingAs($user)
+        $response = $this->actingAs($user)
             ->post('/movies', [
                 'title_hu'   => 'Jay és Néma Bob visszavág',
                 'comment_hu' => 'Magyar komment',
@@ -152,18 +148,31 @@ class MoviesControllerTest extends TestCase
 
     public function testEditRedirectWhenUserNotAuthenticated()
     {
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->get('/movies/10/edit');
+        $response = $this->get('/movies/10/edit');
 
         $response->assertRedirect();
+    }
+
+    public function testEditReturnCorrectViewWhenAuthenticated()
+    {
+        $user = factory(User::class)->create();
+        $movie = factory(Movie::class)->create();
+        $movie->save();
+
+        $response = $this->withoutMiddleware(MinifySourceCode::class)
+            ->actingAs($user)
+            ->get("/movies/{$movie->id}/edit");
+
+        $response
+            ->assertStatus(200)
+            ->assertViewIs('pages.movies.edit');
     }
 
     public function testEditRedirectNextIdWhenParameterMovieIdDoesNotExists()
     {
         $user = factory(User::class)->create();
 
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->actingAs($user)
+        $response = $this->actingAs($user)
             ->get('/movies/0/edit');
 
         $response->assertRedirect('hu/movies/1/edit');
@@ -171,8 +180,7 @@ class MoviesControllerTest extends TestCase
 
     public function testUpdateRedirectWhenUserNotAuthenticated()
     {
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->patch('/movies/1');
+        $response = $this->patch('/movies/1');
 
         $response->assertRedirect();
     }
@@ -181,8 +189,7 @@ class MoviesControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->actingAs($user)
+        $response = $this->actingAs($user)
             ->patch('/movies/1');
 
         $response->assertSessionHasErrors([
@@ -197,8 +204,7 @@ class MoviesControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->actingAs($user)
+        $response = $this->actingAs($user)
             ->patch('/movies/' . 999999999, [
                 'title_hu' => 'Magyar cím',
                 'title_en' => 'English title',
@@ -214,65 +220,50 @@ class MoviesControllerTest extends TestCase
     public function testUpdateRedirectAfterSuccessfullOperation()
     {
         $user = factory(User::class)->create();
+        $movie = factory(Movie::class)->create();
+        $movie->save();
 
-        $movieService = new MovieService();
-        $movie = $movieService->find(1);
-
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->actingAs($user)
-            ->patch('/movies/1', [
+        $response = $this->actingAs($user)
+            ->patch("/movies/{$movie->id}", [
                 'title_en' => $movie->en_title,
                 'imdb_id' => $movie->imdb_id,
                 'title_hu' => $movie->hu_title,
                 'mafab_id' => $movie->mafab_id,
+                'date' => (new \DateTime($movie->date))->format(trans('movies.date_php_format')),
                 'cover_image' => $movie->cover_image,
                 'rating' => $movie->rating,
             ]);
 
-        $response
-            ->assertStatus(302)
-            ->assertRedirect('hu/movies');
+        $response->assertRedirect('hu/movies');
     }
 
     public function testDestroyRedirectWhenUserNotAuthenticated()
     {
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->delete('/movies/1');
+        $response = $this->delete('/movies/1');
 
-        $response->assertRedirect();
+        $response->assertRedirect('/hu');
     }
 
     public function testDestroyThrow404WhenUserPassNotExistingId()
     {
         $user = factory(User::class)->create();
 
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->actingAs($user)
-            ->delete('/movies/' . 999999999);
+        $response = $this->actingAs($user)
+            ->delete('/movies/1');
 
         $response->assertStatus(404);
     }
 
-    /**
-     * @depends testStoreReturnCorrectViewWhenUserAuthenticated
-     */
     public function testDestroyDeleteMovieWhenUserAuthenticated()
     {
         $user = factory(User::class)->create();
-        $movie = $this->lastAddedMovie();
+        $movie = factory(Movie::class)->create();
+        $movie->save();
 
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->actingAs($user)
-            ->delete('/movies/' . $movie->id);
+        $response = $this->actingAs($user)
+            ->delete("/movies/{$movie->id}");
 
         $response->assertStatus(200);
-        $this->assertNotEquals($movie->id, $this->lastAddedMovie(), 'Movie which created by a test suite didn\'t get deleted');
-    }
-
-    private function lastAddedMovie() : Movie
-    {
-        $movieService = new MovieService();
-
-        return $movieService->getWithDetails(1)[0];
+        $this->assertEquals(0, Movie::count());
     }
 }

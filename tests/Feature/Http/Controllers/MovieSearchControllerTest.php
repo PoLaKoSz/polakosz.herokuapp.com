@@ -2,10 +2,13 @@
 
 namespace Tests\Feature\Http\Controllers;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class MovieSearchControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     private $query = 'A kém, aki dobott engem';
 
     public function testMafabResponseReturnNecessaryProperties()
