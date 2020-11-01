@@ -36,6 +36,7 @@ class MovieService implements MovieServiceInterface
     {
         return Movie::skip($skipCount)
             ->take($count)
+            ->orderBy('date', 'desc')
             ->orderBy('id', 'desc')
             ->get();
     }
