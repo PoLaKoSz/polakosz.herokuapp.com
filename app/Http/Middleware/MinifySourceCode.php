@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\App;
 
 class MinifySourceCode
 {
@@ -17,6 +18,10 @@ class MinifySourceCode
     public function handle($request, Closure $next)
     {
         $response = $next($request);
+
+        if (config('app.env') == 'testing') {
+            return $response;
+        }
 
         $buffer   = $response->getContent();
 

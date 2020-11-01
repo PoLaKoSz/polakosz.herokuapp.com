@@ -19,6 +19,8 @@ class MinifySourceCodeTest extends TestCase
 
     public function testHandleRemoveHtmlComments()
     {
+        config(['app.env' => 'production']);
+
         $request = Request::create('/dummy', 'GET');
 
         $response = self::$middleware->handle($request, function ($request) {

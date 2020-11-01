@@ -3,7 +3,6 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\User;
-use App\Http\Middleware\MinifySourceCode;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
@@ -16,8 +15,7 @@ class HomeControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->actingAs($user)
+        $response = $this->actingAs($user)
             ->get('/home');
 
         $response
@@ -27,8 +25,7 @@ class HomeControllerTest extends TestCase
 
     public function testIndexRedirectWhenUserNotAuthenticated()
     {
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->get('/home');
+        $response = $this->get('/home');
 
         $response->assertStatus(302);
     }

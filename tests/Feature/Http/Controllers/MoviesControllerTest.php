@@ -3,7 +3,6 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Movie;
-use App\Http\Middleware\MinifySourceCode;
 use App\Services\MovieService;
 use App\User;
 use LaravelLocalization;
@@ -17,8 +16,7 @@ class MoviesControllerTest extends TestCase
 
     public function testIndexReturnCorrectView()
     {
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->get('/movies');
+        $response = $this->get('/movies');
 
         $response
             ->assertStatus(200)
@@ -27,8 +25,7 @@ class MoviesControllerTest extends TestCase
 
     public function testIndexReturnCorrectData()
     {
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->get('/movies');
+        $response = $this->get('/movies');
 
         $response
             ->assertStatus(200)
@@ -55,8 +52,7 @@ class MoviesControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->actingAs($user)
+        $response = $this->actingAs($user)
             ->get('/movies/new');
 
         $response
@@ -159,8 +155,7 @@ class MoviesControllerTest extends TestCase
         $movie = factory(Movie::class)->create();
         $movie->save();
 
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->actingAs($user)
+        $response = $this->actingAs($user)
             ->get("/movies/{$movie->id}/edit");
 
         $response

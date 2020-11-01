@@ -3,7 +3,6 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\User;
-use App\Http\Middleware\MinifySourceCode;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -13,8 +12,7 @@ class LoginControllerTest extends TestCase
 
     public function testUnauthenticatedUserCanAccess()
     {
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->get('login');
+        $response = $this->get('login');
 
         $response
             ->assertStatus(200)
@@ -25,8 +23,7 @@ class LoginControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->actingAs($user)
+        $response = $this->actingAs($user)
             ->post('/logout');
 
         $response->assertRedirect('/hu');

@@ -2,15 +2,13 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Http\Middleware\MinifySourceCode;
 use Tests\TestCase;
 
 class PagesControllerTest extends TestCase
 {
     public function testIndexReturnData()
     {
-        $response = $this->withoutMiddleware(MinifySourceCode::class)
-            ->get('/');
+        $response = $this->get('/');
 
         $response
             ->assertStatus(200)
