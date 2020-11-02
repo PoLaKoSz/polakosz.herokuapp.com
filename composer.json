@@ -12,7 +12,7 @@
         "doctrine/dbal": "^2.0",
         "fideloper/proxy": "^4.4",
         "graham-campbell/github": "^9.4",
-        "imdbphp/imdbphp": "^6.1",
+        "imdbphp/imdbphp": "^6.4",
         "mcamara/laravel-localization": "^1.2",
         "laravel/framework": "^6.20",
         "php-http/guzzle6-adapter": "^1.1",
