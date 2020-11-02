@@ -15,7 +15,6 @@
         "imdbphp/imdbphp": "^6.1",
         "mcamara/laravel-localization": "^1.2",
         "laravel/framework": "^6.20",
-        "laravel/tinker": "^2.5",
         "php-http/guzzle6-adapter": "^1.1",
         "polakosz/mafab": "^1.1"
     },
