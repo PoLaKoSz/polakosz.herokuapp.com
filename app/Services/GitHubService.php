@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Services\GitHubServiceInterface;
-use GitHub;
+use Github\Client as GitHub;
 
 class GitHubService implements GitHubServiceInterface
 {
@@ -19,7 +19,7 @@ class GitHubService implements GitHubServiceInterface
         $direction = 'desc';
         $visibility = 'public';
         $affiliation = 'owner,collaborator';
-        
-        return GitHub::users()->repositories('PoLaKoSz', $type, $sort, $direction, $visibility, $affiliation);
+
+        return (new GitHub())->api('user')->repositories('PoLaKoSz', $type, $sort, $direction, $visibility, $affiliation);
     }
 }

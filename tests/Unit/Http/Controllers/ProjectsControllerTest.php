@@ -17,18 +17,18 @@ class ProjectsControllerTest extends TestCase
         self::$projectsController = new ProjectsController($githubService);
     }
 
-    public function testModuleReturnOnly6Item()
+    public function testIndexReturnOnly6Item()
     {
-        $result = self::$projectsController->index();
+        $repositories = self::$projectsController->index();
 
-        $this->assertEquals(6, count($result));
+        $this->assertCount(6, $repositories);
     }
 
-    public function testModuleAddMissingRepositoryLanguageProperty()
+    public function testIndexAddMissingRepositoryLanguageProperty()
     {
-        $result = self::$projectsController->index();
+        $repositories = self::$projectsController->index();
 
-        $repository = $result[0];
+        $repository = $repositories[0];
         $this->assertEquals('unknown', $repository->language);
     }
 }

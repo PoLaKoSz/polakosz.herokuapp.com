@@ -42,13 +42,13 @@ function getErrorTemplate(uiLanguage) {
     const repoURL = "https://github.com/PoLaKoSz?tab=repositories";
     if (uiLanguage === "/hu") {
         return `
-            <div class="alert alert-danger lead text-center" role="alert">
+            <div class="col alert alert-danger lead text-center" role="alert">
                 Nem sikerült betölteni a legfrissebben módosított repository-kat, viszont <a href="${repoURL}" target="_blank">ide kattintva</a> megnézheted őket GitHub-on.
             </div>
         `
     } else {
         return `
-            <div class="alert alert-danger lead text-center" role="alert">
+            <div class="col alert alert-danger lead text-center" role="alert">
                 Couldn't load the most recently updated GitHub repositories but <a href="${repoURL}" target="_blank">clicking here</a> will open it on GitHub.
             </div>
         `

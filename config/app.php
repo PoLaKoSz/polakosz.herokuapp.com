@@ -179,11 +179,6 @@ return [
          * Laravel Localization
          */
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
-
-        /*
-         * GitHub client
-        */
-        GrahamCampbell\GitHub\GitHubServiceProvider::class,
     ],
 
     /*

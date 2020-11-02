@@ -17,15 +17,22 @@ class ProjectsControllerTest extends TestCase
         self::$projectsController = new ProjectsController($githubService);
     }
 
-    public function testModuleRepositoryReturnNecessaryProperties()
+    public function testIndexReturnNecessaryProperties()
     {
-        $result = self::$projectsController->index();
+        $repositories = self::$projectsController->index();
 
-        $repository = $result[0];
+        $repository = $repositories[0];
 
         $this->assertObjectHasAttribute('name', $repository);
         $this->assertObjectHasAttribute('description', $repository);
         $this->assertObjectHasAttribute('language', $repository);
         $this->assertObjectHasAttribute('html_url', $repository);
+    }
+
+    public function testIndexReturnOnly6Item()
+    {
+        $repositories = self::$projectsController->index();
+
+        $this->assertCount(6, $repositories);
     }
 }
