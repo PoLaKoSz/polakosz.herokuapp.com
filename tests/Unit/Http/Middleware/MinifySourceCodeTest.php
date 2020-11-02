@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Http\Controllers;
+namespace Tests\Unit\Http\Middleware;
 
 use App\User;
 use App\Http\Middleware\MinifySourceCode;
