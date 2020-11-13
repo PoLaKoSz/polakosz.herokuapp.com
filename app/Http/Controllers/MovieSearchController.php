@@ -93,7 +93,7 @@ class MovieSearchController extends Controller
                     $imdbMovie->main_url(),
                     $title,
                     $imdbMovie->year(),
-                    $imdbMovie->photo(false)
+                    $imdbMovie->photo()
                 )
             );
         }
