@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2020 at 08:54 PM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.7
+-- Generation Time: Nov 13, 2020 at 01:13 PM
+-- Server version: 10.4.15-MariaDB
+-- PHP Version: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -56,24 +55,25 @@ CREATE TABLE `migrations` (
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
-(13, '2014_10_12_100000_create_password_resets_table', 2),
-(29, '2017_07_21_085633_create_movies_table', 3),
-(30, '2017_07_21_161626_create_contacts_table', 4),
-(31, '2017_07_28_131343_added_cover_img_field', 4),
-(38, '2018_07_07_090809_rename_movies_table_columns', 5),
-(48, '2018_08_27_170830_create_movies_hungarian_table', 6),
-(49, '2018_08_28_105452_create_mafab_table', 7),
-(50, '2018_08_28_162050_create_port_table', 7),
-(51, '2018_08_30_204046_create_imdb_table', 8),
-(53, '2019_01_11_061455_add_unique_indexes_to_all_movie_related_tables', 9),
-(55, '2019_01_14_110753_removes_unnecessary_movies_table_columns', 10),
-(56, '2019_02_23_200153_increase_comments_max_length', 11),
-(57, '2019_08_31_141121_delete_port_table', 11),
-(58, '2019_08_25_104117_update_movie_table_shema_for_merging', 12),
-(59, '2019_08_31_142543_delete_mafab_table', 13),
-(60, '2019_08_31_152448_delete_movies_hungarian_table', 13),
-(61, '2019_09_01_075051_update_movies_schema_to_hold_english_details', 14),
-(62, '2019_09_01_080933_delete_imdb_table', 15);
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2017_07_21_085633_create_movies_table', 1),
+(4, '2017_07_21_161626_create_contacts_table', 1),
+(5, '2017_07_28_131343_added_cover_img_field', 1),
+(6, '2018_07_07_090809_rename_movies_table_columns', 1),
+(7, '2018_08_27_170830_create_movies_hungarian_table', 1),
+(8, '2018_08_28_105452_create_mafab_table', 1),
+(9, '2018_08_28_162050_create_port_table', 1),
+(10, '2018_08_30_204046_create_imdb_table', 1),
+(11, '2019_01_11_061455_add_unique_indexes_to_all_movie_related_tables', 1),
+(12, '2019_01_14_110753_removes_unnecessary_movies_table_columns', 1),
+(13, '2019_02_23_200153_increase_comments_max_length', 1),
+(14, '2019_08_19_000000_create_failed_jobs_table', 1),
+(15, '2019_08_25_104117_update_movie_table_shema_for_merging', 1),
+(16, '2019_08_31_141121_delete_port_table', 1),
+(17, '2019_08_31_142543_delete_mafab_table', 1),
+(18, '2019_08_31_152448_delete_movies_hungarian_table', 1),
+(19, '2019_09_01_075051_update_movies_schema_to_hold_english_details', 1),
+(20, '2019_09_01_080933_delete_imdb_table', 1);
 
 -- --------------------------------------------------------
 
@@ -83,12 +83,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `movies` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `hu_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT 'NULL',
-  `mafab_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT 'NULL' COMMENT 'https://www.mafab.hu/movies/<ID>.html',
-  `hu_comment` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT 'NULL',
-  `en_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT 'NULL',
+  `hu_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mafab_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'https://www.mafab.hu/movies/<ID>.html',
+  `hu_comment` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `en_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `imdb_id` int(11) DEFAULT NULL,
-  `en_comment` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT 'NULL',
+  `en_comment` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `rating` int(10) UNSIGNED DEFAULT NULL,
   `cover_image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `date` datetime DEFAULT NULL
@@ -1480,7 +1480,61 @@ INSERT INTO `movies` (`id`, `hu_title`, `mafab_id`, `hu_comment`, `en_title`, `i
 (1413, 'A bébiszitter - A kárhozottak királynője', 'the-babysitter-2-337774', NULL, 'The Babysitter: Killer Queen', 11024272, NULL, 4, 'https://m.media-amazon.com/images/M/MV5BMWEwMDU3MWUtZTdiMy00Yjg5LWFiNWYtYTRmZGExNzk5YjQ2XkEyXkFqcGdeQXVyNTUwOTkzMzY@._V1_.jpg', '2020-09-12 00:00:00'),
 (1414, 'A búra alatt S03 EP04-13', 'a-bura-alatt-252132', NULL, 'Under the Dome S03 EP04-13', 1553656, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BMjA3NDk0NzM1MF5BMl5BanBnXkFtZTcwOTYxMTk3OQ@@._V1_.jpg', '2020-09-16 00:00:00'),
 (1415, 'Sötétség S01 EP01', 'dark-292504', NULL, 'Dark S01 EP01', 5753856, NULL, 0, 'https://m.media-amazon.com/images/M/MV5BZmY2YzU4NDktODIxYi00YWIyLWIzYTctODBkYzYzZjc0ODdlXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg', '2020-09-14 00:00:00'),
-(1416, 'Társadalmi dilemma', 'the-social-dilemma-341637', NULL, 'The Social Dilemma', 11464826, NULL, 6, 'https://m.media-amazon.com/images/M/MV5BNDVhMGNhYjEtMDkwZi00NmQ5LWFkODktYzhiYjY2NTZmYTNhXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg', '2020-09-14 00:00:00');
+(1416, 'Társadalmi dilemma', 'the-social-dilemma-341637', NULL, 'The Social Dilemma', 11464826, NULL, 6, 'https://m.media-amazon.com/images/M/MV5BNDVhMGNhYjEtMDkwZi00NmQ5LWFkODktYzhiYjY2NTZmYTNhXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg', '2020-09-14 00:00:00'),
+(1417, 'A visszatérők S07 EP14', 'the-100-206020', NULL, 'The 100 S07 EP14', 2661044, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BNjRiYTIzZmUtMTFkNS00ZTM0LWE4ODAtMDliMGE4NzM5ZjVlXkEyXkFqcGdeQXVyNDQ0MTYzMDA@._V1_.jpg', '2020-09-17 00:00:00'),
+(1418, 'Narcos: Mexikó S01 EP01', 'narcos-mexico-320309', NULL, 'Narcos: Mexico S01 EP01', 8714904, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BMGJiMTc0OTctZDU1Yy00YjdiLTk1NWYtZTgzMjc1ODg4YzhkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg', '2020-09-18 00:00:00'),
+(1419, 'Narcos: Mexikó S01 EP02-09', 'narcos-mexico-320309', NULL, 'Narcos: Mexico S01 EP02-09', 8714904, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BMGJiMTc0OTctZDU1Yy00YjdiLTk1NWYtZTgzMjc1ODg4YzhkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg', '2020-09-19 00:00:00'),
+(1420, 'Narcos: Mexikó S01 EP10', 'narcos-mexico-320309', NULL, 'Narcos: Mexico S01 EP10', 8714904, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BMGJiMTc0OTctZDU1Yy00YjdiLTk1NWYtZTgzMjc1ODg4YzhkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg', '2020-09-20 00:00:00'),
+(1421, 'Narcos: Mexikó S02 EP01-04', 'narcos-mexico-320309', NULL, 'Narcos: Mexico S02 EP01-04', 8714904, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BMGJiMTc0OTctZDU1Yy00YjdiLTk1NWYtZTgzMjc1ODg4YzhkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg', '2020-09-20 00:00:00'),
+(1422, 'Narcos: Mexikó S02 EP05-10', 'narcos-mexico-320309', NULL, 'Narcos: Mexico S02 EP05-10', 8714904, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BMGJiMTc0OTctZDU1Yy00YjdiLTk1NWYtZTgzMjc1ODg4YzhkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg', '2020-09-20 00:00:00'),
+(1423, 'Macskanő', 'a-macskano-43968', NULL, 'Catwoman', 327554, NULL, 4, 'https://m.media-amazon.com/images/M/MV5BMjA4MzM0NDAzOF5BMl5BanBnXkFtZTcwMDY3MDYyMQ@@._V1_.jpg', '2020-09-21 00:00:00'),
+(1424, 'Westworld S01 EP01', 'westworld-273344', NULL, 'Westworld S01 EP01', 475784, NULL, 6, 'https://m.media-amazon.com/images/M/MV5BMTRmYzNmOTctZjMwOS00ODZlLWJiZGQtNDg5NDY5NjE3MTczXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg', '2020-09-22 00:00:00'),
+(1425, 'Westworld S01 EP02', 'westworld-273344', NULL, 'Westworld S01 EP02', 475784, NULL, 6, 'https://m.media-amazon.com/images/M/MV5BMTRmYzNmOTctZjMwOS00ODZlLWJiZGQtNDg5NDY5NjE3MTczXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg', '2020-09-23 00:00:00'),
+(1426, 'Westworld S01 EP03', 'westworld-273344', NULL, 'Westworld S01 EP03', 475784, NULL, 6, 'https://m.media-amazon.com/images/M/MV5BMTRmYzNmOTctZjMwOS00ODZlLWJiZGQtNDg5NDY5NjE3MTczXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg', '2020-09-24 00:00:00'),
+(1427, 'Westworld S01 EP04-08', 'westworld-273344', NULL, 'Westworld S01 EP04-08', 475784, NULL, 6, 'https://m.media-amazon.com/images/M/MV5BMTRmYzNmOTctZjMwOS00ODZlLWJiZGQtNDg5NDY5NjE3MTczXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg', '2020-09-25 00:00:00'),
+(1428, 'Westworld S01 EP09-10', 'westworld-273344', NULL, 'Westworld S01 EP09-10', 475784, NULL, 6, 'https://m.media-amazon.com/images/M/MV5BMTRmYzNmOTctZjMwOS00ODZlLWJiZGQtNDg5NDY5NjE3MTczXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg', '2020-09-26 00:00:00'),
+(1429, 'A visszatérők S07 EP15', 'the-100-206020', NULL, 'The 100 S07 EP15', 2661044, NULL, 4, 'https://m.media-amazon.com/images/M/MV5BNjRiYTIzZmUtMTFkNS00ZTM0LWE4ODAtMDliMGE4NzM5ZjVlXkEyXkFqcGdeQXVyNDQ0MTYzMDA@._V1_.jpg', '2020-09-26 00:00:00'),
+(1430, 'Westworld S02 EP01-02', 'westworld-273344', NULL, 'Westworld S02 EP01-02', 475784, NULL, 6, 'https://m.media-amazon.com/images/M/MV5BMTRmYzNmOTctZjMwOS00ODZlLWJiZGQtNDg5NDY5NjE3MTczXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg', '2020-09-28 00:00:00'),
+(1431, 'The 100 Scariest Movie Moments', 'the-100-scariest-movie-moments-12554', NULL, 'The 100 S07 EP16', 2661044, NULL, 3, 'https://m.media-amazon.com/images/M/MV5BNjRiYTIzZmUtMTFkNS00ZTM0LWE4ODAtMDliMGE4NzM5ZjVlXkEyXkFqcGdeQXVyNDQ0MTYzMDA@._V1_.jpg', '2020-10-02 00:00:00'),
+(1432, 'Westworld S02 EP03-10', 'westworld-273344', NULL, 'Westworld S02 EP03-10', 475784, NULL, 6, 'https://m.media-amazon.com/images/M/MV5BMTRmYzNmOTctZjMwOS00ODZlLWJiZGQtNDg5NDY5NjE3MTczXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg', '2020-10-03 00:00:00'),
+(1433, 'Westworld S03 EP01-02', 'westworld-273344', NULL, 'Westworld S03 EP01-02', 475784, NULL, 6, 'https://m.media-amazon.com/images/M/MV5BMTRmYzNmOTctZjMwOS00ODZlLWJiZGQtNDg5NDY5NjE3MTczXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg', '2020-10-05 00:00:00'),
+(1434, 'Westworld S03 EP03-08', 'westworld-273344', NULL, 'Westworld S03 EP03-08', 475784, NULL, 6, 'https://m.media-amazon.com/images/M/MV5BMTRmYzNmOTctZjMwOS00ODZlLWJiZGQtNDg5NDY5NjE3MTczXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_.jpg', '2020-10-06 00:00:00'),
+(1435, 'Buffy, a vámpírok réme', 'buffy-the-vampire-slayer-45804', NULL, 'Buffy the Vampire Slayer', 103893, NULL, 4, 'https://m.media-amazon.com/images/M/MV5BN2NkY2Y5MmMtZjZmNC00YWZmLTkwZTUtMDFiZTQ2MmNjMTMxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg', '2020-10-11 00:00:00'),
+(1436, 'Malang', 'malang-323746', NULL, 'Malang - Unleash the Madness', 9877170, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BMDJiMDQyYTItZTA0NC00NmVlLTg3NGItMjQwOWI2ZjY0MmE5XkEyXkFqcGdeQXVyOTAzMTc2MjA@._V1_.jpg', '2020-10-11 00:00:00'),
+(1437, 'Robin Hood, a fuszeklik fejedelme', 'robin-hood-a-fuszeklik-fejedelme-15658', NULL, 'Robin Hood: Men in Tights', 107977, NULL, 6, 'https://m.media-amazon.com/images/M/MV5BZGYyNmU2NmEtNGU1ZS00YjFkLWI0MWQtZjU2MmUxZDAyN2UxXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg', '2020-10-13 00:00:00'),
+(1438, 'Are All Men Pedophiles?', 'are-all-men-pedophiles-94769', NULL, 'Are All Men Pedophiles?', 2072045, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BNjY0NzU3MzQ1NF5BMl5BanBnXkFtZTcwNzg5NTA4OQ@@._V1_.jpg', '2020-10-14 00:00:00'),
+(1439, 'Az Igazság Ligája: Két földi válság', 'az-igazsag-ligaja-ket-foldi-valsag-51164', NULL, 'Justice League: Crisis on Two Earths', 1494772, NULL, 101, 'https://m.media-amazon.com/images/M/MV5BMzg0ODZjNjUtNmVhZi00NTYxLWExNWMtMWI3MDFiMjhiNjc2L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg', '2020-10-14 00:00:00'),
+(1443, 'Nocturne', 'nocturne-332598', NULL, 'Nocturne', 11044858, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BNjU3NGRlOGUtMGYzMS00YzJkLWE2NzMtMTM0YmZmNjBiZTZkXkEyXkFqcGdeQXVyODE0OTU5Nzg@._V1_.jpg', '2020-10-17 00:00:00'),
+(1444, 'T@gged: Célkeresztben S01 EP01-08', 'tgged-celkeresztben-308688', NULL, 'T@gged S01 EP01-08', 5881326, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BMTY0MDQyOWEtZjQzNC00MTI2LTljMWItYjBiZTRjMTk3Mjc5XkEyXkFqcGdeQXVyNzIyMTA4MjA@._V1_.jpg', '2020-10-18 00:00:00'),
+(1445, 'T@gged: Célkeresztben S02 EP01-05', 'tgged-celkeresztben-308688', NULL, 'T@gged S02 EP01-05', 5881326, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BMTY0MDQyOWEtZjQzNC00MTI2LTljMWItYjBiZTRjMTk3Mjc5XkEyXkFqcGdeQXVyNzIyMTA4MjA@._V1_.jpg', '2020-10-18 00:00:00'),
+(1446, 'T@gged: Célkeresztben S02 EP06-12', 'tgged-celkeresztben-308688', NULL, 'T@gged S02 EP06-12', 5881326, NULL, 4, 'https://m.media-amazon.com/images/M/MV5BMTY0MDQyOWEtZjQzNC00MTI2LTljMWItYjBiZTRjMTk3Mjc5XkEyXkFqcGdeQXVyNzIyMTA4MjA@._V1_.jpg', '2020-10-19 00:00:00'),
+(1447, 'T@gged: Célkeresztben', 'tgged-celkeresztben-308688', NULL, 'T@gged', 5881326, NULL, 4, 'https://m.media-amazon.com/images/M/MV5BMTY0MDQyOWEtZjQzNC00MTI2LTljMWItYjBiZTRjMTk3Mjc5XkEyXkFqcGdeQXVyNzIyMTA4MjA@._V1_.jpg', '2020-10-19 00:00:00'),
+(1448, 'Rocco', 'rocco-289512', NULL, 'Rocco', 5788462, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BYzJkN2Q2OTAtNTkxMC00NDIyLWFmMmEtN2QxZTZiNWEzNDU2L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTE1NjkxODU@._V1_.jpg', '2020-10-20 00:00:00'),
+(1449, 'Black Box', 'black-box-341942', NULL, 'Black Box', 12298506, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BZDExM2Y5MzYtYmMxNS00ZWU4LTkwYzEtY2JiMWU2NTFlZWM5XkEyXkFqcGdeQXVyODE0OTU5Nzg@._V1_.jpg', '2020-10-20 00:00:00'),
+(1450, 'Téboly', 'unhinged-331943', NULL, 'Unhinged', 10059518, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BYjc1Mjg5NjItY2I2MS00NDk3LWI5NGYtNzZjNTNiZmMwZTA3XkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_.jpg', '2020-10-21 00:00:00'),
+(1451, 'David Attenborough: Egy élet a bolygónkon', 'david-attenborough-a-life-on-our-planet-336421', NULL, 'David Attenborough: A Life on Our Planet', 11989890, NULL, 6, 'https://m.media-amazon.com/images/M/MV5BY2FkMjE0ZDgtNWQxZS00NmZiLWEwMDYtMjE5M2RmOTZiODk5XkEyXkFqcGdeQXVyNjEwNTM2Mzc@._V1_.jpg', '2020-10-22 00:00:00'),
+(1452, 'Antebellum: A kiválasztott', 'antebellum-330743', NULL, 'Antebellum', 10065694, NULL, 6, 'https://m.media-amazon.com/images/M/MV5BOTQzYWU3NzktOGQyOC00NGNiLWE3NjAtNzQ0YzRkOTc5ODUzXkEyXkFqcGdeQXVyMjMxOTE0ODA@._V1_.jpg', '2020-10-23 00:00:00'),
+(1453, 'The Plot Against the President', NULL, NULL, 'The Plot Against the President', 12734800, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BOThhYzhhNzMtMThiZi00Zjg1LWFmMTktNmM0MjI3MDQ5MzQxXkEyXkFqcGdeQXVyNDE0MDk1NjY@._V1_.jpg', '2020-10-24 00:00:00'),
+(1454, 'Our New President', 'our-new-president-320960', NULL, 'Our New President', 6617656, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BNDliN2RjNjEtNTdkOS00MGYwLTg1ZjMtMTViNjEyYTA4YTllXkEyXkFqcGdeQXVyNTM3MDMyMDQ@._V1_.jpg', '2020-10-25 00:00:00'),
+(1455, 'Michael McIntyre: Showman', 'untitled-michael-mcintyre-netflix-project-341983', NULL, 'Michael McIntyre: Showman', 11860624, NULL, 4, 'https://m.media-amazon.com/images/M/MV5BODMzNmY4ZDctMTEyOS00N2ZmLTgxMDAtOTdkY2E2MjBiNzVhXkEyXkFqcGdeQXVyOTMyODgwOTQ@._V1_.jpg', '2020-10-25 00:00:00'),
+(1456, 'A hazugsággyáros', 'a-hazugsaggyaros-22585', NULL, 'Shattered Glass', 323944, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BMjExNDI2OTc2MF5BMl5BanBnXkFtZTYwOTA5MjM3._V1_.jpg', '2020-10-25 00:00:00'),
+(1457, 'Rablók', 'braqueurs-275008', NULL, 'Braqueurs', 4428728, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BZDkyY2IxNGItZTk4My00MzJkLThlOGUtMDg3OGJlZDYzZWNlXkEyXkFqcGdeQXVyMTIyODg3MDI@._V1_.jpg', '2020-10-26 00:00:00'),
+(1458, 'Tiszta ügy', 'tiszta-ugy-46321', NULL, 'High Crimes', 257756, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BMTM3MDkyNDMyMV5BMl5BanBnXkFtZTYwMDI3Nzc3._V1_.jpg', '2020-10-27 00:00:00'),
+(1468, 'Buhersereg', 'buhersereg-16653', NULL, 'Buffalo Soldiers', 252299, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BMTI1MDYxMTE3MV5BMl5BanBnXkFtZTYwMzc1NDk5._V1_.jpg', '2020-10-30 00:00:00'),
+(1529, 'A Szakkara-sír titkai', 'secrets-of-the-saqqara-tomb-363819', NULL, 'Secrets of the Saqqara Tomb', 13150630, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BNDQyMDMxNzUtMTkwMC00ZTk1LWIxYzYtYTBlZGQ3Yjg2Mjc0XkEyXkFqcGdeQXVyNjEwNTM2Mzc@._V1_.jpg', '2020-10-31 00:00:00'),
+(1538, 'Endgame 2050', NULL, NULL, 'Endgame 2050', 12292428, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BMTA4M2NjMGUtNzJlOS00NTUzLTkyOTYtZTY2ZGM3M2Q4M2E0XkEyXkFqcGdeQXVyNzU4NzkzNzE@._V1_.jpg', '2020-11-01 00:00:00'),
+(1539, 'Bellingcat: Truth in a Post-Truth World', NULL, NULL, 'Bellingcat: Truth in a Post-Truth World', 7844518, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BYjk2ZDhkNjgtODJhYy00NjEyLWE3NDktM2JhZjRiYTA4YjhjXkEyXkFqcGdeQXVyMTM3NzE3MDE@._V1_.jpg', '2020-10-31 00:00:00'),
+(1640, 'Száll a kakukk fészkére', 'szall-a-kakukk-feszkere-44001', NULL, 'One Flew Over the Cuckoo\'s Nest', 73486, NULL, 6, 'https://m.media-amazon.com/images/M/MV5BZjA0OWVhOTAtYWQxNi00YzNhLWI4ZjYtNjFjZTEyYjJlNDVlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg', '2020-11-03 00:00:00'),
+(1641, 'Monster Problems', 'monster-problems-324371', NULL, 'Monster Problems', 2222042, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BYWVkMWEyMDUtZTVmOC00MTYxLWE1ZTUtNjk4M2IzMjY2OTIxXkEyXkFqcGdeQXVyMDk5Mzc5MQ@@._V1_.jpg', '2020-11-04 00:00:00'),
+(1642, 'The Captains', 'the-captains-15771', NULL, 'The Captains', 1946421, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BMTM1NDgzMjU0OF5BMl5BanBnXkFtZTcwNjU4NjgwNg@@._V1_.jpg', '2020-11-07 00:00:00'),
+(1643, 'Combat Wombat', 'combat-wombat-322945', NULL, 'Combat Wombat', 9679528, NULL, 101, 'https://m.media-amazon.com/images/M/MV5BZjYyN2Y5YWUtMDI5Zi00YjkwLWFlN2QtMjZlNjVhODZhYWI3XkEyXkFqcGdeQXVyMTIyNDUxNDU5._V1_.jpg', '2020-11-07 00:00:00'),
+(1644, '12 majom', '12-majom-43880', NULL, 'Twelve Monkeys', 114746, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BN2Y2OWU4MWMtNmIyMy00YzMyLWI0Y2ItMTcyZDc3MTdmZDU4XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg', '2020-11-08 00:00:00'),
+(1645, 'Intim részek', 'intim-reszek-16927', NULL, 'Private Parts', 119951, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BNDhjZjAxNzgtNzU3NS00OWQxLWI2ODItMjk0NmRjMTU5MDhjXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg', '2020-11-09 00:00:00'),
+(1646, 'Divide in Concord', 'divide-in-concord-166425', NULL, 'Divide in Concord', 3457790, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BNDg5MjAyMjc4MV5BMl5BanBnXkFtZTgwOTQ3MjMwMjE@._V1_.jpg', '2020-11-09 00:00:00'),
+(1647, 'The Boys S01 EP01-03', 'the-boys-319513', NULL, 'The Boys S01 EP01-03', 1190634, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BNGEyOGJiNWEtMTgwMi00ODU4LTlkMjItZWI4NjFmMzgxZGY2XkEyXkFqcGdeQXVyNjcyNjcyMzQ@._V1_.jpg', '2020-11-11 00:00:00'),
+(1648, 'The Boys S01 EP04-08', 'the-boys-319513', NULL, 'The Boys S01 EP04-08', 1190634, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BNGEyOGJiNWEtMTgwMi00ODU4LTlkMjItZWI4NjFmMzgxZGY2XkEyXkFqcGdeQXVyNjcyNjcyMzQ@._V1_.jpg', '2020-11-12 00:00:00'),
+(1649, 'The Boys S02 EP01-04', 'the-boys-319513', NULL, 'The Boys S02 EP01-04', 1190634, NULL, 5, 'https://m.media-amazon.com/images/M/MV5BNGEyOGJiNWEtMTgwMi00ODU4LTlkMjItZWI4NjFmMzgxZGY2XkEyXkFqcGdeQXVyNjcyNjcyMzQ@._V1_.jpg', '2020-11-12 00:00:00'),
+(1650, 'The Boys S02 EP05-08', 'the-boys-319513', NULL, 'The Boys S02 EP05-08', 1190634, NULL, 4, 'https://m.media-amazon.com/images/M/MV5BNGEyOGJiNWEtMTgwMi00ODU4LTlkMjItZWI4NjFmMzgxZGY2XkEyXkFqcGdeQXVyNjcyNjcyMzQ@._V1_.jpg', '2020-11-13 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1501,7 +1555,7 @@ CREATE TABLE `password_resets` (
 --
 
 CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1515,7 +1569,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, '32525464', 'rtzjbtrbzev5@dfjo64h56.jfdh', '$2y$10$cZ/8Jkbmq1OXUqx9oDhekOZFq1sqWqXibMBSuCoHsPT.CEFy9w89S', 'h26M71zaVC4sxxAmIKUeqBJjiwPx7UnJGbHqq0lLyte57ci5jVF0m0DdM1rt', '2018-06-24 10:04:29', '2018-06-24 10:04:29');
+(1, '32525464', 'rtzjbtrbzev5@dfjo64h56.jfdh', '$2y$10$cZ/8Jkbmq1OXUqx9oDhekOZFq1sqWqXibMBSuCoHsPT.CEFy9w89S', 'XfjUEsfnMbuOfnUnpeLl5uzxrLrUJNw6G3mZskFAmKJYniZOuMzuItMBzEUR', '2018-06-24 08:04:29', '2018-06-24 08:04:29');
 
 --
 -- Indexes for dumped tables
@@ -1566,19 +1620,19 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1417;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1651;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
