@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Imdb\Config;
 use Imdb\TitleSearch;
 use PoLaKoSz\Mafab\Models\MafabMovie;
-use PoLaKoSz\Mafab\Search;
+use PoLaKoSz\Mafab\Mafab;
 
 class MovieSearchController extends Controller
 {
@@ -20,7 +20,7 @@ class MovieSearchController extends Controller
 
     public function __construct()
     {
-        $this->mafab = new Search();
+        $this->mafab = new Mafab();
 
         $config = new Config();
         $config->language = "en-US,en";
@@ -37,7 +37,7 @@ class MovieSearchController extends Controller
      */
     public function mafab(Request $request) : JsonResponse
     {
-        $searchResults = $this->mafab->search($request->movie_name);
+        $searchResults = $this->mafab->search()->quicklyFor($request->movie_name);
 
         $response = array();
 

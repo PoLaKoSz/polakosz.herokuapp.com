@@ -13,10 +13,10 @@
         "fideloper/proxy": "^4.4",
         "imdbphp/imdbphp": "^6.4",
         "knplabs/github-api": "^2.15",
-        "mcamara/laravel-localization": "^1.2",
         "laravel/framework": "^6.20",
+        "mcamara/laravel-localization": "^1.2",
         "php-http/guzzle6-adapter": "^1.1",
-        "polakosz/mafab": "^1.1"
+        "polakosz/mafab": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^1.16.4",
