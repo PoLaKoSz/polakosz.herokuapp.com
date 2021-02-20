@@ -21,10 +21,37 @@ $(document).ready(function () {
         return document.getElementById("huTitle").value.match(/\w+ S\d\d /) !== null;
     }
 
+    function populateTvShowInputs() {
+        const hungarianTitle = document.querySelector("#mafabSearch").value;
+        const englishTitle = document.querySelector("#imdbSearch").value;
+        const huSeason = hungarianTitle.match(/S\d\d/)[0].substr(1);
+        const enSeason = englishTitle.match(/S\d\d/)[0].substr(1);
+        if (huSeason !== enSeason) {
+            throw "Season value mismatch!";
+        }
+
+        originalHungarianTitle = hungarianTitle.substr(0, hungarianTitle.match(/ S\d\d/).index);
+        originalEnglishTitle = englishTitle.substr(0, englishTitle.match(/ S\d\d/).index);
+
+        $('#season_number').val(Number(huSeason));
+
+        const firstEpisode = hungarianTitle.match(/ EP\d\d/)[0].substr(3)
+        $('#ep_first_number').val(Number(firstEpisode));
+        addFirstEpisode("");
+
+        const lastEpisode = document.querySelector("#mafabSearch").value.match(/ EP\d\d-\d\d/);
+        if (lastEpisode !== null)
+        {
+            $('#ep_last_number').val(Number(lastEpisode[0].substr(6)));
+            addLastEpisode();
+        }
+    }
+
     if (isInEditMode() && isTvShow())
     {
         $('#is_tv_series').prop('checked', true);
         $('#is_tv_series').trigger("change");
+        populateTvShowInputs();
     }
 });
 
