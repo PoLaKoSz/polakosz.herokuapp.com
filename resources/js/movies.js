@@ -12,6 +12,20 @@ $(document).ready(function () {
         todayHighlight: true,
         autoclose: true,
     });
+
+    function isInEditMode() {
+        return document.getElementById("huTitle").value !== "";
+    }
+
+    function isTvShow() {
+        return document.getElementById("huTitle").value.match(/\w+ S\d\d /) !== null;
+    }
+
+    if (isInEditMode() && isTvShow())
+    {
+        $('#is_tv_series').prop('checked', true);
+        $('#is_tv_series').trigger("change");
+    }
 });
 
 function bootstrapDropDown(containerName) {
