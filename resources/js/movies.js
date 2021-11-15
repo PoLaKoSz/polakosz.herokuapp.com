@@ -249,6 +249,7 @@ $('#season_number').change(function(){
 
 $('#ep_first_number').change(function(){
     addFirstEpisode('');
+    addLastEpisode();
 });
 
 $('#ep_last_number').change(function(){
