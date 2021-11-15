@@ -227,7 +227,10 @@ $('#is_tv_series').change(function(){
 });
 
 function resetMovieTitle( content ) {
-    getElementByName('title_hu').val(originalHungarianTitle + content );
+    if (originalHungarianTitle !== undefined) {
+        getElementByName('title_hu').val(originalHungarianTitle + content );
+    }
+
     getElementByName('title_en').val(originalEnglishTitle + content );
 }
 
