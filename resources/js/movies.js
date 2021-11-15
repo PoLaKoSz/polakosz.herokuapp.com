@@ -14,7 +14,8 @@ $(document).ready(function () {
     });
 
     function isInEditMode() {
-        return document.getElementById("huTitle").value !== "";
+        const pathNames = window.location.pathname.split('/');
+        return pathNames.length == 5 && pathNames[2] === "movies" && pathNames[4] === "edit";
     }
 
     function isTvShow() {
