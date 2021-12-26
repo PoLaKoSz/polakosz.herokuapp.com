@@ -50,9 +50,13 @@ $(document).ready(function () {
 
     if (isInEditMode() && isTvShow())
     {
+        populateTvShowInputs();
         $('#is_tv_series').prop('checked', true);
         $('#is_tv_series').trigger("change");
-        populateTvShowInputs();
+        $('#is_tv_series').removeAttr("disabled");
+        $('#season_number').trigger("change");
+        $('#ep_first_number').trigger("change");
+        $('#ep_last_number').trigger("change");
     }
 });
 
@@ -187,6 +191,8 @@ function updateColumn( data ) {
             getElementByName( 'cover_image' ).val( movie.image );
             $( '#moviePoster' ).html( $( '<img src="' + movie.image + '" class="img-fluid">' ) );
         }
+
+        $('#is_tv_series').removeAttr("disabled");
     });
 }
 
@@ -220,9 +226,11 @@ imdbSearchBox.focusout(function(){
 $('#is_tv_series').change(function(){
     if ($(this).is(':checked')) {
         $('#seasonContinainer').removeClass('d-none');
+        $('#season_number').removeAttr('disabled');
     }
     else {
         $('#seasonContinainer').addClass('d-none');
+        $('#season_number').attr('disabled', true);
     }
 });
 
@@ -244,6 +252,7 @@ function addFirstEpisode( content ) {
 
 function addLastEpisode() {
     if (!$('#ep_last_number').val()) {
+        addFirstEpisode('');
         return;
     }
 
@@ -251,12 +260,27 @@ function addLastEpisode() {
 }
 
 $('#season_number').change(function(){
-    addSeason('');
+    if (!$('#season_number').val()) {
+        resetMovieTitle('');
+        $('#ep_first_number').attr('disabled', true);
+        $('#ep_last_number').attr('disabled', true);
+    }
+    else {
+        addSeason('');
+        $('#ep_first_number').removeAttr('disabled');
+    }
 });
 
 $('#ep_first_number').change(function(){
-    addFirstEpisode('');
-    addLastEpisode();
+    if (!$('#ep_first_number').val()) {
+        addSeason('');
+        $('#ep_last_number').attr('disabled', true);
+    }
+    else {
+        addFirstEpisode('');
+        addLastEpisode();
+        $('#ep_last_number').removeAttr('disabled');
+    }
 });
 
 $('#ep_last_number').change(function(){

@@ -40,7 +40,7 @@
                 <input type="hidden" name="title_en" placeholder="{{ trans('movies.title_en') }}" class="form-control">
 
                 <div class="form-check">
-                    <input type="checkbox" id="is_tv_series" class="form-check-input">
+                    <input type="checkbox" id="is_tv_series" class="form-check-input" disabled>
                     <label for="is_tv_series" class="form-check-label">
                         {{ trans('movies.series_chkBox') }}
                     </label>
@@ -50,15 +50,15 @@
                     <div id="seasonContinainer" class="row d-none">
                         <div class="col-12 form-group mb-2">
                             <label for="season_number" class="sr-only">{{ trans('movies.season') }}</label>
-                            <input type="number" id="season_number" min="1" placeholder="{{ trans('movies.season') }}" class="form-control">
+                            <input type="number" id="season_number" min="1" placeholder="{{ trans('movies.season') }}" class="form-control" disabled>
                         </div>
                         <div class="col-6 form-group mb-2">
                             <label for="ep_first_number" class="sr-only">{{ trans('movies.first_episode') }}</label>
-                            <input type="number" id="ep_first_number" min="0" placeholder="{{ trans('movies.first_episode') }}" class="form-control">
+                            <input type="number" id="ep_first_number" min="0" placeholder="{{ trans('movies.first_episode') }}" class="form-control" disabled>
                         </div>
                         <div class="col-6 form-group mb-2">
                             <label for="ep_last_number" class="sr-only">{{ trans('movies.last_episode') }}</label>
-                            <input type="number" id="ep_last_number" min="1" placeholder="{{ trans('movies.last_episode') }}" class="form-control">
+                            <input type="number" id="ep_last_number" min="1" placeholder="{{ trans('movies.last_episode') }}" class="form-control" disabled>
                         </div>
                     </div>
                 </fieldset>
