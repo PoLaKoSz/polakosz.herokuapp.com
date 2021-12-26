@@ -243,6 +243,10 @@ function addFirstEpisode( content ) {
 }
 
 function addLastEpisode() {
+    if (!$('#ep_last_number').val()) {
+        return;
+    }
+
     addFirstEpisode('-' + pad( $('#ep_last_number').val(), 2 ) );
 }
 
