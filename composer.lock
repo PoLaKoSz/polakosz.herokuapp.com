@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e714a9679eee50af063b6e24a568a35",
+    "content-hash": "020bbdac128bab7e0a60197f6a9c814c",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -891,16 +891,16 @@
         },
         {
             "name": "imdbphp/imdbphp",
-            "version": "v7.2.0",
+            "version": "v7.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tboothman/imdbphp.git",
-                "reference": "8bd3b62344add278959c297a56f0cffd2796e12f"
+                "reference": "1fdcc68fd7dce2fde8a2282c833465f35154faf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tboothman/imdbphp/zipball/8bd3b62344add278959c297a56f0cffd2796e12f",
-                "reference": "8bd3b62344add278959c297a56f0cffd2796e12f",
+                "url": "https://api.github.com/repos/tboothman/imdbphp/zipball/1fdcc68fd7dce2fde8a2282c833465f35154faf9",
+                "reference": "1fdcc68fd7dce2fde8a2282c833465f35154faf9",
                 "shasum": ""
             },
             "require": {
@@ -932,9 +932,9 @@
             "description": "Library for retrieving film and tv information from IMDb",
             "support": {
                 "issues": "https://github.com/tboothman/imdbphp/issues",
-                "source": "https://github.com/tboothman/imdbphp/tree/v7.2.0"
+                "source": "https://github.com/tboothman/imdbphp/tree/v7.3.1"
             },
-            "time": "2021-07-15T12:15:21+00:00"
+            "time": "2022-10-08T09:03:14+00:00"
         },
         {
             "name": "knplabs/github-api",
